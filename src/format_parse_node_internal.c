@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 23:10:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/18 23:52:54 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/19 01:13:50 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "format_internal.h"
 
-void	printf_format_internal_parse_node_flags(
+bool	printf_format_internal_parse_node_flags(
 	const char *format,
 	t_printf_format_node_union_conversion_specification *self,
 	size_t *out_consumed
@@ -33,10 +33,11 @@ void	printf_format_internal_parse_node_flags(
 		else if (*format == '0')
 			self->value.flag_pad_field_with_zero = 1;
 		else
-			return ;
+			return (false);
 		format++;
 		(*out_consumed)++;
 	}
+	return (false);
 }
 
 bool	printf_format_internal_parse_node_minimum_field_width(
@@ -103,23 +104,22 @@ typedef struct s_length_modifier_entry {
 	t_printf_format_length_modifier	value;
 }	t_length_modifier_entry;
 
-static const t_length_modifier_entry		g_single_char_length_modifiers[] = {
+static const t_length_modifier_entry		g_modifiers[] = {
 {'h', printf_format_length_modifier_h},
 {'l', printf_format_length_modifier_l},
 {'j', printf_format_length_modifier_j},
 {'z', printf_format_length_modifier_z},
 {'t', printf_format_length_modifier_t},
-{'L', printf_format_length_modifier_capital_l},
-	NULL
+{'L', printf_format_length_modifier_capital_l}
 };
 
-void	printf_format_internal_parse_node_length_modifier(
+bool	printf_format_internal_parse_node_length_modifier(
 	const char *format,
 	t_printf_format_node_union_conversion_specification *self,
 	size_t *out_consumed
 )
 {
-	const t_length_modifier_entry	*tmp;
+	size_t	i;
 
 	if (*format == *(format + 1) && (*format == 'h' || *format == 'l'))
 	{
@@ -127,20 +127,21 @@ void	printf_format_internal_parse_node_length_modifier(
 		if (*format == 'h')
 			self->value.length_modifier = printf_format_length_modifier_hh;
 		*out_consumed += 2;
-		return ;
+		return (false);
 	}
-	tmp = g_single_char_length_modifiers;
-	while (tmp)
+	i = 0;
+	while (i < sizeof(g_modifiers) / sizeof(g_modifiers[0]))
 	{
-		if (*format == tmp->key)
+		if (*format == g_modifiers[i].key)
 		{
-			self->value.length_modifier = tmp->value;
+			self->value.length_modifier = g_modifiers[i].value;
 			(*out_consumed)++;
-			return ;
+			return (false);
 		}
-		tmp++;
+		i++;
 	}
 	self->value.length_modifier = printf_format_length_modifier_empty;
+	return (false);
 }
 
 typedef struct s_conversion_specifier_entry {
@@ -148,7 +149,7 @@ typedef struct s_conversion_specifier_entry {
 	t_printf_format_conversion_specifier	value;
 }	t_conversion_specifier_entry;
 
-static const t_conversion_specifier_entry	g_conversion_specifiers[] = {
+static const t_conversion_specifier_entry	g_specifiers[] = {
 {'d', printf_format_conversion_specifier_d},
 {'i', printf_format_conversion_specifier_i},
 {'o', printf_format_conversion_specifier_o},
@@ -167,8 +168,7 @@ static const t_conversion_specifier_entry	g_conversion_specifiers[] = {
 {'s', printf_format_conversion_specifier_s},
 {'p', printf_format_conversion_specifier_p},
 {'n', printf_format_conversion_specifier_n},
-{'%', printf_format_conversion_specifier_percent},
-	NULL
+{'%', printf_format_conversion_specifier_percent}
 };
 
 bool	printf_format_internal_parse_node_conversion_specifier(
@@ -177,18 +177,18 @@ bool	printf_format_internal_parse_node_conversion_specifier(
 	size_t *out_consumed
 )
 {
-	const t_conversion_specifier_entry	*tmp;
+	size_t	i;
 
-	tmp = g_conversion_specifiers;
-	while (tmp)
+	i = 0;
+	while (i < sizeof(g_specifiers) / sizeof(g_specifiers[0]))
 	{
-		if (*format == tmp->key)
+		if (*format == g_specifiers[i].key)
 		{
-			self->value.conversion_specifier = tmp->value;
+			self->value.conversion_specifier = g_specifiers[i].value;
 			(*out_consumed)++;
 			return (false);
 		}
-		tmp++;
+		i++;
 	}
 	return (true);
 }

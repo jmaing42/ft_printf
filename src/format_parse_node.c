@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:37:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/18 23:54:13 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/19 01:07:52 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,26 @@ static bool	printf_format_internal_parse_node_conversion_specification(
 
 	result = (t_printf_format_node_union_conversion_specification *) malloc(
 			sizeof(t_printf_format_node_union_conversion_specification));
-	if (!result)
-		return (true);
-	result->type = printf_format_node_type_conversion_specification;
 	consumed = 0;
-	printf_format_internal_parse_node_flags(format, result, &consumed);
-	// TODO:
+	if (!result
+		|| printf_format_internal_parse_node_flags(
+			format + consumed, result, &consumed)
+		|| printf_format_internal_parse_node_minimum_field_width(
+			format + consumed, result, &consumed)
+		|| printf_format_internal_parse_node_minimum_field_width(
+			format + consumed, result, &consumed)
+		|| printf_format_internal_parse_node_minimum_field_width(
+			format + consumed, result, &consumed)
+		|| printf_format_internal_parse_node_precision(
+			format + consumed, result, &consumed))
+	{
+		free (result);
+		return (true);
+	}
+	result->type = printf_format_node_type_conversion_specification;
+	*out_result = result;
+	*out_consumed = consumed;
+	return (false);
 }
 
 bool	printf_format_internal_parse_node(

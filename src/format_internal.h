@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:26:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/18 23:52:22 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/19 00:20:24 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	printf_format_internal_parse_node(
 			size_t *out_consumed
 			);
 
-void	printf_format_internal_parse_node_flags(
+bool	printf_format_internal_parse_node_flags(
 			const char *format,
 			t_printf_format_node_union_conversion_specification *self,
 			size_t *out_consumed
@@ -47,7 +47,7 @@ bool	printf_format_internal_parse_node_precision(
 			t_printf_format_node_union_conversion_specification *self,
 			size_t *out_consumed
 			);
-void	printf_format_internal_parse_node_length_modifier(
+bool	printf_format_internal_parse_node_length_modifier(
 			const char *format,
 			t_printf_format_node_union_conversion_specification *self,
 			size_t *out_consumed
