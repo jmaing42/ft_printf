@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:26:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 00:20:24 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/19 05:35:13 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,6 @@
 # include <stdbool.h>
 
 # include "format.h"
-
-/**
- * @brief parse single node
- *
- * @param format starting point of format string
- * @param out_result out parameter to get result
- * @param out_consumed consumed char count from format
- * @return true on error
- * @return false on success
- */
-bool	printf_format_internal_parse_node(
-			const char *format,
-			t_printf_format_node **out_result,
-			size_t *out_consumed
-			);
 
 bool	printf_format_internal_parse_node_flags(
 			const char *format,

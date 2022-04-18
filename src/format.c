@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_parse_node.c                                :+:      :+:    :+:   */
+/*   format.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:37:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 01:07:52 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/19 05:35:38 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static bool	printf_format_internal_parse_node_conversion_specification(
 	return (false);
 }
 
-bool	printf_format_internal_parse_node(
+static bool	printf_format_parse_node(
 	const char *format,
 	t_printf_format_node **out_result,
 	size_t *out_consumed
@@ -99,4 +99,46 @@ bool	printf_format_internal_parse_node(
 			out_consumed
 		)
 	);
+}
+
+t_printf_format	*printf_format_parse(char *format)
+{
+	t_printf_format *const	result = (t_printf_format *) malloc(
+			sizeof(t_printf_format));
+	size_t					consumed;
+	t_printf_format_node	*node;
+
+	if (!result)
+		return (NULL);
+	result->head = NULL;
+	result->tail = NULL;
+	while (*format && !printf_format_parse_node(format, &node, &consumed))
+	{
+		format += consumed;
+		if (!result->head)
+		{
+			result->head = node;
+			result->tail = node;
+			continue ;
+		}
+		result->tail->next = node;
+		result->tail = node;
+	}
+	if (!*format)
+		return (result);
+	printf_format_free(result);
+	return (NULL);
+}
+
+void	printf_format_free(t_printf_format *self)
+{
+	t_printf_format_node	*node;
+
+	while (self->head)
+	{
+		node = self->head;
+		self->head = node->next;
+		free(node);
+	}
+	free(self);
 }
