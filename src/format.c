@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:37:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 05:35:38 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/19 20:45:32 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 #include "format_internal.h"
 
 typedef t_printf_format_node	t_node;
+typedef bool					(*t_node_parser)(
+	const char * format,
+	t_printf_format_node_value *out_result,
+	size_t *out_consumed
+);
 
 static bool	printf_format_internal_parse_node_string(
 	const char *format,
@@ -49,22 +54,22 @@ static bool	printf_format_internal_parse_node_conversion_specification(
 	size_t *out_consumed
 )
 {
-	t_printf_format_node_union_conversion_specification	*result;
-	size_t												consumed;
+	t_printf_format_node_union_conversion_specification *const	result = (
+			(t_printf_format_node_union_conversion_specification *) malloc(
+				sizeof(t_printf_format_node_union_conversion_specification)));
+	size_t														consumed;
 
-	result = (t_printf_format_node_union_conversion_specification *) malloc(
-			sizeof(t_printf_format_node_union_conversion_specification));
-	consumed = 0;
+	consumed = 1;
 	if (!result
 		|| printf_format_internal_parse_node_flags(
 			format + consumed, result, &consumed)
 		|| printf_format_internal_parse_node_minimum_field_width(
 			format + consumed, result, &consumed)
-		|| printf_format_internal_parse_node_minimum_field_width(
-			format + consumed, result, &consumed)
-		|| printf_format_internal_parse_node_minimum_field_width(
-			format + consumed, result, &consumed)
 		|| printf_format_internal_parse_node_precision(
+			format + consumed, result, &consumed)
+		|| printf_format_internal_parse_node_length_modifier(
+			format + consumed, result, &consumed)
+		|| printf_format_internal_parse_node_conversion_specifier(
 			format + consumed, result, &consumed))
 	{
 		free (result);
@@ -78,35 +83,34 @@ static bool	printf_format_internal_parse_node_conversion_specification(
 
 static bool	printf_format_parse_node(
 	const char *format,
-	t_printf_format_node **out_result,
+	t_node **out_result,
 	size_t *out_consumed
 )
 {
+	t_node *const	result = (t_node *) malloc(sizeof(t_node));
+	t_node_parser	parser;
+
+	parser = (t_node_parser)
+		&printf_format_internal_parse_node_conversion_specification;
 	if (*format != '%')
+		parser = (t_node_parser)
+			&printf_format_internal_parse_node_string;
+	if (!*format || !result || (*parser)(format, &result->value, out_consumed))
 	{
-		return (
-			printf_format_internal_parse_node_string(
-				format,
-				(t_printf_format_node_union_string **) out_result,
-				out_consumed
-			)
-		);
+		free (result);
+		return (true);
 	}
-	return (
-		printf_format_internal_parse_node_conversion_specification(
-			format,
-			(t_printf_format_node_union_conversion_specification **) out_result,
-			out_consumed
-		)
-	);
+	result->next = NULL;
+	*out_result = result;
+	return (false);
 }
 
-t_printf_format	*printf_format_parse(char *format)
+t_printf_format	*printf_format_parse(const char *format)
 {
 	t_printf_format *const	result = (t_printf_format *) malloc(
 			sizeof(t_printf_format));
 	size_t					consumed;
-	t_printf_format_node	*node;
+	t_node					*node;
 
 	if (!result)
 		return (NULL);
@@ -132,7 +136,7 @@ t_printf_format	*printf_format_parse(char *format)
 
 void	printf_format_free(t_printf_format *self)
 {
-	t_printf_format_node	*node;
+	t_node	*node;
 
 	while (self->head)
 	{

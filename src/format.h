@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 21:07:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/18 23:22:38 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/19 20:24:05 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_printf_format_node_union_conversion_specification {
 }	t_printf_format_node_union_conversion_specification;
 
 typedef union u_printf_format_node_value {
+	void												*any;
 	t_printf_format_node_type							*type;
 	t_printf_format_node_union_string					*string;
 	t_printf_format_node_union_conversion_specification	*conversion;
@@ -97,7 +98,7 @@ typedef struct s_printf_format {
 	t_printf_format_node	*tail;
 }	t_printf_format;
 
-t_printf_format	*printf_format_parse(char *format);
+t_printf_format	*printf_format_parse(const char *format);
 void			printf_format_free(t_printf_format *self);
 
 #endif
