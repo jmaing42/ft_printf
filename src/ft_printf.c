@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 22:12:34 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/19 22:31:57 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_printf(const char *format, ...)
 	va_list	arguments;
 
 	va_start(arguments, format);
-	ft_write_printf_middle(true, 0, NULL, 0);
+	ft_write_printf_middle(true, 1, NULL, 0);
 	result = ft_vprintf_stream(
 			&ft_write_printf,
 			&out_len,
