@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 21:17:27 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 21:20:34 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ t_err	ft_vprintf_stream_s(
 		|| conv->flag_use_alternative_form
 		|| conv->flag_use_sign_placeholder)
 		ft_vprintf_stream_undefined_behavior_horray();
-	return ((mfw > length && left && ft_vprintf_stream_util_print_n(
+	return (((size_t) mfw > length && left && ft_vprintf_stream_util_print_n(
 				context, mfw - length, ' '))
 		|| context->stream_class->writer(context->stream_context, value, length)
-		|| (mfw > length && left && ft_vprintf_stream_util_print_n(
+		|| ((size_t) mfw > length && left && ft_vprintf_stream_util_print_n(
 				context, mfw - length, ' ')));
 }
