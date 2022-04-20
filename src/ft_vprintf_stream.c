@@ -6,14 +6,12 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 18:47:57 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 18:53:56 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "libftprintf.h"
-#include "format.h"
 #include "printf.h"
 
 typedef t_printf_format_conversion_specification	t_conversion;
