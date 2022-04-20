@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 21:58:43 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 22:56:37 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_err	ft_vprintf_stream_c(
 		|| conversion->variable_precision)
 		ft_vprintf_stream_undefined_behavior_hooray();
 	return (conversion->length_modifier != printf_format_length_modifier_empty
-		|| (mfw > 1 && l && ft_vprintf_stream_util_print_n(c, mfw - 1, ' '))
+		|| (mfw > 1 && !l && ft_vprintf_stream_util_print_n(c, mfw - 1, ' '))
 		|| c->stream_class->writer(c->stream_context, &value, 1)
 		|| (mfw > 1 && l && ft_vprintf_stream_util_print_n(c, mfw - 1, ' ')));
 }
@@ -108,7 +108,7 @@ t_err	ft_vprintf_stream_s(
 		|| conv->flag_use_sign_placeholder)
 		ft_vprintf_stream_undefined_behavior_hooray();
 	return (conv->length_modifier != printf_format_length_modifier_empty
-		|| ((size_t) mfw > length && left && ft_vprintf_stream_util_print_n(
+		|| ((size_t) mfw > length && !left && ft_vprintf_stream_util_print_n(
 				context, mfw - length, ' '))
 		|| context->stream_class->writer(context->stream_context, value, length)
 		|| ((size_t) mfw > length && left && ft_vprintf_stream_util_print_n(
