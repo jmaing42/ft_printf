@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 19:45:17 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 20:55:27 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ typedef struct s_ft_vprintf_stream_context {
 	const t_ft_printf_stream_class		*stream_class;
 	void								*stream_context;
 }	t_ft_vprintf_stream_context;
+
+int				ft_vprintf_get_mfw_actual(
+					va_list arguments,
+					t_printf_format_conversion_specification *conversion,
+					bool *out_flag_left_justified);
+int				ft_vprintf_get_precision(
+					va_list arguments,
+					t_printf_format_conversion_specification *conversion,
+					int fallback);
 
 intmax_t		ft_vprintf_get_d(va_list arguments);
 intmax_t		ft_vprintf_get_ld(va_list arguments);
@@ -147,5 +156,11 @@ t_err			ft_vprintf_stream_fini_set_n_ll(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_j(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_z(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_t(size_t size, void *n);
+
+void			ft_vprintf_stream_undefined_behavior_horray(void);
+t_err			ft_vprintf_stream_util_print_n(
+					t_ft_vprintf_stream_context *context,
+					int n,
+					char c);
 
 #endif

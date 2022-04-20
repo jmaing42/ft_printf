@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_conversion_percent.c                        :+:      :+:    :+:   */
+/*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 19:38:50 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/20 20:57:44 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/20 20:59:36 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#ifndef UTIL_H
+# define UTIL_H
 
-t_err	ft_vprintf_stream_percent(
-	t_ft_vprintf_stream_context *context,
-	va_list arguments,
-	t_printf_format_conversion_specification *conversion
-)
-{
-	(void) arguments;
-	(void) conversion;
-	return (context->stream_class->writer(context->stream_context, "%", 1));
-}
+# include <stddef.h>
+
+size_t	ft_strlen(const char *str);
+size_t	ft_strlen_until(const char *str, const char *set);
+size_t	ft_strnlen(const char *str, size_t max_len);
+size_t	ft_strnlen_until(const char *str, const char *set, size_t max_len);
+
+#endif
