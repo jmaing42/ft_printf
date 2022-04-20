@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 23:10:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 22:33:11 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 21:34:30 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,16 @@ bool	printf_format_internal_parse_node_flags(
 		else if (*format == '0')
 			self->value.flag_pad_field_with_zero = 1;
 		else
-			return (false);
+			break ;
 		format++;
 		(*out_consumed)++;
 	}
+	if (self->value.flag_use_sign_placeholder
+		&& self->value.flag_always_show_sign)
+		self->value.flag_use_sign_placeholder = 0;
+	if (self->value.flag_pad_field_with_zero
+		&& self->value.flag_left_justified)
+		self->value.flag_pad_field_with_zero = 0;
 	return (false);
 }
 
