@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 17:24:51 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 18:44:38 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 
 # include "libftprintf.h"
 # include "format.h"
+
+typedef struct s_ft_vprintf_stream_context_n_list {
+	struct s_ft_vprintf_stream_context_n_list	*next;
+	t_printf_format_length_modifier				type;
+	void										*value;
+}	t_ft_vprintf_stream_context_n_list;
+
+typedef struct s_ft_vprintf_stream_context {
+	t_ft_vprintf_stream_context_n_list	*list;
+	const t_ft_printf_stream_class		*stream_class;
+	void								*stream_context;
+}	t_ft_vprintf_stream_context;
 
 intmax_t		ft_vprintf_get_d(va_list arguments);
 intmax_t		ft_vprintf_get_ld(va_list arguments);
@@ -48,99 +60,92 @@ t_err			ft_vprintf_get_any_f(
 					long double *out_result);
 
 t_err			ft_vprintf_stream_d(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_i(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_o(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_u(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_x(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_x(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_f(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_f(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_e(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_e(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_g(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_g(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_a(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_a(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_c(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_s(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_p(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_n(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_percent(
-					const t_ft_printf_stream_class *stream,
-					void *context,
+					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
+
+t_err			ft_vprintf_stream_fini_set_n(
+					size_t size,
+					t_ft_vprintf_stream_context_n_list *node);
+t_err			ft_vprintf_stream_fini_set_n_hh(size_t size, void *n);
+t_err			ft_vprintf_stream_fini_set_n_h(size_t size, void *n);
+t_err			ft_vprintf_stream_fini_set_n_empty(size_t size, void *n);
+t_err			ft_vprintf_stream_fini_set_n_l(size_t size, void *n);
+t_err			ft_vprintf_stream_fini_set_n_ll(size_t size, void *n);
+t_err			ft_vprintf_stream_fini_set_n_j(size_t size, void *n);
+t_err			ft_vprintf_stream_fini_set_n_z(size_t size, void *n);
+t_err			ft_vprintf_stream_fini_set_n_t(size_t size, void *n);
 
 #endif

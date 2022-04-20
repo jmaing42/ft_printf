@@ -6,9 +6,11 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 17:25:04 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 18:47:57 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 #include "libftprintf.h"
 #include "format.h"
@@ -16,8 +18,7 @@
 
 typedef t_printf_format_conversion_specification	t_conversion;
 typedef t_err										(*t_processor)(
-		const t_ft_printf_stream_class *type,
-		void *context,
+		t_ft_vprintf_stream_context *context,
 		va_list arguments,
 		t_conversion *value);
 typedef struct s_conversion_entry {
@@ -48,8 +49,7 @@ static const t_conversion_entry						g_conversions[] = {
 };
 
 static t_err	ft_vprintf_stream_node(
-	const t_ft_printf_stream_class *stream_class,
-	void *context,
+	t_ft_vprintf_stream_context *context,
 	va_list arguments,
 	t_printf_format_node *node
 )
@@ -58,8 +58,8 @@ static t_err	ft_vprintf_stream_node(
 
 	if (*node->value.type == printf_format_node_type_string)
 	{
-		return (stream_class->writer(
-				context,
+		return (context->stream_class->writer(
+				context->stream_context,
 				node->value.string->content,
 				node->value.string->length));
 	}
@@ -71,13 +71,48 @@ static t_err	ft_vprintf_stream_node(
 		if (g_conversions[i].type
 			== node->value.conversion->value.conversion_specifier)
 			return (g_conversions[i].process(
-					stream_class,
 					context,
 					arguments,
 					&node->value.conversion->value));
 		i++;
 	}
 	return (false);
+}
+
+static t_err	init_context(
+	t_ft_printf_stream stream,
+	t_ft_vprintf_stream_context *out_context
+)
+{
+	out_context->stream_context = stream.type->init(stream.param);
+	if (!out_context->stream_context)
+		return (true);
+	out_context->stream_class = stream.type;
+	out_context->list = NULL;
+	return (false);
+}
+
+static t_err	fini_context(
+	t_ft_vprintf_stream_context *context,
+	size_t *out_len,
+	bool skip
+)
+{
+	t_ft_vprintf_stream_context_n_list	*node;
+	t_err								err;
+
+	err = false;
+	*out_len = context->stream_class->get_bytes_wrote(context->stream_context);
+	while (context->list)
+	{
+		node = context->list->next;
+		if (!skip && ft_vprintf_stream_fini_set_n(*out_len, context->list))
+			err = true;
+		free(context->list);
+		context->list = node;
+	}
+	context->stream_class->fini(context->stream_context);
+	return (err);
 }
 
 t_err	ft_vprintf_stream(
@@ -87,29 +122,22 @@ t_err	ft_vprintf_stream(
 	va_list arguments
 )
 {
-	void *const				context = stream.type->init(stream.param);
-	t_printf_format *const	list = printf_format_parse(format);
-	t_printf_format_node	*node;
+	t_printf_format *const		list = printf_format_parse(format);
+	t_ft_vprintf_stream_context	context;
+	t_printf_format_node		*node;
+	t_err						err;
 
-	if (!list)
-		stream.type->fini(context);
-	if (!context)
-		printf_format_free(list);
-	if (!list || !context)
+	if (!list || init_context(stream, &context))
 		return (true);
+	err = false;
 	node = list->head;
-	while (node)
+	while (!err && node)
 	{
-		if (ft_vprintf_stream_node(stream.type, context, arguments, node))
-		{
-			stream.type->fini(context);
-			printf_format_free(list);
-			return (true);
-		}
+		err = ft_vprintf_stream_node(&context, arguments, node);
 		node = node->next;
 	}
-	*out_bytes_wrote = stream.type->get_bytes_wrote(context);
-	stream.type->fini(context);
+	if (fini_context(&context, out_bytes_wrote, err))
+		err = true;
 	printf_format_free(list);
-	return (false);
+	return (err);
 }
