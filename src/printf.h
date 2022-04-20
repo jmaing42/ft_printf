@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 18:44:38 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 19:45:17 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,9 @@ t_err			ft_vprintf_stream_percent(
 t_err			ft_vprintf_stream_fini_set_n(
 					size_t size,
 					t_ft_vprintf_stream_context_n_list *node);
+t_err			ft_vprintf_stream_fini_set_n_empty(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_hh(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_h(size_t size, void *n);
-t_err			ft_vprintf_stream_fini_set_n_empty(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_l(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_ll(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_j(size_t size, void *n);
