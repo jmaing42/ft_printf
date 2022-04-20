@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 20:55:27 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 21:22:21 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ t_err			ft_vprintf_stream_fini_set_n_j(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_z(size_t size, void *n);
 t_err			ft_vprintf_stream_fini_set_n_t(size_t size, void *n);
 
-void			ft_vprintf_stream_undefined_behavior_horray(void);
+void			ft_vprintf_stream_undefined_behavior_hooray(void);
 t_err			ft_vprintf_stream_util_print_n(
 					t_ft_vprintf_stream_context *context,
 					int n,

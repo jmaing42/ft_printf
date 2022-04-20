@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 21:20:34 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 21:22:30 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ t_err	ft_vprintf_stream_percent(
 	return (context->stream_class->writer(context->stream_context, "%", 1));
 }
 
-#define UNDEFINED_BEHAVIOR_HORRAY_MESSAGE "\nUndefined behavior occurred! xD\n"
+#define UNDEFINED_BEHAVIOR_hooray_MESSAGE "\nUndefined behavior occurred! xD\n"
 
-void	ft_vprintf_stream_undefined_behavior_horray(void)
+void	ft_vprintf_stream_undefined_behavior_hooray(void)
 {
 	write(
 		2,
-		UNDEFINED_BEHAVIOR_HORRAY_MESSAGE,
-		sizeof(UNDEFINED_BEHAVIOR_HORRAY_MESSAGE) - 1
+		UNDEFINED_BEHAVIOR_hooray_MESSAGE,
+		sizeof(UNDEFINED_BEHAVIOR_hooray_MESSAGE) - 1
 		);
 }
 
@@ -73,7 +73,7 @@ t_err	ft_vprintf_stream_c(
 		|| conversion->has_precision
 		|| conversion->variable_precision
 		|| precision >= 0)
-		ft_vprintf_stream_undefined_behavior_horray();
+		ft_vprintf_stream_undefined_behavior_hooray();
 	return ((mfw > 1 && l && ft_vprintf_stream_util_print_n(c, mfw - 1, ' '))
 		|| c->stream_class->writer(c->stream_context, &value, 1)
 		|| (mfw > 1 && l && ft_vprintf_stream_util_print_n(c, mfw - 1, ' ')));
@@ -95,7 +95,7 @@ t_err	ft_vprintf_stream_s(
 		|| conv->flag_pad_field_with_zero
 		|| conv->flag_use_alternative_form
 		|| conv->flag_use_sign_placeholder)
-		ft_vprintf_stream_undefined_behavior_horray();
+		ft_vprintf_stream_undefined_behavior_hooray();
 	return (((size_t) mfw > length && left && ft_vprintf_stream_util_print_n(
 				context, mfw - length, ' '))
 		|| context->stream_class->writer(context->stream_context, value, length)
