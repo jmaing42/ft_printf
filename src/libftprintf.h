@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:15:18 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 22:07:40 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 17:23:58 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,37 @@ typedef bool	t_err;
  */
 int		ft_printf(const char *format, ...);
 
-typedef t_err	(*t_ft_printf_stream)(
+typedef t_err	(*t_ft_printf_stream_write)(
+	void *context,
 	const char *buffer,
-	size_t buffer_size,
-	size_t *out_len
+	size_t buffer_size
 );
+
+typedef struct s_ft_printf_stream_class {
+	void						*(*init)(void *param);
+	t_ft_printf_stream_write	writer;
+	size_t						(*get_bytes_wrote)(void *context);
+	void						(*fini)(void *context);
+}	t_ft_printf_stream_class;
+
+typedef struct s_ft_printf_stream {
+	const t_ft_printf_stream_class	*type;
+	void							*param;
+}	t_ft_printf_stream;
 
 /**
  * @brief printf for stream accepts va_list
  *
  * @param stream destination
+ * @param out_bytes_wrote bytes wrote
  * @param format format in printf
- * @param va_list variables
+ * @param arguments variables
  * @return true on failure
  * @return false on success
  */
 t_err	ft_vprintf_stream(
-			t_ft_printf_stream stream,
-			size_t *inout_bytes_wrote,
+			const t_ft_printf_stream stream,
+			size_t *out_bytes_wrote,
 			const char *format,
 			va_list arguments);
 

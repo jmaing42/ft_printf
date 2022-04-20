@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 21:07:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 21:33:49 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 16:18:13 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ typedef enum e_printf_format_conversion_specifier {
 }	t_printf_format_conversion_specifier;
 
 typedef struct s_printf_format_conversion_specification {
-	int										flag_left_justified : 1;
-	int										flag_always_show_sign : 1;
-	int										flag_use_sign_placeholder : 1;
-	int										flag_use_alternative_form : 1;
-	int										flag_pad_field_with_zero : 1;
-	int										has_minimum_field_width : 1;
-	int										has_precision : 1;
-	int										variable_minimum_field_width : 1;
-	int										variable_precision : 1;
-	int										minimum_field_width;
-	int										precision;
+	unsigned int							flag_left_justified : 1;
+	unsigned int							flag_always_show_sign : 1;
+	unsigned int							flag_use_sign_placeholder : 1;
+	unsigned int							flag_use_alternative_form : 1;
+	unsigned int							flag_pad_field_with_zero : 1;
+	unsigned int							has_minimum_field_width : 1;
+	unsigned int							has_precision : 1;
+	unsigned int							variable_minimum_field_width : 1;
+	unsigned int							variable_precision : 1;
+	unsigned int							minimum_field_width;
+	unsigned int							precision;
 	t_printf_format_length_modifier			length_modifier;
 	t_printf_format_conversion_specifier	conversion_specifier;
 }	t_printf_format_conversion_specification;

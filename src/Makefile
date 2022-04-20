@@ -12,7 +12,7 @@ OTHER_USEFUL_FILES := .editorconfig .gitignore
 
 CC := gcc
 AR := ar
-CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic -g3
+CFLAGS := -Wall -Wextra -Werror -g3
 TMPS := *.o *.d $(OTHER_USEFUL_FILES)
 
 all: $(NAME) $(OTHER_USEFUL_FILES)

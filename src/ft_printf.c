@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 22:31:57 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 17:32:21 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 #include "libftprintf.h"
 
-static t_err	ft_write(int fd, const void *buf, size_t len, size_t *inout_len)
+typedef struct s_ft_printf {
+	size_t	wrote;
+	int		fd;
+}	t_ft_printf;
+
+static t_err	printf_writer(t_ft_printf *context, const void *buf, size_t len)
 {
 	size_t		remain;
 	size_t		to_write;
@@ -29,62 +34,53 @@ static t_err	ft_write(int fd, const void *buf, size_t len, size_t *inout_len)
 		to_write = remain;
 		if (to_write > SSIZE_MAX)
 			to_write = SSIZE_MAX;
-		wrote = write(fd, str, to_write);
+		wrote = write(context->fd, str, to_write);
 		if (wrote < 0)
 			return (true);
-		if (inout_len)
-			*inout_len += wrote;
+		context->wrote += wrote;
 		remain -= (size_t) wrote;
 		str = str + wrote;
 	}
 	return (false);
 }
 
-static t_err	ft_write_printf_middle(
-	bool reset,
-	int fd,
-	const char *buffer,
-	size_t buffer_size
-)
+static void	*printf_init(void *param)
 {
-	static int		g_fd;
-	static size_t	g_len;
+	t_ft_printf *const	result = (t_ft_printf *) malloc(sizeof(t_ft_printf));
 
-	if (!reset)
-		return (ft_write(g_fd, buffer, buffer_size, &g_len));
-	if (buffer)
-		*((size_t *)buffer) = g_len;
-	g_fd = fd;
-	g_len = 0;
-	return (true);
+	(void) param;
+	if (!result)
+		return (NULL);
+	result->fd = 1;
+	result->wrote = 0;
+	return (result);
 }
 
-static t_err	ft_write_printf(
-	const char *buffer,
-	size_t buffer_size,
-	size_t *unused_out_len
-)
+static size_t	printf_get_bytes_wrote(t_ft_printf *context)
 {
-	(void) unused_out_len;
-	return (ft_write_printf_middle(false, 1, buffer, buffer_size));
+	return (context->wrote);
 }
+
+static const t_ft_printf_stream_class	g_ft_printf = {
+	&printf_init,
+	(t_ft_printf_stream_write)(&printf_writer),
+	(size_t (*)(void *context))(&printf_get_bytes_wrote),
+	&free,
+};
 
 int	ft_printf(const char *format, ...)
 {
-	size_t	out_len;
-	bool	result;
-	va_list	arguments;
+	size_t				len;
+	va_list				arguments;
+	t_ft_printf_stream	stream;
+	int					result;
 
+	stream.type = &g_ft_printf;
 	va_start(arguments, format);
-	ft_write_printf_middle(true, 1, NULL, 0);
-	result = ft_vprintf_stream(
-			&ft_write_printf,
-			&out_len,
-			format,
-			arguments);
+	if (ft_vprintf_stream(stream, &len, format, arguments) || len > INT_MAX)
+		result = -1;
+	else
+		result = (int) len;
 	va_end(arguments);
-	if (result)
-		return (1);
-	ft_write_printf_middle(true, 0, (const char *) &out_len, 0);
-	return (out_len);
+	return (result);
 }

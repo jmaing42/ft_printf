@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 15:21:24 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 17:24:51 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,80 +48,99 @@ t_err			ft_vprintf_get_any_f(
 					long double *out_result);
 
 t_err			ft_vprintf_stream_d(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_i(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_o(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_u(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_x(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_x(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_f(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_f(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_e(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
-t_err			ft_vprintf_stream_capital_E(
-					t_ft_printf_stream stream,
+					t_printf_format_conversion_specification *conversion);
+t_err			ft_vprintf_stream_capital_e(
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_g(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_g(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_a(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_a(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_c(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_s(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_p(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_n(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_percent(
-					t_ft_printf_stream stream,
+					const t_ft_printf_stream_class *stream,
+					void *context,
 					va_list arguments,
-					t_printf_format_conversion_specification conversion);
+					t_printf_format_conversion_specification *conversion);
 
 #endif
