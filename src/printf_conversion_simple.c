@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 21:43:56 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/20 21:58:43 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ t_err	ft_vprintf_stream_percent(
 	return (context->stream_class->writer(context->stream_context, "%", 1));
 }
 
-#define UNDEFINED_BEHAVIOR_hooray_MESSAGE "\nUndefined behavior occurred! xD\n"
+#define UNDEFINED_BEHAVIOR_HOORAY_MESSAGE "\nUndefined behavior occurred! xD\n"
 
 void	ft_vprintf_stream_undefined_behavior_hooray(void)
 {
 	write(
 		2,
-		UNDEFINED_BEHAVIOR_hooray_MESSAGE,
-		sizeof(UNDEFINED_BEHAVIOR_hooray_MESSAGE) - 1
+		UNDEFINED_BEHAVIOR_HOORAY_MESSAGE,
+		sizeof(UNDEFINED_BEHAVIOR_HOORAY_MESSAGE) - 1
 		);
 }
 
