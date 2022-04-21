@@ -1,6 +1,3 @@
-# Assuming modifying the libft's source files only.
-# If tester's source files were modified, run make in appropriate directory
-
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
@@ -29,7 +26,7 @@ re:
 .editorconfig:
 	$Qprintf "root = true\n\n[*]\ncharset = utf-8\nend_of_line = lf\nindent_size = 4\nindent_style = tab\ninsert_final_newline = true\ntrim_trailing_whitespace = true\n" > .editorconfig
 .gitignore:
-	$Qprintf ".*\n*.o\n*.d\n*.a\n*.exe\n\nlibftprintf.a\n" > .gitignore
+	$Qprintf ".*\n*.o\n*.d\n*.a\n*.exe\n\n$(NAME)\n" > .gitignore
 
 %.a:
 	$Q$(AR) rcs $@ $^
