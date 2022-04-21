@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 22:56:37 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 00:33:38 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_err	ft_vprintf_stream_c(
 	const int	precision = ft_vprintf_get_precision(arguments, conversion, 0);
 	const char	value = ft_vprintf_get_d(arguments);
 
+	(void) precision;
 	if (conversion->flag_always_show_sign
 		|| conversion->flag_pad_field_with_zero
 		|| conversion->flag_use_alternative_form
