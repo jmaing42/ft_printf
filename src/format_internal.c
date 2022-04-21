@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 23:10:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 21:34:30 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 00:38:35 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,6 @@ bool	printf_format_internal_parse_node_precision(
 	return (false);
 }
 
-typedef struct s_length_modifier_entry {
-	char							key;
-	t_printf_format_length_modifier	value;
-}	t_length_modifier_entry;
-
 static const t_length_modifier_entry		g_modifiers[] = {
 {'h', printf_format_length_modifier_h},
 {'l', printf_format_length_modifier_l},
@@ -149,11 +144,6 @@ bool	printf_format_internal_parse_node_length_modifier(
 	self->value.length_modifier = printf_format_length_modifier_empty;
 	return (false);
 }
-
-typedef struct s_conversion_specifier_entry {
-	char									key;
-	t_printf_format_conversion_specifier	value;
-}	t_conversion_specifier_entry;
 
 static const t_conversion_specifier_entry	g_specifiers[] = {
 {'d', printf_format_conversion_specifier_d},

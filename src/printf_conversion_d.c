@@ -6,19 +6,12 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:27:56 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 00:35:10 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 00:37:11 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "printf_conversion_d.h"
 #include "printf_conversion_i.h"
-
-// TODO: move to header
-typedef struct s_d {
-	intmax_t	value;
-	int			length;
-	bool		left;
-	char		sign;
-}	t_d;
 
 static t_err	print_nonzero(
 	t_ft_vprintf_stream_context *context,

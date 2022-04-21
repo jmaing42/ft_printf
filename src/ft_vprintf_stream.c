@@ -6,25 +6,15 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 18:53:56 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 00:41:56 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "printf.h"
+#include "ft_vprintf_stream.h"
 
-typedef t_printf_format_conversion_specification	t_conversion;
-typedef t_err										(*t_processor)(
-		t_ft_vprintf_stream_context *context,
-		va_list arguments,
-		t_conversion *value);
-typedef struct s_conversion_entry {
-	t_printf_format_conversion_specifier	type;
-	t_processor								process;
-}													t_conversion_entry;
-
-static const t_conversion_entry						g_conversions[] = {
+static const t_conversion_entry	g_conversions[] = {
 {printf_format_conversion_specifier_d, &ft_vprintf_stream_d},
 {printf_format_conversion_specifier_i, &ft_vprintf_stream_i},
 {printf_format_conversion_specifier_o, &ft_vprintf_stream_o},

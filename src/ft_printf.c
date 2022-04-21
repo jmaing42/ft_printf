@@ -6,19 +6,14 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 17:32:21 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 00:39:20 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <limits.h>
 
-#include "libftprintf.h"
-
-typedef struct s_ft_printf {
-	size_t	wrote;
-	int		fd;
-}	t_ft_printf;
+#include "ft_printf.h"
 
 static t_err	printf_writer(t_ft_printf *context, const void *buf, size_t len)
 {
