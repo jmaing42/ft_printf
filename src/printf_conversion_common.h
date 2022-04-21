@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_conversion_i.h                              :+:      :+:    :+:   */
+/*   printf_conversion_common.h                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:31:17 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 22:34:49 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 01:12:53 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_CONVERSION_I_H
-# define PRINTF_CONVERSION_I_H
+#ifndef PRINTF_CONVERSION_COMMON_H
+# define PRINTF_CONVERSION_COMMON_H
 
 # include "printf.h"
 

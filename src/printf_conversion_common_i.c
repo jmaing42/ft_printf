@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_conversion_i.c                              :+:      :+:    :+:   */
+/*   printf_conversion_common_i.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:34:12 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 22:40:15 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 01:11:54 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf_conversion_i.h"
+#include "printf_conversion_common.h"
 
 size_t	ft_vprintf_stream_i_length(
 	intmax_t i,

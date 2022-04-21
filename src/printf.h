@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 21:22:21 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 01:10:37 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ t_err			ft_vprintf_get_any_f(
 					long double *out_result);
 
 t_err			ft_vprintf_stream_d(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_i(
 					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);

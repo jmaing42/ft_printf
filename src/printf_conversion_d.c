@@ -6,12 +6,11 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:27:56 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 00:37:11 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 01:12:18 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_conversion_d.h"
-#include "printf_conversion_i.h"
 
 static t_err	print_nonzero(
 	t_ft_vprintf_stream_context *context,

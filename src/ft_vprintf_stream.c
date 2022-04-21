@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 00:41:56 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/21 01:10:41 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static const t_conversion_entry	g_conversions[] = {
 {printf_format_conversion_specifier_d, &ft_vprintf_stream_d},
-{printf_format_conversion_specifier_i, &ft_vprintf_stream_i},
+{printf_format_conversion_specifier_i, &ft_vprintf_stream_d},
 {printf_format_conversion_specifier_o, &ft_vprintf_stream_o},
 {printf_format_conversion_specifier_u, &ft_vprintf_stream_u},
 {printf_format_conversion_specifier_x, &ft_vprintf_stream_x},
