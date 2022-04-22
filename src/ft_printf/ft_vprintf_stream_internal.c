@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 09:03:06 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 09:12:48 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static t_err	init_context(
 	if (!out_context->stream)
 		return (true);
 	out_context->stream_class = stream.type;
-	out_context->list = (t_ft_vprintf_stream_context_n_list *) 0;
+	out_context->list = NULL;
 	return (false);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 17:05:45 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 09:03:36 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 09:13:47 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static void	exception_basic_delete(t_exception_basic *self)
 
 static void	exception_basic_print(t_exception_basic *self, int fd)
 {
-	(void) (ft_puts(fd, "Error on ", (t_exception **) 0)
-		|| ft_puts(fd, self->file, (t_exception **) 0)
-		|| ft_puts(fd, " line ", (t_exception **) 0)
-		|| ft_putn(fd, self->line, (t_exception **) 0)
-		|| ft_puts(fd, ": ", (t_exception **) 0)
-		|| ft_puts(fd, self->message, (t_exception **) 0)
-		|| ft_puts(fd, "\n", (t_exception **) 0)
+	(void) (ft_puts(fd, "Error on ", NULL)
+		|| ft_puts(fd, self->file, NULL)
+		|| ft_puts(fd, " line ", NULL)
+		|| ft_putn(fd, self->line, NULL)
+		|| ft_puts(fd, ": ", NULL)
+		|| ft_puts(fd, self->message, NULL)
+		|| ft_puts(fd, "\n", NULL)
 	);
 }
 
@@ -66,7 +66,7 @@ t_exception_basic	*new_exception(
 	result = (t_exception_basic_internal *)malloc(
 			sizeof(t_exception_basic_internal) + length + 1);
 	if (!result)
-		return ((t_exception_basic *) 0);
+		return (NULL);
 	result->expose.v = &g_v;
 	result->expose.file = file;
 	result->expose.line = line;

@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:37:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 09:03:58 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 09:12:48 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static t_err	printf_format_parse_node(
 		free (result);
 		return (true);
 	}
-	result->next = (t_printf_format_node *) 0;
+	result->next = NULL;
 	*out_result = result;
 	return (false);
 }
@@ -113,9 +113,9 @@ t_printf_format	*printf_format_parse(const char *format)
 	t_node					*node;
 
 	if (!result)
-		return ((t_printf_format *) 0);
-	result->head = (t_printf_format_node *) 0;
-	result->tail = (t_printf_format_node *) 0;
+		return (NULL);
+	result->head = NULL;
+	result->tail = NULL;
 	while (*format && !printf_format_parse_node(format, &node, &consumed))
 	{
 		format += consumed;
@@ -131,7 +131,7 @@ t_printf_format	*printf_format_parse(const char *format)
 	if (!*format)
 		return (result);
 	printf_format_free(result);
-	return ((t_printf_format *) 0);
+	return (NULL);
 }
 
 void	printf_format_free(t_printf_format *self)
