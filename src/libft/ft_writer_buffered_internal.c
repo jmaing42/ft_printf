@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 14:49:37 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 16:27:12 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ static t_err	writer_flush(t_writer_buffered *self, t_exception **exception)
 		&& self->writer->v->write(
 			self->writer, self->buffer, self->length, exception))
 	{
-		(*exception)->b->add_stacktrace(
-			*exception, __FILE__, __LINE__, "Failed to flush");
+		if (exception)
+			(*exception)->b->add_stacktrace(
+				*exception, __FILE__, __LINE__, NULL);
 		return (true);
 	}
 	self->length = 0;
@@ -56,16 +57,18 @@ static t_err	writer_write(
 		if (writer_flush(self, exception)
 			|| self->writer->v->write(self->writer, buffer, len, exception))
 		{
-			(*exception)->b->add_stacktrace(
-				*exception, __FILE__, __LINE__, "Failed to write");
+			if (exception)
+				(*exception)->b->add_stacktrace(
+					*exception, __FILE__, __LINE__, NULL);
 			return (true);
 		}
 	}
 	else if (writer_write(self, (char *) buffer + tmp, tmp, exception)
 		|| writer_write(self, (char *) buffer + tmp, tmp, exception))
 	{
-		(*exception)->b->add_stacktrace(
-			*exception, __FILE__, __LINE__, "Failed to write");
+		if (exception)
+			(*exception)->b->add_stacktrace(
+				*exception, __FILE__, __LINE__, NULL);
 		return (true);
 	}
 	return (false);
