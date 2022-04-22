@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 10:49:36 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 11:00:45 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "ft_io.h"
 
-#include "ft_exception_basic.h"
+#include "ft_exception.h"
 #include "ft_cstring.h"
 
 #define WRITE_SIZE_MAX 1048576
@@ -77,7 +77,7 @@ int	ft_putn(int fd, int i, t_exception **out_exception)
 	return (ft_putn_internal(fd, i, out_exception));
 }
 
-int ft_puts_prefix(
+int	ft_puts_prefix(
 	int fd,
 	const char *str,
 	const char *prefix,

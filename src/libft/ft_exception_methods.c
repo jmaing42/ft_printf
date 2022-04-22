@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exception_basic_methods.c                       :+:      :+:    :+:   */
+/*   ft_exception_methods.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:53:48 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 10:50:39 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 10:55:10 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_exception_basic_methods.h"
+#include "ft_exception_methods.h"
 
 #include <stdlib.h>
 
 #include "ft_io.h"
 
-void	ft_exception_basic_v_delete(t_exception_basic *self)
+void	ft_exception_v_delete(t_exception *self)
 {
-	t_exception_basic_stacktrace_node	*tmp;
+	t_exception_stacktrace_node	*tmp;
 
 	while (self->stacktrace)
 	{
@@ -29,9 +29,9 @@ void	ft_exception_basic_v_delete(t_exception_basic *self)
 	free(self);
 }
 
-static t_err	print_stacktrace(t_exception_basic *self, int fd)
+static t_err	print_stacktrace(t_exception *self, int fd)
 {
-	t_exception_basic_stacktrace_node	*node;
+	t_exception_stacktrace_node	*node;
 
 	node = self->stacktrace;
 	while (node)
@@ -52,7 +52,7 @@ static t_err	print_stacktrace(t_exception_basic *self, int fd)
 	return (false);
 }
 
-t_err	ft_exception_basic_v_print(t_exception_basic *self, int fd)
+t_err	ft_exception_v_print(t_exception *self, int fd)
 {
 	return (ft_puts(fd, "Error on ", NULL)
 		|| ft_puts(fd, self->file, NULL)
@@ -65,12 +65,12 @@ t_err	ft_exception_basic_v_print(t_exception_basic *self, int fd)
 	);
 }
 
-const char	*ft_exception_basic_v_getfile(t_exception_basic *self)
+const char	*ft_exception_v_getfile(t_exception *self)
 {
 	return (self->file);
 }
 
-int	ft_exception_basic_v_getline(t_exception_basic *self)
+int	ft_exception_v_getline(t_exception *self)
 {
 	return (self->line);
 }
