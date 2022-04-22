@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:53:48 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 10:05:10 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 10:35:47 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,38 @@
 
 void	ft_exception_basic_v_delete(t_exception_basic *self)
 {
+	t_exception_basic_stacktrace_node	*tmp;
+
+	while (self->stacktrace)
+	{
+		tmp = self->stacktrace;
+		self->stacktrace = self->stacktrace->next;
+		free(tmp);
+	}
 	free(self);
+}
+
+static t_err	print_stacktrace(t_exception_basic *self, int fd)
+{
+	t_exception_basic_stacktrace_node	*node;
+
+	node = self->stacktrace;
+	while (node)
+	{
+		if (ft_puts(fd, "\tAt ", NULL)
+			|| ft_puts(fd, node->file, NULL)
+			|| ft_puts(fd, ":", NULL)
+			|| ft_putn(fd, node->line, NULL)
+			|| (node->message
+				&& (ft_puts(fd, " - ", NULL)
+					|| ft_puts(fd, node->message, NULL)
+				))
+			|| ft_puts(fd, "\n", NULL)
+		)
+			return (true);
+		node = node->next;
+	}
+	return (false);
 }
 
 t_err	ft_exception_basic_v_print(t_exception_basic *self, int fd)
@@ -29,7 +60,8 @@ t_err	ft_exception_basic_v_print(t_exception_basic *self, int fd)
 		|| ft_putn(fd, self->line, NULL)
 		|| ft_puts(fd, ": ", NULL)
 		|| ft_puts(fd, self->message, NULL)
-		|| ft_puts(fd, "\n", NULL)
+		|| ft_puts(fd, "\nstacktrace:\n", NULL)
+		|| print_stacktrace(self, fd)
 	);
 }
 
