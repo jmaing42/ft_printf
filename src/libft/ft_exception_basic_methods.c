@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:53:48 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 10:35:47 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 10:50:39 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_err	print_stacktrace(t_exception_basic *self, int fd)
 			|| ft_putn(fd, node->line, NULL)
 			|| (node->message
 				&& (ft_puts(fd, " - ", NULL)
-					|| ft_puts(fd, node->message, NULL)
+					|| ft_puts_prefix(fd, node->message, "\t|\t", NULL)
 				))
 			|| ft_puts(fd, "\n", NULL)
 		)
