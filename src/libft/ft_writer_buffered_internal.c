@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 16:27:12 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 17:07:40 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_err	writer_flush(t_writer_buffered *self, t_exception **exception)
 		&& self->writer->v->write(
 			self->writer, self->buffer, self->length, exception))
 	{
-		if (exception)
+		if (exception && *exception)
 			(*exception)->b->add_stacktrace(
 				*exception, __FILE__, __LINE__, NULL);
 		return (true);
@@ -57,7 +57,7 @@ static t_err	writer_write(
 		if (writer_flush(self, exception)
 			|| self->writer->v->write(self->writer, buffer, len, exception))
 		{
-			if (exception)
+			if (exception && *exception)
 				(*exception)->b->add_stacktrace(
 					*exception, __FILE__, __LINE__, NULL);
 			return (true);
@@ -66,7 +66,7 @@ static t_err	writer_write(
 	else if (writer_write(self, (char *) buffer + tmp, tmp, exception)
 		|| writer_write(self, (char *) buffer + tmp, tmp, exception))
 	{
-		if (exception)
+		if (exception && *exception)
 			(*exception)->b->add_stacktrace(
 				*exception, __FILE__, __LINE__, NULL);
 		return (true);
