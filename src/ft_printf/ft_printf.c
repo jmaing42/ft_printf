@@ -6,12 +6,13 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 06:07:00 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 06:19:39 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <limits.h>
+#include <unistd.h>
 
 #include "ft_printf.h"
 

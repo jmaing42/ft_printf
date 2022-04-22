@@ -6,15 +6,16 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 18:53:35 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 19:07:41 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 06:21:14 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <unistd.h>
 
-#include "printf.h"
+#include "internal.h"
 
 t_err	ft_vprintf_stream_n(
 	t_ft_vprintf_stream_context *context,

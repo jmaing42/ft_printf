@@ -6,14 +6,14 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:31:17 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 08:59:11 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 06:21:14 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_CONVERSION_COMMON_H
 # define PRINTF_CONVERSION_COMMON_H
 
-# include "printf.h"
+# include "internal.h"
 
 size_t	ft_vprintf_stream_i_length(
 			intmax_t i,

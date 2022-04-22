@@ -6,13 +6,13 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 18:53:35 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 19:09:58 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 06:21:14 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 
-#include "printf.h"
+#include "internal.h"
 
 t_err	ft_vprintf_stream_fini_set_n_hh(size_t size, void *n)
 {

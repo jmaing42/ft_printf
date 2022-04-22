@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 13:15:18 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 06:18:35 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/21 00:39:47 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/22 06:18:16 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include "libft/ft_types.h"
+# include "ft_vprintf_stream.h"
 
-/**
- * @brief same as printf
- */
-int		ft_printf(const char *format, ...);
+typedef struct s_ft_printf {
+	size_t	wrote;
+	int		fd;
+}	t_ft_printf;
 
 #endif

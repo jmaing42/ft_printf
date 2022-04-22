@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vprintf_stream.c                                :+:      :+:    :+:   */
+/*   ft_vprintf_stream_internal.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:47:32 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:36:23 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "ft_vprintf_stream.h"
+#include "ft_vprintf_stream_internal.h"
+
+#include "internal.h"
 
 static const t_conversion_entry	g_conversions[] = {
 {printf_format_conversion_specifier_d, &ft_vprintf_stream_d},

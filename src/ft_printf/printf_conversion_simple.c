@@ -6,15 +6,15 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:43:33 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:35:19 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#include "printf.h"
+#include "internal.h"
 
-#include "libft/ft_cstring.h"
+#include "../libft/ft_cstring.h"
 
 t_err	ft_vprintf_stream_percent(
 	t_ft_vprintf_stream_context *context,

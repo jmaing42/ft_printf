@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:26:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:40:53 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 07:49:25 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "format.h"
 
-# include "libft/ft_types.h"
+# include "../libft/ft_types.h"
 
 t_err	printf_format_internal_parse_node_flags(
 			const char *format,

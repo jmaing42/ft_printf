@@ -10,12 +10,13 @@ OTHER_USEFUL_FILES := .editorconfig .gitignore
 CC := gcc
 AR := ar
 CFLAGS := -Wall -Wextra -Werror -g3
-TMPS := *.o *.d $(OTHER_USEFUL_FILES)
+TMPS := $(OTHER_USEFUL_FILES)
 
 all: $(NAME) $(OTHER_USEFUL_FILES)
 bonus: all
 clean:
 	$Qrm -rf $(TMPS) $(OTHER_USEFUL_FILES)
+	$Qfind . \( -name "*.o" -o -name "*.d" \) -delete
 fclean: clean
 	$Qrm -f $(NAME)
 re:
@@ -26,7 +27,7 @@ re:
 .editorconfig:
 	$Qprintf "root = true\n\n[*]\ncharset = utf-8\nend_of_line = lf\nindent_size = 4\nindent_style = tab\ninsert_final_newline = true\ntrim_trailing_whitespace = true\n" > .editorconfig
 .gitignore:
-	$Qprintf ".*\n*.o\n*.d\n*.a\n*.exe\n\n$(NAME)\n" > .gitignore
+	$Qprintf ".*\n*.o\n*.d\n\n$(NAME)\n" > .gitignore
 
 %.a:
 	$Q$(AR) rcs $@ $^

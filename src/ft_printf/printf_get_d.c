@@ -6,11 +6,11 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:47:43 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:42:57 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 06:21:14 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "internal.h"
 
 intmax_t	ft_vprintf_get_d(va_list arguments)
 {

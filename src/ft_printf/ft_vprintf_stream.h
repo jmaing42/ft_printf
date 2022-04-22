@@ -6,25 +6,39 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 00:41:07 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 00:41:33 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:34:59 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_VPRINTF_STREAM_H
 # define FT_VPRINTF_STREAM_H
 
-# include "printf.h"
+# include <stddef.h>
+# include <stdarg.h>
 
-typedef t_printf_format_conversion_specification	t_conversion;
+# include "../libft/ft_types.h"
+# include "stream_context.h"
+# include "format.h"
 
-typedef t_err										(*t_processor)(
-		t_ft_vprintf_stream_context *context,
-		va_list arguments,
-		t_conversion *value);
+typedef struct s_ft_printf_stream {
+	const t_ft_printf_stream_class	*type;
+	void							*param;
+}	t_ft_printf_stream;
 
-typedef struct s_conversion_entry {
-	t_printf_format_conversion_specifier	type;
-	t_processor								process;
-}													t_conversion_entry;
+/**
+ * @brief printf for stream accepts va_list
+ *
+ * @param stream destination
+ * @param out_bytes_wrote bytes wrote
+ * @param format format in printf
+ * @param arguments variables
+ * @return true on failure
+ * @return false on success
+ */
+t_err	ft_vprintf_stream(
+			const t_ft_printf_stream stream,
+			size_t *out_bytes_wrote,
+			const char *format,
+			va_list arguments);
 
 #endif

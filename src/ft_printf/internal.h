@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   internal.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:43:03 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:34:28 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef INTERNAL_H
+# define INTERNAL_H
 
 # include <stddef.h>
 # include <stdint.h>
 # include <stdarg.h>
 
-# include "libftprintf.h"
+# include "ft_vprintf_stream.h"
 # include "format.h"
-
-typedef struct s_ft_vprintf_stream_context_n_list {
-	struct s_ft_vprintf_stream_context_n_list	*next;
-	t_printf_format_length_modifier				type;
-	void										*value;
-}	t_ft_vprintf_stream_context_n_list;
-
-typedef struct s_ft_vprintf_stream_context {
-	t_ft_vprintf_stream_context_n_list	*list;
-	const t_ft_printf_stream_class		*stream_class;
-	void								*stream_context;
-}	t_ft_vprintf_stream_context;
 
 int				ft_vprintf_get_mfw_actual(
 					va_list arguments,
