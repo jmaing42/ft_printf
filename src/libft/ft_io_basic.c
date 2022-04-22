@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 11:22:39 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 13:19:35 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #define WRITE_SIZE_MAX 1048576
 
-int	ft_write(
+t_err	ft_write(
 	int fd,
 	const void *buf,
 	size_t len,
@@ -52,12 +52,12 @@ int	ft_write(
 	return (0);
 }
 
-int	ft_puts(int fd, const char *str, t_exception **out_exception)
+t_err	ft_puts(int fd, const char *str, t_exception **out_exception)
 {
 	return (ft_write(fd, str, ft_strlen(str), out_exception));
 }
 
-static int	ft_putn_internal(int fd, int i, t_exception **out_exception)
+static t_err	ft_putn_internal(int fd, int i, t_exception **out_exception)
 {
 	int	sgn;
 
@@ -70,14 +70,14 @@ static int	ft_putn_internal(int fd, int i, t_exception **out_exception)
 		|| ft_write(fd, "0123456789" + (i % 10) * sgn, 1, out_exception));
 }
 
-int	ft_putn(int fd, int i, t_exception **out_exception)
+t_err	ft_putn(int fd, int i, t_exception **out_exception)
 {
 	if (!i)
 		return (ft_puts(fd, "0", out_exception));
 	return (ft_putn_internal(fd, i, out_exception));
 }
 
-int	ft_puts_prefix(
+t_err	ft_puts_prefix(
 	int fd,
 	const char *str,
 	const char *prefix,

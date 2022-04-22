@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_io.h                                            :+:      :+:    :+:   */
+/*   ft_writer_fd_internal.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 13:19:51 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/22 13:15:58 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_IO_H
-# define FT_IO_H
+#ifndef FT_WRITER_FD_INTERNAL_H
+# define FT_WRITER_FD_INTERNAL_H
 
-# include <stddef.h>
+# include "ft_writer_fd.h"
 
-# include "ft_exception.h"
-
-t_err	ft_write(
-		int fd,
-		const void *buf,
-		size_t len,
-		t_exception **out_exception);
-
-t_err	ft_puts(int fd, const char *str, t_exception **out_exception);
-t_err	ft_putn(int fd, int n, t_exception **out_exception);
-t_err	ft_puts_prefix(
-		int fd,
-		const char *str,
-		const char *prefix,
-		t_exception **out_exception);
+typedef struct s_writer_fd {
+	t_writer	expose;
+	int			fd;
+	bool		close_fd_on_delete;
+}	t_writer_fd;
 
 #endif
