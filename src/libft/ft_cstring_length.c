@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:00:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:37:24 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 11:22:25 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	bake(const char *set, t_bool include_null, char *out)
 	i = 0;
 	while (i < 2 << CHAR_BIT)
 		out[i++] = 0;
-	if (include_null)
+	if (include_null || !set)
 		out[0] = 1;
 	if (!set)
 		return ;
@@ -55,7 +55,7 @@ size_t	ft_strlen_until(
 
 	bake(set, include_null, baked);
 	result = 0;
-	while (!baked[*((const unsigned char *) set)])
+	while (!baked[*((const unsigned char *) str)])
 	{
 		str++;
 		result++;
@@ -88,7 +88,7 @@ size_t	ft_strnlen_until(
 
 	bake(set, include_null, baked);
 	result = 0;
-	while (max_len > result && !baked[*((const unsigned char *) set)])
+	while (max_len > result && !baked[*((const unsigned char *) str)])
 	{
 		str++;
 		result++;

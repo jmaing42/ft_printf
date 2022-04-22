@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:53:48 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 11:11:53 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 11:16:10 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ t_err	ft_exception_v_print(t_exception *self, int fd)
 {
 	return (ft_puts(fd, "Error on ", NULL)
 		|| ft_puts(fd, self->file, NULL)
-		|| ft_puts(fd, " line ", NULL)
+		|| ft_puts(fd, ":", NULL)
 		|| ft_putn(fd, self->line, NULL)
-		|| ft_puts_prefix(fd, ": ", "|\t", NULL)
-		|| ft_puts(fd, self->message, NULL)
+		|| ft_puts(fd, ": ", NULL)
+		|| ft_puts_prefix(fd, self->message, "|\t", NULL)
 		|| ft_puts(fd, "\nstacktrace:\n", NULL)
 		|| print_stacktrace(self, fd)
 	);
