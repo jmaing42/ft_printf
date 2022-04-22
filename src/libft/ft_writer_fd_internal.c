@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 13:23:43 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 13:40:28 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include "ft_io.h"
 
-static void		writer_unsafe_delete(t_writer *self)
+static void	writer_unsafe_delete(t_writer *self)
 {
 	free(self);
 }
@@ -51,10 +51,10 @@ static t_err	writer_delete(t_writer_fd *self, t_exception **exception)
 }
 
 static const t_writer_vtable	g_v = {
-(t_writer_v_unsafe_delete)(&writer_unsafe_delete),
-(t_writer_v_write)(&writer_write),
-(t_writer_v_flush)(&writer_flush),
-(t_writer_v_delete)(&writer_delete)
+	(t_writer_v_unsafe_delete)(&writer_unsafe_delete),
+	(t_writer_v_write)(&writer_write),
+	(t_writer_v_flush)(&writer_flush),
+	(t_writer_v_delete)(&writer_delete)
 };
 
 t_writer	*new_writer_fd(int fd, bool close_fd_on_delete)
