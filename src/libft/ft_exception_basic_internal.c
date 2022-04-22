@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 17:05:45 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:24:39 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 09:03:36 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_exception_basic	*new_exception(
 	result = (t_exception_basic_internal *)malloc(
 			sizeof(t_exception_basic_internal) + length + 1);
 	if (!result)
-		return (NULL);
+		return ((t_exception_basic *) 0);
 	result->expose.v = &g_v;
 	result->expose.file = file;
 	result->expose.line = line;

@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:44:32 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 09:02:50 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_ft_printf	*printf_init(void *param)
 
 	(void) param;
 	if (!result)
-		return (NULL);
+		return ((t_ft_printf *) 0);
 	result->fd = 1;
 	result->wrote = 0;
 	return (result);

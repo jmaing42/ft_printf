@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:43:08 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 09:03:20 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_err	ft_vprintf_stream_percent(
 	t_printf_format_conversion_specification *conversion
 )
 {
-	ft_vprintf_get_mfw_actual(arguments, conversion, NULL);
+	ft_vprintf_get_mfw_actual(arguments, conversion, (t_bool *) 0);
 	ft_vprintf_get_precision(arguments, conversion, -1);
 	if (conversion->length_modifier != printf_format_length_modifier_empty
 		|| conversion->flag_left_justified
