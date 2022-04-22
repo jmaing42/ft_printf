@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 23:10:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 00:38:35 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:41:58 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "format_internal.h"
 
-bool	printf_format_internal_parse_node_flags(
+t_err	printf_format_internal_parse_node_flags(
 	const char *format,
 	t_printf_format_node_union_conversion_specification *self,
 	size_t *out_consumed
@@ -46,7 +46,7 @@ bool	printf_format_internal_parse_node_flags(
 	return (false);
 }
 
-bool	printf_format_internal_parse_node_minimum_field_width(
+t_err	printf_format_internal_parse_node_minimum_field_width(
 	const char *format,
 	t_printf_format_node_union_conversion_specification *self,
 	size_t *out_consumed
@@ -74,7 +74,7 @@ bool	printf_format_internal_parse_node_minimum_field_width(
 	return (false);
 }
 
-bool	printf_format_internal_parse_node_precision(
+t_err	printf_format_internal_parse_node_precision(
 	const char *format,
 	t_printf_format_node_union_conversion_specification *self,
 	size_t *out_consumed
@@ -114,7 +114,7 @@ static const t_length_modifier_entry		g_modifiers[] = {
 {'L', printf_format_length_modifier_capital_l}
 };
 
-bool	printf_format_internal_parse_node_length_modifier(
+t_err	printf_format_internal_parse_node_length_modifier(
 	const char *format,
 	t_printf_format_node_union_conversion_specification *self,
 	size_t *out_consumed
@@ -167,7 +167,7 @@ static const t_conversion_specifier_entry	g_specifiers[] = {
 {'%', printf_format_conversion_specifier_percent}
 };
 
-bool	printf_format_internal_parse_node_conversion_specifier(
+t_err	printf_format_internal_parse_node_conversion_specifier(
 	const char *format,
 	t_printf_format_node_union_conversion_specification *self,
 	size_t *out_consumed

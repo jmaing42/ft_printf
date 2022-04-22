@@ -2,7 +2,7 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 # This variable will be used only if source files are not hardcoded
-SRCS ?= $(wildcard *.c)
+SRCS ?= $(shell find . -name "*.c" | cut -c 3- | xargs)
 
 NAME := libftprintf.a
 OTHER_USEFUL_FILES := .editorconfig .gitignore

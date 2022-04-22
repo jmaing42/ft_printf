@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 01:10:37 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:43:03 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_ft_vprintf_stream_context {
 int				ft_vprintf_get_mfw_actual(
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion,
-					bool *out_flag_left_justified);
+					t_bool *out_flag_left_justified);
 int				ft_vprintf_get_precision(
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion,

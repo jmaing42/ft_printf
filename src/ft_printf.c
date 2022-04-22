@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 00:39:20 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 06:07:00 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_err	printf_writer(t_ft_printf *context, const void *buf, size_t len)
 	return (false);
 }
 
-static void	*printf_init(void *param)
+static t_ft_printf	*printf_init(void *param)
 {
 	t_ft_printf *const	result = (t_ft_printf *) malloc(sizeof(t_ft_printf));
 
@@ -56,11 +56,17 @@ static size_t	printf_get_bytes_wrote(t_ft_printf *context)
 	return (context->wrote);
 }
 
+static t_err	printf_finalize(t_ft_printf *context)
+{
+	free(context);
+	return (false);
+}
+
 static const t_ft_printf_stream_class	g_ft_printf = {
-	&printf_init,
+	(void *(*)(void *param))(&printf_init),
 	(t_ft_printf_stream_write)(&printf_writer),
 	(size_t (*)(void *context))(&printf_get_bytes_wrote),
-	&free,
+	(t_err (*)(void *context))(&printf_finalize),
 };
 
 int	ft_printf(const char *format, ...)

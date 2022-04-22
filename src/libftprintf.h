@@ -6,19 +6,18 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:15:18 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 17:23:58 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:41:00 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-# include <stdbool.h>
 # include <stddef.h>
 # include <stdarg.h>
 # include <unistd.h>
 
-typedef bool	t_err;
+# include "libft/ft_types.h"
 
 /**
  * @brief same as printf
@@ -35,7 +34,7 @@ typedef struct s_ft_printf_stream_class {
 	void						*(*init)(void *param);
 	t_ft_printf_stream_write	writer;
 	size_t						(*get_bytes_wrote)(void *context);
-	void						(*fini)(void *context);
+	t_err						(*finalize)(void *context);
 }	t_ft_printf_stream_class;
 
 typedef struct s_ft_printf_stream {

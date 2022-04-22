@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 01:10:41 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:47:32 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static t_err	init_context(
 static t_err	fini_context(
 	t_ft_vprintf_stream_context *context,
 	size_t *out_len,
-	bool skip
+	t_bool skip
 )
 {
 	t_ft_vprintf_stream_context_n_list	*node;
@@ -99,8 +99,7 @@ static t_err	fini_context(
 		free(context->list);
 		context->list = node;
 	}
-	context->stream_class->fini(context->stream_context);
-	return (err);
+	return (context->stream_class->finalize(context->stream_context) || err);
 }
 
 t_err	ft_vprintf_stream(

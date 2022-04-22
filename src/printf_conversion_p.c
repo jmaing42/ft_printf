@@ -6,15 +6,15 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:26:48 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 09:31:50 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 06:10:28 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_conversion_p.h"
 
-static void init_conversion_specification(
+static void	init_conversion_specification(
 	t_c *mut_conversion_specification,
-	bool left,
+	t_bool left,
 	int minimum_field_width
 )
 {
@@ -42,7 +42,7 @@ t_err	ft_vprintf_stream_p(
 	t_c *conversion
 )
 {
-	bool		left;
+	t_bool		left;
 	const int	mfw = ft_vprintf_get_mfw_actual(arguments, conversion, &left);
 	const int	precision = ft_vprintf_get_precision(arguments, conversion, -1);
 	t_c			conversion_specification;

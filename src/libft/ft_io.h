@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_conversion_d.h                              :+:      :+:    :+:   */
+/*   ft_io.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 00:36:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:42:30 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/22 06:09:44 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_CONVERSION_D_H
-# define PRINTF_CONVERSION_D_H
+#ifndef FT_IO_H
+# define FT_IO_H
 
-# include "printf_conversion_common.h"
+# include <stddef.h>
 
-typedef struct s_d {
-	intmax_t	value;
-	int			length;
-	t_bool		left;
-	char		sign;
-}	t_d;
+# include "ft_exception.h"
+
+int	ft_write(
+		int fd,
+		const void *buf,
+		size_t len,
+		t_exception **out_exception);
+
+int	ft_puts(int fd, const char *str, t_exception **out_exception);
+int	ft_putn(int fd, int n, t_exception **out_exception);
 
 #endif

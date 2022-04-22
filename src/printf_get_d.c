@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:47:43 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 20:53:04 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:42:57 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ intmax_t	ft_vprintf_get_d(va_list arguments)
 int	ft_vprintf_get_mfw_actual(
 	va_list arguments,
 	t_printf_format_conversion_specification *conversion,
-	bool *out_flag_left_justified
+	t_bool *out_flag_left_justified
 )
 {
 	int	result;

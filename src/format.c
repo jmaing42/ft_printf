@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:37:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/19 21:33:47 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:41:38 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "format_internal.h"
 
 typedef t_printf_format_node	t_node;
-typedef bool					(*t_node_parser)(
+typedef t_err					(*t_node_parser)(
 	const char * format,
 	t_printf_format_node_value *out_result,
 	size_t *out_consumed
 );
 
-static bool	printf_format_internal_parse_node_string(
+static t_err	printf_format_internal_parse_node_string(
 	const char *format,
 	t_printf_format_node_union_string **out_result,
 	size_t *out_consumed
@@ -48,7 +48,7 @@ static bool	printf_format_internal_parse_node_string(
 	return (false);
 }
 
-static bool	printf_format_internal_parse_node_conversion_specification(
+static t_err	printf_format_internal_parse_node_conversion_specification(
 	const char *format,
 	t_printf_format_node_union_conversion_specification **out_result,
 	size_t *out_consumed
@@ -81,7 +81,7 @@ static bool	printf_format_internal_parse_node_conversion_specification(
 	return (false);
 }
 
-static bool	printf_format_parse_node(
+static t_err	printf_format_parse_node(
 	const char *format,
 	t_node **out_result,
 	size_t *out_consumed

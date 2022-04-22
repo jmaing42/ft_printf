@@ -6,38 +6,38 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:26:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 00:38:34 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:40:53 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORMAT_INTERNAL_H
 # define FORMAT_INTERNAL_H
 
-# include <stdbool.h>
-
 # include "format.h"
 
-bool	printf_format_internal_parse_node_flags(
+# include "libft/ft_types.h"
+
+t_err	printf_format_internal_parse_node_flags(
 			const char *format,
 			t_printf_format_node_union_conversion_specification *self,
 			size_t *out_consumed
 			);
-bool	printf_format_internal_parse_node_minimum_field_width(
+t_err	printf_format_internal_parse_node_minimum_field_width(
 			const char *format,
 			t_printf_format_node_union_conversion_specification *self,
 			size_t *out_consumed
 			);
-bool	printf_format_internal_parse_node_precision(
+t_err	printf_format_internal_parse_node_precision(
 			const char *format,
 			t_printf_format_node_union_conversion_specification *self,
 			size_t *out_consumed
 			);
-bool	printf_format_internal_parse_node_length_modifier(
+t_err	printf_format_internal_parse_node_length_modifier(
 			const char *format,
 			t_printf_format_node_union_conversion_specification *self,
 			size_t *out_consumed
 			);
-bool	printf_format_internal_parse_node_conversion_specifier(
+t_err	printf_format_internal_parse_node_conversion_specifier(
 			const char *format,
 			t_printf_format_node_union_conversion_specification *self,
 			size_t *out_consumed

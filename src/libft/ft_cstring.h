@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_conversion_d.h                              :+:      :+:    :+:   */
+/*   ft_cstring.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 00:36:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:42:30 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/22 05:28:39 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/22 06:08:00 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_CONVERSION_D_H
-# define PRINTF_CONVERSION_D_H
+#ifndef FT_CSTRING_H
+# define FT_CSTRING_H
 
-# include "printf_conversion_common.h"
+# include <stddef.h>
 
-typedef struct s_d {
-	intmax_t	value;
-	int			length;
-	t_bool		left;
-	char		sign;
-}	t_d;
+# include "ft_types.h"
+
+size_t	ft_strlen(const char *str);
+size_t	ft_strlen_until(
+			const char *str,
+			const char *set,
+			t_bool include_null);
+
+size_t	ft_strnlen(const char *str, size_t max_len);
+size_t	ft_strnlen_until(
+			const char *str,
+			const char *set,
+			size_t max_len,
+			t_bool include_null);
 
 #endif

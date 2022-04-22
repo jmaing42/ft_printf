@@ -6,14 +6,15 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 00:33:38 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:43:33 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 #include "printf.h"
-#include "util.h"
+
+#include "libft/ft_cstring.h"
 
 t_err	ft_vprintf_stream_percent(
 	t_ft_vprintf_stream_context *context,
@@ -72,7 +73,7 @@ t_err	ft_vprintf_stream_c(
 	t_printf_format_conversion_specification *conversion
 )
 {
-	bool		l;
+	t_bool		l;
 	const int	mfw = ft_vprintf_get_mfw_actual(arguments, conversion, &l);
 	const int	precision = ft_vprintf_get_precision(arguments, conversion, 0);
 	const char	value = ft_vprintf_get_d(arguments);
@@ -97,7 +98,7 @@ t_err	ft_vprintf_stream_s(
 	t_printf_format_conversion_specification *conv
 )
 {
-	bool				left;
+	t_bool				left;
 	const int			mfw = ft_vprintf_get_mfw_actual(args, conv, &left);
 	const int			precision = ft_vprintf_get_precision(args, conv, 0);
 	const char *const	value = (const char *) ft_vprintf_get_p(args);
