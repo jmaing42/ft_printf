@@ -15,7 +15,7 @@ TMPS := $(OTHER_USEFUL_FILES)
 all: $(NAME) $(OTHER_USEFUL_FILES)
 bonus: all
 clean:
-	$Qrm -rf $(TMPS) $(OTHER_USEFUL_FILES)
+	$Qrm -rf $(OTHER_USEFUL_FILES)
 	$Qfind . \( -name "*.o" -o -name "*.d" \) -delete
 fclean: clean
 	$Qrm -f $(NAME)
