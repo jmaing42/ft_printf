@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:27:56 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 01:12:18 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:42:53 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_err	print_nonzero(
 			&& ft_vprintf_stream_util_print_n(context, space_padding, ' '))
 		|| (layout->sign
 			&& context->stream_class->writer(
-				context->stream_context, &layout->sign, 1))
+				context->stream, &layout->sign, 1))
 		|| (zero_padding
 			&& ft_vprintf_stream_util_print_n(context, zero_padding, '0'))
 		|| ft_vprintf_stream_i_put(context, layout->value, 10, "0123456789")
@@ -62,10 +62,10 @@ static t_err	print_zero(
 			&& ft_vprintf_stream_util_print_n(context, remain, ' '))
 		|| (conversion->flag_always_show_sign
 			&& context->stream_class->writer(
-				context->stream_context, "+", 1))
+				context->stream, "+", 1))
 		|| (conversion->flag_use_sign_placeholder
 			&& context->stream_class->writer(
-				context->stream_context, " ", 1))
+				context->stream, " ", 1))
 		|| ft_vprintf_stream_util_print_n(context, precision, '0')
 		|| (conversion->flag_left_justified
 			&& remain > 0

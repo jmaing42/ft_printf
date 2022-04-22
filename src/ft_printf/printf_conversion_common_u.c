@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:34:12 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/21 17:47:06 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:42:30 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static size_t	ft_vprintf_stream_u_put_internal(
 		return (0);
 	return (ft_vprintf_stream_u_put_internal(context, u / base, base, set)
 		|| context->stream_class->writer(
-			context->stream_context, set + (u % base), 1));
+			context->stream, set + (u % base), 1));
 }
 
 size_t	ft_vprintf_stream_u_put(
@@ -52,6 +52,6 @@ size_t	ft_vprintf_stream_u_put(
 )
 {
 	if (!u)
-		return (context->stream_class->writer(context->stream_context, set, 1));
+		return (context->stream_class->writer(context->stream, set, 1));
 	return (ft_vprintf_stream_u_put_internal(context, u, base, set));
 }

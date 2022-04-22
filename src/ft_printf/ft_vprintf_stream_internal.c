@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:36:23 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:43:25 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_err	ft_vprintf_stream_node(
 	if (*node->value.type == printf_format_node_type_string)
 	{
 		return (context->stream_class->writer(
-				context->stream_context,
+				context->stream,
 				node->value.string->content,
 				node->value.string->length));
 	}
@@ -74,8 +74,8 @@ static t_err	init_context(
 	t_ft_vprintf_stream_context *out_context
 )
 {
-	out_context->stream_context = stream.type->init(stream.param);
-	if (!out_context->stream_context)
+	out_context->stream = stream.type->init(stream.param);
+	if (!out_context->stream)
 		return (true);
 	out_context->stream_class = stream.type;
 	out_context->list = NULL;
@@ -92,7 +92,7 @@ static t_err	fini_context(
 	t_err								err;
 
 	err = false;
-	*out_len = context->stream_class->get_bytes_wrote(context->stream_context);
+	*out_len = context->stream_class->get_bytes_wrote(context->stream);
 	while (context->list)
 	{
 		node = context->list->next;
@@ -101,7 +101,7 @@ static t_err	fini_context(
 		free(context->list);
 		context->list = node;
 	}
-	return (context->stream_class->finalize(context->stream_context) || err);
+	return (context->stream_class->finalize(context->stream) || err);
 }
 
 t_err	ft_vprintf_stream(

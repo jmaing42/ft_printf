@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:35:19 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:43:08 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_err	ft_vprintf_stream_percent(
 		|| conversion->has_precision
 		|| conversion->variable_precision)
 		ft_vprintf_stream_undefined_behavior_hooray();
-	return (context->stream_class->writer(context->stream_context, "%", 1));
+	return (context->stream_class->writer(context->stream, "%", 1));
 }
 
 #define UNDEFINED_BEHAVIOR_HOORAY_MESSAGE "\nUndefined behavior occurred! xD\n"
@@ -60,7 +60,7 @@ t_err	ft_vprintf_stream_util_print_n(
 	i = 0;
 	while (i < n)
 	{
-		if (context->stream_class->writer(context->stream_context, &c, 1))
+		if (context->stream_class->writer(context->stream, &c, 1))
 			return (true);
 		i++;
 	}
@@ -88,7 +88,7 @@ t_err	ft_vprintf_stream_c(
 		ft_vprintf_stream_undefined_behavior_hooray();
 	return (conversion->length_modifier != printf_format_length_modifier_empty
 		|| (mfw > 1 && !l && ft_vprintf_stream_util_print_n(c, mfw - 1, ' '))
-		|| c->stream_class->writer(c->stream_context, &value, 1)
+		|| c->stream_class->writer(c->stream, &value, 1)
 		|| (mfw > 1 && l && ft_vprintf_stream_util_print_n(c, mfw - 1, ' ')));
 }
 
@@ -112,7 +112,7 @@ t_err	ft_vprintf_stream_s(
 	return (conv->length_modifier != printf_format_length_modifier_empty
 		|| ((size_t) mfw > length && !left && ft_vprintf_stream_util_print_n(
 				context, mfw - length, ' '))
-		|| context->stream_class->writer(context->stream_context, value, length)
+		|| context->stream_class->writer(context->stream, value, length)
 		|| ((size_t) mfw > length && left && ft_vprintf_stream_util_print_n(
 				context, mfw - length, ' ')));
 }

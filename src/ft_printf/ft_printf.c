@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 06:19:39 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:44:32 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ static t_err	printf_finalize(t_ft_printf *context)
 }
 
 static const t_ft_printf_stream_class	g_ft_printf = {
-	(void *(*)(void *param))(&printf_init),
+	(t_ft_printf_stream_init)(&printf_init),
 	(t_ft_printf_stream_write)(&printf_writer),
-	(size_t (*)(void *context))(&printf_get_bytes_wrote),
-	(t_err (*)(void *context))(&printf_finalize),
+	(t_ft_printf_stream_get_bytes_wrote)(&printf_get_bytes_wrote),
+	(t_ft_printf_stream_finalize)(&printf_finalize),
 };
 
 int	ft_printf(const char *format, ...)

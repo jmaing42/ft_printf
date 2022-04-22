@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 07:50:33 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 07:52:29 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 08:43:54 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,20 @@
 
 # include "format.h"
 
+typedef void	*(*t_ft_printf_stream_init)(void *param);
 typedef t_err	(*t_ft_printf_stream_write)(
-	void *context,
+	void *self,
 	const char *buffer,
 	size_t buffer_size
 );
+typedef size_t	(*t_ft_printf_stream_get_bytes_wrote)(void *self);
+typedef t_err	(*t_ft_printf_stream_finalize)(void *self);
 
 typedef struct s_ft_printf_stream_class {
-	void						*(*init)(void *param);
-	t_ft_printf_stream_write	writer;
-	size_t						(*get_bytes_wrote)(void *context);
-	t_err						(*finalize)(void *context);
+	t_ft_printf_stream_init				init;
+	t_ft_printf_stream_write			writer;
+	t_ft_printf_stream_get_bytes_wrote	get_bytes_wrote;
+	t_ft_printf_stream_finalize			finalize;
 }	t_ft_printf_stream_class;
 
 typedef struct s_ft_vprintf_stream_context_n_list {
@@ -39,7 +42,7 @@ typedef struct s_ft_vprintf_stream_context_n_list {
 typedef struct s_ft_vprintf_stream_context {
 	t_ft_vprintf_stream_context_n_list	*list;
 	const t_ft_printf_stream_class		*stream_class;
-	void								*stream_context;
+	void								*stream;
 }	t_ft_vprintf_stream_context;
 
 #endif
