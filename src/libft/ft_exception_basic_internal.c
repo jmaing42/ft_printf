@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 17:05:45 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 09:13:47 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 09:51:24 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void	exception_basic_delete(t_exception_basic *self)
 	free(self);
 }
 
-static void	exception_basic_print(t_exception_basic *self, int fd)
+static t_err	exception_basic_print(t_exception_basic *self, int fd)
 {
-	(void) (ft_puts(fd, "Error on ", NULL)
+	return (ft_puts(fd, "Error on ", NULL)
 		|| ft_puts(fd, self->file, NULL)
 		|| ft_puts(fd, " line ", NULL)
 		|| ft_putn(fd, self->line, NULL)
