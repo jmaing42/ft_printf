@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 13:40:28 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 13:49:06 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 
 #include "ft_io.h"
 
-static void	writer_unsafe_delete(t_writer *self)
+static void	writer_unsafe_delete(t_writer_fd *self)
 {
+	if (self->close_fd_on_delete)
+		close(self->fd);
 	free(self);
 }
 
@@ -45,9 +47,13 @@ static t_err	writer_flush(t_writer_fd *self, t_exception **exception)
 
 static t_err	writer_delete(t_writer_fd *self, t_exception **exception)
 {
-	if (self->close_fd_on_delete)
-		close(self->fd);
-	free(self);
+	if (writer_flush(self, exception))
+	{
+		(*exception)->b->add_stacktrace(*exception, __FILE__, __LINE__, NULL);
+		return (true);
+	}
+	writer_unsafe_delete((t_writer *) self);
+	return (false);
 }
 
 static const t_writer_vtable	g_v = {
@@ -66,5 +72,5 @@ t_writer	*new_writer_fd(int fd, bool close_fd_on_delete)
 	result->expose.v = &g_v;
 	result->fd = fd;
 	result->close_fd_on_delete = close_fd_on_delete;
-	return (result);
+	return ((t_writer *) result);
 }
