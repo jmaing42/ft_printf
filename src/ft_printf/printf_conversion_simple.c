@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 09:12:48 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_err	ft_vprintf_stream_c(
 	t_printf_format_conversion_specification *conversion
 )
 {
-	t_bool		l;
+	bool		l;
 	const int	mfw = ft_vprintf_get_mfw_actual(arguments, conversion, &l);
 	const int	precision = ft_vprintf_get_precision(arguments, conversion, 0);
 	const char	value = ft_vprintf_get_d(arguments);
@@ -98,7 +98,7 @@ t_err	ft_vprintf_stream_s(
 	t_printf_format_conversion_specification *conv
 )
 {
-	t_bool				left;
+	bool				left;
 	const int			mfw = ft_vprintf_get_mfw_actual(args, conv, &left);
 	const int			precision = ft_vprintf_get_precision(args, conv, 0);
 	const char *const	value = (const char *) ft_vprintf_get_p(args);

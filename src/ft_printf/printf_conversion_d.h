@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 00:36:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:42:30 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct s_d {
 	intmax_t	value;
 	int			length;
-	t_bool		left;
+	bool		left;
 	char		sign;
 }	t_d;
 

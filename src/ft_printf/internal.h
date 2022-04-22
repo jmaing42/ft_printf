@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:34:28 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 int				ft_vprintf_get_mfw_actual(
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion,
-					t_bool *out_flag_left_justified);
+					bool *out_flag_left_justified);
 int				ft_vprintf_get_precision(
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion,

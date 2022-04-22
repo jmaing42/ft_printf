@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:00:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 11:22:25 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <limits.h>
 
-static void	bake(const char *set, t_bool include_null, char *out)
+static void	bake(const char *set, bool include_null, char *out)
 {
 	size_t				i;
 	const unsigned char	*tmp;
@@ -47,7 +47,7 @@ size_t	ft_strlen(const char *str)
 size_t	ft_strlen_until(
 	const char *str,
 	const char *set,
-	t_bool include_null
+	bool include_null
 )
 {
 	size_t	result;
@@ -80,7 +80,7 @@ size_t	ft_strnlen_until(
 	const char *str,
 	const char *set,
 	size_t max_len,
-	t_bool include_null
+	bool include_null
 )
 {
 	size_t	result;
