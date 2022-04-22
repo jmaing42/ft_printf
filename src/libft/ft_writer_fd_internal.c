@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 13:49:06 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/22 14:51:31 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 
 #include "ft_io.h"
+#include "ft_writer_internal.h"
 
 static void	writer_unsafe_delete(t_writer_fd *self)
 {
@@ -43,16 +44,6 @@ static t_err	writer_flush(t_writer_fd *self, t_exception **exception)
 {
 	(void) self;
 	(void) exception;
-}
-
-static t_err	writer_delete(t_writer_fd *self, t_exception **exception)
-{
-	if (writer_flush(self, exception))
-	{
-		(*exception)->b->add_stacktrace(*exception, __FILE__, __LINE__, NULL);
-		return (true);
-	}
-	writer_unsafe_delete((t_writer *) self);
 	return (false);
 }
 
@@ -60,7 +51,7 @@ static const t_writer_vtable	g_v = {
 	(t_writer_v_unsafe_delete)(&writer_unsafe_delete),
 	(t_writer_v_write)(&writer_write),
 	(t_writer_v_flush)(&writer_flush),
-	(t_writer_v_delete)(&writer_delete)
+	(t_writer_v_delete)(&ft_writer_base_v_default_delete)
 };
 
 t_writer	*new_writer_fd(int fd, bool close_fd_on_delete)
