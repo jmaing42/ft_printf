@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:27:56 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:42:53 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/24 14:07:01 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ t_err	ft_vprintf_stream_d(
 	d.sign = 0;
 	if (d.value < 0)
 		d.sign = '-';
-	else if (conversion->flag_use_sign_placeholder)
-		d.sign = ' ';
 	else if (conversion->flag_always_show_sign)
 		d.sign = '+';
+	else if (conversion->flag_use_sign_placeholder)
+		d.sign = ' ';
 	else
 		d.length--;
 	return (print_nonzero(context, &d, mfw, precision));
