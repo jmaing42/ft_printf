@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_conversion_u.c                              :+:      :+:    :+:   */
+/*   printf_conversion_o.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:05:31 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 14:19:14 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/24 14:20:30 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf_conversion_u.h"
+#include "printf_conversion_o.h"
 
 static t_err	print_nonzero(
 	t_ft_vprintf_stream_context *context,
-	t_u *layout,
+	t_o *layout,
 	int minimum_field_width,
 	int precision
 )
@@ -33,7 +33,7 @@ static t_err	print_nonzero(
 			&& ft_vprintf_stream_util_print_n(context, space_padding, ' '))
 		|| (zero_padding
 			&& ft_vprintf_stream_util_print_n(context, zero_padding, '0'))
-		|| ft_vprintf_stream_u_put(context, layout->value, 10, "0123456789")
+		|| ft_vprintf_stream_u_put(context, layout->value, 8, "01234567")
 		|| (layout->left
 			&& space_padding
 			&& ft_vprintf_stream_util_print_n(context, space_padding, ' ')));
@@ -60,24 +60,24 @@ static t_err	print_zero(
 			&& ft_vprintf_stream_util_print_n(context, remain, ' ')));
 }
 
-t_err	ft_vprintf_stream_u(
+t_err	ft_vprintf_stream_o(
 	t_ft_vprintf_stream_context *context,
 	va_list arguments,
 	t_printf_format_conversion_specification *conversion
 )
 {
-	t_u			u;
-	const int	mfw = ft_vprintf_get_mfw_actual(arguments, conversion, &u.left);
+	t_o			o;
+	const int	mfw = ft_vprintf_get_mfw_actual(arguments, conversion, &o.left);
 	const int	precision = ft_vprintf_get_precision(arguments, conversion, -1);
 
-	if (ft_vprintf_get_any_u(arguments, conversion->length_modifier, &u.value))
+	if (ft_vprintf_get_any_u(arguments, conversion->length_modifier, &o.value))
 		return (true);
 	if (conversion->flag_use_alternative_form
 		|| conversion->flag_always_show_sign
 		|| conversion->flag_use_sign_placeholder)
 		ft_vprintf_stream_undefined_behavior_hooray();
-	if (!u.value)
+	if (!o.value)
 		return (print_zero(context, conversion, mfw, precision));
-	u.length = ft_vprintf_stream_u_length(u.value, 10);
-	return (print_nonzero(context, &u, mfw, precision));
+	o.length = ft_vprintf_stream_u_length(o.value, 8);
+	return (print_nonzero(context, &o, mfw, precision));
 }
