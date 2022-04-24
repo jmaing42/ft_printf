@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 09:12:48 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/24 14:44:05 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,13 @@
 
 #include "ft_printf.h"
 
+#include "../libft/ft_writer_fd.h"
+#include "../libft/ft_writer_buffered.h"
+
 static t_err	printf_writer(t_ft_printf *context, const void *buf, size_t len)
 {
-	size_t		remain;
-	size_t		to_write;
-	ssize_t		wrote;
-	const char	*str;
-
-	str = (const char *) buf;
-	remain = len;
-	while (remain)
-	{
-		to_write = remain;
-		if (to_write > SSIZE_MAX)
-			to_write = SSIZE_MAX;
-		wrote = write(context->fd, str, to_write);
-		if (wrote < 0)
-			return (true);
-		context->wrote += wrote;
-		remain -= (size_t) wrote;
-		str = str + wrote;
-	}
-	return (false);
+	return (context->writer->base.v->write(
+			&context->writer->base, buf, len, NULL));
 }
 
 static t_ft_printf	*printf_init(void *param)
@@ -47,18 +32,29 @@ static t_ft_printf	*printf_init(void *param)
 	(void) param;
 	if (!result)
 		return (NULL);
-	result->fd = 1;
-	result->wrote = 0;
+	result->writer = new_writer_count(
+			new_writer_buffered(
+				new_writer_fd(1, false),
+				1024
+				)
+			);
+	if (!result->writer)
+	{
+		free(result);
+		return (NULL);
+	}
 	return (result);
 }
 
 static size_t	printf_get_bytes_wrote(t_ft_printf *context)
 {
-	return (context->wrote);
+	return (context->writer->count);
 }
 
 static t_err	printf_finalize(t_ft_printf *context)
 {
+	if (context->writer->base.v->delete(&context->writer->base, NULL))
+		return (true);
 	free(context);
 	return (false);
 }

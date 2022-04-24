@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_writer_count.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 11:53:00 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 15:19:19 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/22 13:39:06 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/24 14:33:32 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef FT_WRITER_COUNT_H
+# define FT_WRITER_COUNT_H
 
-#include "../../src/libftprintf.h"
+# include "../libft/ft_writer.h"
 
-typedef int	(*t_printf)(const char *format, ...);
+typedef struct s_writer_count {
+	t_writer	base;
+	t_writer	*writer;
+	size_t		count;
+}	t_writer_count;
 
-void	test(t_printf f)
-{
-	f("Hello world!\n");
-	f("%d%2d%3d%5.3d%+5.3d%-3d% 2d\n", 42, 42, 42, 42, 42, 42, 42);
-	f("%d%2d%3d%5.3d%+5.3d%-3d% 2d\n", -42, -42, -42, -42, -42, -42, -42);
-}
+t_writer_count	*new_writer_count(t_writer *writer);
 
-int	main(void)
-{
-	test(&printf);
-	test(&ft_printf);
-	return (0);
-}
+#endif
