@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:34:21 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/24 13:42:51 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,38 +73,6 @@ t_err			ft_vprintf_stream_x(
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);
 t_err			ft_vprintf_stream_capital_x(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_f(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_capital_f(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_e(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_capital_e(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_g(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_capital_g(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_a(
-					t_ft_vprintf_stream_context *context,
-					va_list arguments,
-					t_printf_format_conversion_specification *conversion);
-t_err			ft_vprintf_stream_capital_a(
 					t_ft_vprintf_stream_context *context,
 					va_list arguments,
 					t_printf_format_conversion_specification *conversion);

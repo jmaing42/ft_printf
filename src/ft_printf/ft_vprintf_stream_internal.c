@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/24 13:42:43 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@ static const t_conversion_entry	g_conversions[] = {
 {printf_format_conversion_specifier_u, &ft_vprintf_stream_u},
 {printf_format_conversion_specifier_x, &ft_vprintf_stream_x},
 {printf_format_conversion_specifier_capital_x, &ft_vprintf_stream_capital_x},
-{printf_format_conversion_specifier_f, &ft_vprintf_stream_f},
-{printf_format_conversion_specifier_capital_f, &ft_vprintf_stream_capital_f},
-{printf_format_conversion_specifier_e, &ft_vprintf_stream_e},
-{printf_format_conversion_specifier_capital_e, &ft_vprintf_stream_capital_e},
-{printf_format_conversion_specifier_g, &ft_vprintf_stream_g},
-{printf_format_conversion_specifier_capital_g, &ft_vprintf_stream_capital_g},
-{printf_format_conversion_specifier_a, &ft_vprintf_stream_a},
-{printf_format_conversion_specifier_capital_a, &ft_vprintf_stream_capital_a},
 {printf_format_conversion_specifier_c, &ft_vprintf_stream_c},
 {printf_format_conversion_specifier_s, &ft_vprintf_stream_s},
 {printf_format_conversion_specifier_p, &ft_vprintf_stream_p},
