@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:05:31 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 14:23:48 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/24 15:24:33 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ t_err	ft_vprintf_stream_capital_x(
 
 	if (ft_vprintf_get_any_u(arguments, conversion->length_modifier, &x.value))
 		return (true);
-	if (conversion->flag_use_alternative_form
-		|| conversion->flag_always_show_sign
+	if (conversion->flag_always_show_sign
 		|| conversion->flag_use_sign_placeholder)
 		ft_vprintf_stream_undefined_behavior_hooray();
 	if (!x.value)
