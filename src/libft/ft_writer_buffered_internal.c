@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 13:47:30 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/24 14:10:21 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static t_err	writer_write(
 		}
 	}
 	else
-		return (writer_write(self, (char *) buffer + tmp, tmp, exception)
-			|| writer_write(self, (char *) buffer + tmp, tmp, exception));
+		return (writer_write(self, (char *) buffer, tmp, exception)
+			|| writer_write(self, (char *) buffer + tmp, len - tmp, exception));
 	return (false);
 }
 
