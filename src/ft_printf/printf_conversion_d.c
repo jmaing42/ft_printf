@@ -6,9 +6,11 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:27:56 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 16:55:24 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 18:29:06 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../libft/ft_math.h"
 
 #include "printf_conversion_d.h"
 
@@ -16,13 +18,15 @@ static t_err	print_nonzero(
 	t_ft_vprintf_stream_context *context,
 	t_d *layout,
 	int minimum_field_width,
-	int precision
+	int precision_include_sign
 )
 {
 	int	space_padding;
 	int	zero_padding;
 
-	zero_padding = precision - layout->length;
+	if (precision_include_sign == -1)
+		precision_include_sign = 1;
+	zero_padding = precision_include_sign - layout->length;
 	if (zero_padding < 0)
 		zero_padding = 0;
 	space_padding = minimum_field_width - (layout->length + zero_padding);
@@ -49,23 +53,23 @@ static t_err	print_zero(
 	int precision
 )
 {
-	int	remain;
+	const bool	has_sign = (conversion->flag_always_show_sign
+			|| conversion->flag_use_sign_placeholder);
+	int			remain;
 
 	if (precision == -1)
 		precision = 1;
+	if (conversion->flag_pad_field_with_zero)
+		precision = ft_max_d(precision, minimum_field_width - !!has_sign);
 	remain = minimum_field_width - precision;
-	if (conversion->flag_always_show_sign
-		|| conversion->flag_use_sign_placeholder)
-		remain--;
+	remain -= !!has_sign;
 	return ((!conversion->flag_left_justified
 			&& remain > 0
 			&& ft_vprintf_stream_util_print_n(context, remain, ' '))
 		|| (conversion->flag_always_show_sign
-			&& context->stream_class->writer(
-				context->stream, "+", 1))
+			&& context->stream_class->writer(context->stream, "+", 1))
 		|| (conversion->flag_use_sign_placeholder
-			&& context->stream_class->writer(
-				context->stream, " ", 1))
+			&& context->stream_class->writer(context->stream, " ", 1))
 		|| ft_vprintf_stream_util_print_n(context, precision, '0')
 		|| (conversion->flag_left_justified
 			&& remain > 0
@@ -98,7 +102,7 @@ t_err	ft_vprintf_stream_d(
 		d.sign = ' ';
 	else
 		d.length--;
-	if (conversion->flag_pad_field_with_zero && mfw - (d.sign == 0) > precision)
-		return (print_nonzero(context, &d, mfw, mfw - (d.sign == 0)));
+	if (conversion->flag_pad_field_with_zero)
+		return (print_nonzero(context, &d, mfw, ft_max_d(precision, mfw)));
 	return (print_nonzero(context, &d, mfw, precision));
 }

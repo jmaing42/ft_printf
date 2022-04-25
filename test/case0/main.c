@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 11:53:00 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 16:42:09 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 17:02:14 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,17 @@ int	test(t_printf f)
 {
 	const char	**fmt;
 
-	f("%+042d\n", 42);
+	f("% 010d\n", 42);
 	fmt = g_test_d - 1;
 	while (*++fmt)
 	{
-		f("format: %s => ", *fmt);
+		f("format: %s => [", *fmt);
+		f(*fmt, 0);
+		f(", ");
 		f(*fmt, 42424242);
-		f("\n");
+		f(", ");
+		f(*fmt, -42424242);
+		f("]\n");
 	}
 	return (0);
 }
