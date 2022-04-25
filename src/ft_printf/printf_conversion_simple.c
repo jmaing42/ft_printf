@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 14:51:29 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,14 @@ t_err	ft_vprintf_stream_s(
 {
 	bool				left;
 	const int			mfw = ft_vprintf_get_mfw_actual(args, conv, &left);
-	const int			precision = ft_vprintf_get_precision(args, conv, 0);
+	const int			precision = ft_vprintf_get_precision(args, conv, -1);
 	const char *const	value = (const char *) ft_vprintf_get_p(args);
-	const size_t		length = ft_strnlen(value, precision);
+	size_t				length;
 
+	if (precision == -1)
+		length = ft_strlen(value);
+	else
+		length = ft_strnlen(value, precision);
 	if (conv->flag_always_show_sign
 		|| conv->flag_pad_field_with_zero
 		|| conv->flag_use_alternative_form

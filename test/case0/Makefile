@@ -1,8 +1,22 @@
+SRCS := $(wildcard *.c)
+OBJS := $(SRCS:.c=.o)
+
 all: test.exe
 clean:
 	rm -rf test.exe*
+	rm -rf *.o
 re:
-	$(MAKE) clean
+	$(MAKE) fclean
 	$(MAKE) all
-test.exe:
-	clang -g3 main.c ../../src/libftprintf.a -o $@
+	make -C ../../src re
+test: out_expected.txt
+	./test.exe | diff out_expected.txt -
+%.o: %.c
+	clang -g3 -c $< -o $@
+test.exe: $(OBJS) ../../src/libftprintf.a
+	clang -g3 $^ -o $@
+out_expected.txt: test.exe
+	./test.exe printf > out_expected.txt
+../../src/libftprintf.a:
+	make -C ../../src
+.PHONY: all clean fclean re test ../../src/libftprintf.a

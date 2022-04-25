@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 11:53:00 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 15:19:19 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 14:36:24 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,44 @@
 
 typedef int	(*t_printf)(const char *format, ...);
 
-void	test(t_printf f)
+const char	*g_test_d[] = {
+	"\"%d\"",
+	"\"% d\"",
+	"\"%+d\"",
+	"\"%-d\"",
+	"\"%0d\"",
+	"\"%#d\"",
+	"\"% +d\"",
+	"\"% -d\"",
+	"\"% 0d\"",
+	"\"% #d\"",
+	"\"%+-d\"",
+	"\"%+0d\"",
+	"\"%+#d\"",
+	"\"%-0d\"",
+	"\"%-#d\"",
+	"\"%0#d\"",
+	NULL
+};
+
+int	test(t_printf f)
 {
-	f("Hello world!\n");
-	f("%d%2d%3d%5.3d%+5.3d%-3d% 2d\n", 42, 42, 42, 42, 42, 42, 42);
-	f("%d%2d%3d%5.3d%+5.3d%-3d% 2d\n", -42, -42, -42, -42, -42, -42, -42);
+	const char	**fmt;
+
+	fmt = g_test_d - 1;
+	while (*++fmt)
+	{
+		f("format: %s => ", *fmt);
+		f(*fmt, 42424242);
+		f("\n");
+	}
+	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	test(&printf);
-	test(&ft_printf);
-	return (0);
+	(void) argv;
+	if (argc < 2)
+		return (test(&ft_printf));
+	return (test(&printf));
 }
