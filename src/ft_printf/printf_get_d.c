@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:47:43 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 16:08:26 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_vprintf_get_mfw_actual(
 	int	result;
 
 	if (out_flag_left_justified)
-		*out_flag_left_justified = false;
+		*out_flag_left_justified = conversion->flag_left_justified;
 	if (conversion->variable_minimum_field_width)
 	{
 		result = va_arg(arguments, int);
