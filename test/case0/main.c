@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 11:53:00 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 18:39:56 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 18:54:37 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,13 +285,13 @@ int	test(t_printf f)
 	fmt = g_test_d - 1;
 	while (*++fmt)
 	{
-		f("case #%d\nformat: %s => [", ++i, *fmt);
+		f("case #%d - format: %s {\n\tzero: ", ++i, *fmt);
 		f(*fmt, 0);
-		f(", ");
+		f(",\n\tpositive: ");
 		f(*fmt, 42424242);
-		f(", ");
+		f(",\n\tnegative: ");
 		f(*fmt, -42424242);
-		f("]\n\n");
+		f(",\n} end case #%d (%s)\n\n", i, *fmt);
 	}
 	return (0);
 }

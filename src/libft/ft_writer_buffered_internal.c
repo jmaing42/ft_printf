@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 14:10:21 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 21:46:11 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,14 @@ static t_err	writer_write(
 {
 	const size_t	tmp = self->capacity - self->length;
 
-	if (self->length + len < self->capacity)
+	if (self->length + len <= self->capacity)
 	{
 		ft_memcpy(&self->buffer[self->length], buffer, len);
 		self->length += len;
+		if (self->length == self->capacity
+			&& writer_flush(self, exception))
+				(*exception)->b->add_stacktrace(
+					*exception, __FILE__, __LINE__, NULL);
 	}
 	else if (self->length + len >= self->capacity * 2)
 	{
