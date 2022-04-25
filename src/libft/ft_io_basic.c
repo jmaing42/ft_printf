@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 13:19:35 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 14:15:47 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static t_err	ft_putn_internal(int fd, int i, t_exception **out_exception)
 	if (!i)
 		return (0);
 	return (ft_putn_internal(fd, i / 10, out_exception)
-		|| ft_write(fd, "0123456789" + (i % 10) * sgn, 1, out_exception));
+		|| ft_write(fd, &"0123456789"[(i % 10) * sgn], 1, out_exception));
 }
 
 t_err	ft_putn(int fd, int i, t_exception **out_exception)
