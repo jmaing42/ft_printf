@@ -10,7 +10,7 @@ re:
 	$(MAKE) all
 	make -C ../../src re
 test: out_expected.txt
-	./test.exe | diff out_expected.txt -
+	./test.exe | diff out_expected.txt - -U 1
 %.o: %.c
 	clang -g3 -c $< -o $@
 test.exe: $(OBJS) ../../src/libftprintf.a
