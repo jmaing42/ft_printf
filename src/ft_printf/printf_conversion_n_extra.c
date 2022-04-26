@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 18:53:35 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 06:21:14 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 20:30:40 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,39 @@
 t_err	ft_vprintf_stream_fini_set_n_hh(size_t size, void *n)
 {
 	if (size > SCHAR_MAX)
-		return (false);
+		return (true);
 	*((signed char *) n) = (signed char) size;
-	return (true);
+	return (false);
 }
 
 t_err	ft_vprintf_stream_fini_set_n_h(size_t size, void *n)
 {
 	if (size > SHRT_MAX)
-		return (false);
+		return (true);
 	*((signed short *) n) = (signed short) size;
-	return (true);
+	return (false);
 }
 
 t_err	ft_vprintf_stream_fini_set_n_empty(size_t size, void *n)
 {
 	if (size > INT_MAX)
-		return (false);
+		return (true);
 	*((signed int *) n) = (signed int) size;
-	return (true);
+	return (false);
 }
 
 t_err	ft_vprintf_stream_fini_set_n_l(size_t size, void *n)
 {
 	if (size > LONG_MAX)
-		return (false);
+		return (true);
 	*((signed long *) n) = (signed long) size;
-	return (true);
+	return (false);
 }
 
 t_err	ft_vprintf_stream_fini_set_n_ll(size_t size, void *n)
 {
 	if (size > LLONG_MAX)
-		return (false);
+		return (true);
 	*((signed long long *) n) = (signed long long) size;
-	return (true);
+	return (false);
 }

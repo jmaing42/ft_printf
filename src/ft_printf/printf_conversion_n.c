@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 18:53:35 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 06:21:14 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 20:31:12 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,23 @@ t_err	ft_vprintf_stream_fini_set_n(
 t_err	ft_vprintf_stream_fini_set_n_j(size_t size, void *n)
 {
 	if (size > INTMAX_MAX)
-		return (false);
+		return (true);
 	*((intmax_t *) n) = (intmax_t) size;
-	return (true);
+	return (false);
 }
 
 t_err	ft_vprintf_stream_fini_set_n_z(size_t size, void *n)
 {
 	if (size > SSIZE_MAX)
-		return (false);
+		return (true);
 	*((ssize_t *) n) = (ssize_t) size;
-	return (true);
+	return (false);
 }
 
 t_err	ft_vprintf_stream_fini_set_n_t(size_t size, void *n)
 {
 	if (size > PTRDIFF_MAX)
-		return (false);
+		return (true);
 	*((ptrdiff_t *) n) = (ptrdiff_t) size;
-	return (true);
+	return (false);
 }
