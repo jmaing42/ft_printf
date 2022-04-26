@@ -32,7 +32,7 @@ re:
 
 PROFILE ?= release
 ifeq ($(PROFILE),release)
-CFLAGS := -O3 -DNDEBUG
+CFLAGS += -O3 -DNDEBUG
 else ifeq ($(PROFILE),debug)
 CFLAGS += -g3 -DDEBUG
 else
@@ -41,7 +41,7 @@ endif
 
 TARGET ?= production
 ifeq ($(TARGET),production)
-CFLAGS := -DNDEVELOPMENT
+CFLAGS += -DNDEVELOPMENT
 else ifeq ($(TARGET),development)
 CFLAGS += -DDEVELOPMENT
 else
