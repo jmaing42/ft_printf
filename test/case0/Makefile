@@ -15,9 +15,9 @@ test: out_expected.txt
 %.o: %.c
 	clang -g3 -c $< -o $@
 test.exe: $(OBJS) ../../src/libftprintf.a
-	clang -g3 $^ -o $@
+	clang -g3 $^ -o $@ -fsanitize=address
 out_expected.txt: test.exe
 	./test.exe printf > out_expected.txt
 ../../src/libftprintf.a:
-	make -C ../../src
+	make -C ../../src PROFILE=debug SANITIZER=address
 .PHONY: all clean fclean re test ../../src/libftprintf.a
