@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:48:04 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 14:52:14 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 23:02:06 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_writer	t_writer;
 
-typedef void			(*t_writer_v_unsafe_delete)(
+typedef void			(*t_writer_v_unsafe_close)(
 							t_writer *self);
 typedef t_err			(*t_writer_v_write)(
 							t_writer *self,
@@ -27,16 +27,16 @@ typedef t_err			(*t_writer_v_write)(
 typedef t_err			(*t_writer_v_flush)(
 							t_writer *self,
 							t_exception **exception);
-typedef t_err			(*t_writer_v_delete)(
+typedef t_err			(*t_writer_v_close)(
 							t_writer *self,
 							t_exception **exception);
 
 typedef struct s_writer_vtable
 {
-	t_writer_v_unsafe_delete	unsafe_delete;
+	t_writer_v_unsafe_close		unsafe_close;
 	t_writer_v_write			write;
 	t_writer_v_flush			flush;
-	t_writer_v_delete			delete;
+	t_writer_v_close			close;
 }	t_writer_vtable;
 
 struct s_writer {

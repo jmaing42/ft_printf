@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 18:18:29 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 23:02:10 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static size_t	printf_get_bytes_wrote(t_ft_printf *context)
 
 static t_err	printf_finalize(t_ft_printf *context)
 {
-	if (context->writer->base.v->delete(&context->writer->base, NULL))
+	if (context->writer->base.v->close(&context->writer->base, NULL))
 	{
-		context->writer->base.v->unsafe_delete(&context->writer->base);
+		context->writer->base.v->unsafe_close(&context->writer->base);
 		return (true);
 	}
 	free(context);

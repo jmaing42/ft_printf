@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:05:31 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 21:55:19 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 23:04:36 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ t_err	ft_vprintf_stream_capital_x(
 		&& conversion->flag_pad_field_with_zero)
 		x.precision = ft_max_d(x.precision, mfw);
 	x.minimum_field_width = mfw;
-	x.prefix = x.length && conversion->flag_use_alternative_form;
+	x.prefix = (x.length && conversion->flag_use_alternative_form);
 	return (print(context, &x));
 }

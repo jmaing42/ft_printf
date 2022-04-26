@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 22:22:26 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 23:03:54 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 #include "ft_memory.h"
 #include "ft_writer_internal.h"
 
-static void	writer_unsafe_delete(t_writer_buffered *self)
+static void	writer_unsafe_close(t_writer_buffered *self)
 {
 	if (self->close_original_writer_too)
-		self->writer->v->unsafe_delete(self->writer);
+		self->writer->v->unsafe_close(self->writer);
 	free(self);
 }
 
@@ -73,7 +73,7 @@ static t_err	writer_write(
 	return (false);
 }
 
-static bool	writer_delete(t_writer_buffered *self, t_exception **exception)
+static bool	writer_close(t_writer_buffered *self, t_exception **exception)
 {
 	if (writer_flush(self, exception))
 	{
@@ -82,15 +82,15 @@ static bool	writer_delete(t_writer_buffered *self, t_exception **exception)
 				*exception, __FILE__, __LINE__, NULL);
 		return (true);
 	}
-	writer_unsafe_delete(self);
+	writer_unsafe_close(self);
 	return (false);
 }
 
 static const t_writer_vtable	g_v = {
-	(t_writer_v_unsafe_delete)(&writer_unsafe_delete),
+	(t_writer_v_unsafe_close)(&writer_unsafe_close),
 	(t_writer_v_write)(&writer_write),
 	(t_writer_v_flush)(&writer_flush),
-	(t_writer_v_delete)(&writer_delete)
+	(t_writer_v_close)(&writer_close)
 };
 
 t_writer	*new_writer_buffered(
