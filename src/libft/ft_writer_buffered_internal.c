@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 21:54:20 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 22:22:26 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 static void	writer_unsafe_delete(t_writer_buffered *self)
 {
+	if (self->close_original_writer_too)
+		self->writer->v->unsafe_delete(self->writer);
 	free(self);
 }
 
@@ -71,14 +73,31 @@ static t_err	writer_write(
 	return (false);
 }
 
+static bool	writer_delete(t_writer_buffered *self, t_exception **exception)
+{
+	if (writer_flush(self, exception))
+	{
+		if (exception && *exception)
+			(*exception)->b->add_stacktrace(
+				*exception, __FILE__, __LINE__, NULL);
+		return (true);
+	}
+	writer_unsafe_delete(self);
+	return (false);
+}
+
 static const t_writer_vtable	g_v = {
 	(t_writer_v_unsafe_delete)(&writer_unsafe_delete),
 	(t_writer_v_write)(&writer_write),
 	(t_writer_v_flush)(&writer_flush),
-	(t_writer_v_delete)(&ft_writer_base_v_default_delete)
+	(t_writer_v_delete)(&writer_delete)
 };
 
-t_writer	*new_writer_buffered(t_writer *writer, size_t buffer_size)
+t_writer	*new_writer_buffered(
+	t_writer *writer,
+	size_t buffer_size,
+	size_t close_original_writer_too
+)
 {
 	t_writer_buffered	*result;
 
@@ -92,5 +111,6 @@ t_writer	*new_writer_buffered(t_writer *writer, size_t buffer_size)
 	result->writer = writer;
 	result->capacity = buffer_size;
 	result->length = 0;
+	result->close_original_writer_too = close_original_writer_too;
 	return ((t_writer *) result);
 }
