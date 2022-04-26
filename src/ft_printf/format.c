@@ -6,13 +6,15 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:37:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 09:12:48 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/25 22:32:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "format_internal.h"
+
 #include <stdlib.h>
 
-#include "format_internal.h"
+#include "../libft/ft_memory.h"
 
 typedef t_printf_format_node	t_node;
 typedef t_err					(*t_node_parser)(
@@ -55,7 +57,7 @@ static t_err	printf_format_internal_parse_node_conversion_specification(
 )
 {
 	t_printf_format_node_union_conversion_specification *const	result = (
-			(t_printf_format_node_union_conversion_specification *) malloc(
+			(t_printf_format_node_union_conversion_specification *) ft_calloc(1,
 				sizeof(t_printf_format_node_union_conversion_specification)));
 	size_t														consumed;
 
