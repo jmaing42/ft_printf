@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:52:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 17:07:48 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 18:02:00 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,12 @@ t_err	ft_writer_base_v_default_delete(t_writer *self, t_exception **exception)
 		return (true);
 	}
 	self->v->unsafe_delete(self);
+	return (false);
+}
+
+t_err	ft_writer_base_v_default_flush(t_writer *self, t_exception **exception)
+{
+	(void) self;
+	(void) exception;
 	return (false);
 }
