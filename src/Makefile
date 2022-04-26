@@ -58,25 +58,8 @@ $(TMP_DIR)/%$(POSTFIX).o: %.c
 	$Q$(CC) $(CFLAGS) -c $< -o $@ -MMD $(if $(SANITIZER),-fsanitize=$(SANITIZER),)
 
 $(TMP_DIR)/ft_printf$(POSTFIX).a: $(patsubst ./%.c,$(TMP_DIR)/%$(POSTFIX).o,$(SRCS))
-.PHONY: $(NAME) all_variants
+.PHONY: $(NAME)
 $(NAME): $(TMP_DIR)/ft_printf$(POSTFIX).a
 	$Qcp $< $@
-all_variants:
-	$(MAKE) PROFILE=release TARGET=production || true
-	$(MAKE) PROFILE=release TARGET=production SANITIZER=address || true
-	$(MAKE) PROFILE=release TARGET=production SANITIZER=memory || true
-	$(MAKE) PROFILE=release TARGET=production SANITIZER=undefined || true
-	$(MAKE) PROFILE=release TARGET=development || true
-	$(MAKE) PROFILE=release TARGET=development SANITIZER=address || true
-	$(MAKE) PROFILE=release TARGET=development SANITIZER=memory || true
-	$(MAKE) PROFILE=release TARGET=development SANITIZER=undefined || true
-	$(MAKE) PROFILE=debug TARGET=production || true
-	$(MAKE) PROFILE=debug TARGET=production SANITIZER=address || true
-	$(MAKE) PROFILE=debug TARGET=production SANITIZER=memory || true
-	$(MAKE) PROFILE=debug TARGET=production SANITIZER=undefined || true
-	$(MAKE) PROFILE=debug TARGET=development || true
-	$(MAKE) PROFILE=debug TARGET=development SANITIZER=address || true
-	$(MAKE) PROFILE=debug TARGET=development SANITIZER=memory || true
-	$(MAKE) PROFILE=debug TARGET=development SANITIZER=undefined || true
 
 -include $(TMP_DIR)/$(SRCS:.c=$(POSTFIX).d)
