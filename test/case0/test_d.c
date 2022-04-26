@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 22:02:59 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 19:48:35 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 20:53:00 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,33 @@ void	test_d(t_printf f)
 			i & 4 ? "+" : "", i & 8 ? " " : "",
 			minimum_field_width[i >> 7], precision[(i >> 4) % 8]);
 		f("Test for %%d - case #%d: %s {\n\tzero: ", i, fmt);
+		f(fmt, 0);
+		f(",\n\tpositive: ");
+		f(fmt, 42424242);
+		f(",\n\tnegative: ");
+		f(fmt, -42424242);
+		f(",\n\tmax: ");
+		f(fmt, INT_MAX);
+		f(",\n\tmin: ");
+		f(fmt, INT_MIN);
+		f(",\n} end case #%d (%s)\n\n", i, fmt);
+		i++;
+	}
+}
+
+void	test_i(t_printf f)
+{
+	char	fmt[17];
+	int		i;
+
+	i = 0;
+	while (i < (1 << 7) * 11)
+	{
+		sprintf(fmt, "\"%%%s%s%s%s%s%si\"",
+			i & 1 ? "-" : "", i & 2 ? "0" : "",
+			i & 4 ? "+" : "", i & 8 ? " " : "",
+			minimum_field_width[i >> 7], precision[(i >> 4) % 8]);
+		f("Test for %%i - case #%d: %s {\n\tzero: ", i, fmt);
 		f(fmt, 0);
 		f(",\n\tpositive: ");
 		f(fmt, 42424242);
