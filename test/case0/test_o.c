@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_o.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jmaing <jmaing@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 22:02:59 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 22:24:08 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 20:22:02 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,13 +139,13 @@ int	test_o(t_printf f)
 	fmt = g_test_o - 1;
 	while (*++fmt)
 	{
-		f("Test for %%o - case #%#d: %s {\n\tzero: ", ++i, *fmt);
+		f("Test for %%o - case #%d: %s {\n\tzero: ", ++i, *fmt);
 		f(*fmt, 0);
 		f(",\n\tpositive: ");
 		f(*fmt, 042424242);
 		f(",\n\tnegative: ");
 		f(*fmt, -042424242);
-		f(",\n} end case #%#d (%s)\n\n", i, *fmt);
+		f(",\n} end case #%d (%s)\n\n", i, *fmt);
 	}
 	return (0);
 }
