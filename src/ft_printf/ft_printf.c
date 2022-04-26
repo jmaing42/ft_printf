@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 22:15:29 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 22:27:14 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_ft_printf	*printf_init(void *param)
 		return (NULL);
 	result->writer = new_writer_count(
 			new_writer_buffered(
-				new_writer_fd(1, false),
+				new_writer_fd(STDOUT_FILENO, false),
 				1024,
 				false
 				)

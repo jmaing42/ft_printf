@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 14:51:29 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 22:27:26 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_err	ft_vprintf_stream_percent(
 void	ft_vprintf_stream_undefined_behavior_hooray(void)
 {
 	write(
-		2,
+		STDERR_FILENO,
 		UNDEFINED_BEHAVIOR_HOORAY_MESSAGE,
 		sizeof(UNDEFINED_BEHAVIOR_HOORAY_MESSAGE) - 1
 		);
