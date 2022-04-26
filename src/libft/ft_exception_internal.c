@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 17:05:45 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 11:02:01 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 23:28:41 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 static const t_exception_vtable	g_v = {
 {
-	(t_exception_base_v_delete)(&ft_exception_v_delete),
+	(t_exception_base_v_free)(&ft_exception_v_free),
 	(t_exception_base_v_print)(&ft_exception_v_print),
 	(t_exception_base_v_getfile)(&ft_exception_v_getfile),
 	(t_exception_base_v_getline)(&ft_exception_v_getline),

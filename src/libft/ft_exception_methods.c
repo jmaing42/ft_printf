@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:53:48 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 11:16:10 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 23:28:41 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "ft_io.h"
 
-void	ft_exception_v_delete(t_exception *self)
+void	ft_exception_v_free(t_exception *self)
 {
 	t_exception_stacktrace_node	*tmp;
 

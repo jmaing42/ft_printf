@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:03:38 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 23:27:58 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static const t_writer_vtable	g_v = {
 	(t_writer_v_unsafe_close)(&writer_unsafe_close),
 	(t_writer_v_write)(&writer_write),
 	(t_writer_v_flush)(&ft_writer_base_v_default_flush),
-	(t_writer_v_close)(&ft_writer_base_v_default_delete)
+	(t_writer_v_close)(&ft_writer_base_v_default_close)
 };
 
 t_writer	*new_writer_fd(int fd, bool close_fd_on_delete)

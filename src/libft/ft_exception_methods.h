@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:55:06 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 10:54:42 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 23:28:41 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ft_exception.h"
 
-void		ft_exception_v_delete(t_exception *self);
+void		ft_exception_v_free(t_exception *self);
 t_err		ft_exception_v_print(t_exception *self, int fd);
 const char	*ft_exception_v_getfile(t_exception *self);
 int			ft_exception_v_getline(t_exception *self);
