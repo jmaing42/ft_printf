@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 23:10:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 05:41:58 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 20:19:27 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ t_err	printf_format_internal_parse_node_minimum_field_width(
 )
 {
 	self->value.has_minimum_field_width = 0;
+	self->value.variable_minimum_field_width = 0;
 	if (*format == '*')
 	{
 		self->value.variable_minimum_field_width = 1;
 		(*out_consumed)++;
 		return (false);
 	}
-	self->value.variable_minimum_field_width = 0;
+	self->value.has_minimum_field_width = 1;
 	self->value.minimum_field_width = 0;
 	while ('0' <= *format && *format <= '9')
 	{
@@ -80,18 +81,19 @@ t_err	printf_format_internal_parse_node_precision(
 	size_t *out_consumed
 )
 {
+	self->value.has_precision = 0;
+	self->value.variable_precision = 0;
 	if (*format != '.')
 		return (false);
 	format++;
 	(*out_consumed)++;
-	self->value.has_precision = 0;
 	if (*format == '*')
 	{
 		self->value.variable_precision = 1;
 		(*out_consumed)++;
 		return (false);
 	}
-	self->value.variable_precision = 0;
+	self->value.has_precision = 1;
 	self->value.precision = 0;
 	while ('0' <= *format && *format <= '9')
 	{

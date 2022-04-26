@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	(void) argv;
 	if (argc < 2)
 		test(&ft_printf);
-	test(&printf);
+	else
+		test(&printf);
 	return (0);
 }

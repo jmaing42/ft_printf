@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 22:34:12 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:43:17 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 18:50:56 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ size_t	ft_vprintf_stream_i_length(
 {
 	size_t	result;
 
-	if (!i)
-		return (1);
 	result = 0;
 	while (i)
 	{
@@ -56,7 +54,5 @@ size_t	ft_vprintf_stream_i_put(
 	const char *set
 )
 {
-	if (!i)
-		return (context->stream_class->writer(context->stream, set, 1));
 	return (ft_vprintf_stream_i_put_internal(context, i, base, set));
 }
