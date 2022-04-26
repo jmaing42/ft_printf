@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 23:10:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 20:19:27 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 20:23:09 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ t_err	printf_format_internal_parse_node_minimum_field_width(
 		(*out_consumed)++;
 		return (false);
 	}
-	self->value.has_minimum_field_width = 1;
 	self->value.minimum_field_width = 0;
 	while ('0' <= *format && *format <= '9')
 	{
+		self->value.has_minimum_field_width = 1;
 		self->value.minimum_field_width
 			= self->value.minimum_field_width * 10 + *format - '0';
 		if (self->value.minimum_field_width > INT_MAX / 10)
