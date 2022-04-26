@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:04:54 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 14:18:25 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 22:30:33 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 
 typedef struct s_o {
 	uintmax_t	value;
+	int			minimum_field_width;
 	int			length;
-	bool		left;
+	bool		left_justified;
+	int			precision;
 }	t_o;
 
 #endif

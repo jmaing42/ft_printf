@@ -6,13 +6,11 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:27:56 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 22:11:44 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 22:36:44 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_conversion_d.h"
-
-#include "../libft/ft_math.h"
 
 #include "../libft/ft_math.h"
 
