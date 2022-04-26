@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 22:02:59 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 20:29:03 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 20:40:35 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,10 @@ void	test_o(t_printf f)
 			minimum_field_width[i >> 6], precision[(i >> 3) % 8]);
 		f("Test for %%o - case #%d: %s {\n\tzero: ", i, fmt);
 		f(fmt, 0);
-		f(",\n\tpositive: ");
+		f(",\n\t9054370: ");
 		f(fmt, 042424242);
-		f(",\n\tnegative: ");
-		f(fmt, -042424242);
 		f(",\n\tmax: ");
-		f(fmt, INT_MAX);
-		f(",\n\tmin: ");
-		f(fmt, INT_MIN);
+		f(fmt, UINT_MAX);
 		f(",\n} end case #%d (%s)\n\n", i, fmt);
 		i++;
 	}
