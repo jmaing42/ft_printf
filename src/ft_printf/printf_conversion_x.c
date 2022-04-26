@@ -6,59 +6,34 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:05:31 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 15:24:26 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:53:07 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_conversion_x.h"
 
-static t_err	print_nonzero(
+#include "../libft/ft_math.h"
+
+static t_err	print(
 	t_ft_vprintf_stream_context *context,
-	t_x *layout,
-	int minimum_field_width,
-	int precision
+	t_x *x
 )
 {
-	int	space_padding;
-	int	zero_padding;
+	const int	zeros = ft_max_d(0, x->precision - x->length);
+	const int	space = ft_max_d(0,
+			x->minimum_field_width - x->length - zeros - !!x->prefix * 2);
 
-	zero_padding = precision - layout->length;
-	if (zero_padding < 0)
-		zero_padding = 0;
-	space_padding = minimum_field_width - (layout->length + zero_padding);
-	if (space_padding < 0)
-		space_padding = 0;
-	return ((!layout->left
-			&& space_padding
-			&& ft_vprintf_stream_util_print_n(context, space_padding, ' '))
-		|| (zero_padding
-			&& ft_vprintf_stream_util_print_n(context, zero_padding, '0'))
-		|| ft_vprintf_stream_u_put(
-			context, layout->value, 16, "0123456789abcdef")
-		|| (layout->left
-			&& space_padding
-			&& ft_vprintf_stream_util_print_n(context, space_padding, ' ')));
-}
-
-static t_err	print_zero(
-	t_ft_vprintf_stream_context *context,
-	t_printf_format_conversion_specification *conversion,
-	int minimum_field_width,
-	int precision
-)
-{
-	int	remain;
-
-	if (precision == -1)
-		precision = 1;
-	remain = minimum_field_width - precision;
-	return ((!conversion->flag_left_justified
-			&& remain > 0
-			&& ft_vprintf_stream_util_print_n(context, remain, ' '))
-		|| ft_vprintf_stream_util_print_n(context, precision, '0')
-		|| (conversion->flag_left_justified
-			&& remain > 0
-			&& ft_vprintf_stream_util_print_n(context, remain, ' ')));
+	return ((!x->left
+			&& space
+			&& ft_vprintf_stream_util_print_n(context, space, ' '))
+		|| (x->prefix
+			&& context->stream_class->writer(context->stream, "0x", 2))
+		|| (zeros
+			&& ft_vprintf_stream_util_print_n(context, zeros, '0'))
+		|| ft_vprintf_stream_u_put(context, x->value, 16, "0123456789abcdef")
+		|| (x->left
+			&& space
+			&& ft_vprintf_stream_util_print_n(context, space, ' ')));
 }
 
 t_err	ft_vprintf_stream_x(
@@ -76,8 +51,16 @@ t_err	ft_vprintf_stream_x(
 	if (conversion->flag_always_show_sign
 		|| conversion->flag_use_sign_placeholder)
 		ft_vprintf_stream_undefined_behavior_hooray();
-	if (!x.value)
-		return (print_zero(context, conversion, mfw, precision));
 	x.length = ft_vprintf_stream_u_length(x.value, 16);
-	return (print_nonzero(context, &x, mfw, precision));
+	if (precision == -1)
+		x.precision = ft_max_d(x.length, 1);
+	else
+		x.precision = ft_max_d(x.length, precision);
+	if (precision == -1
+		&& !conversion->flag_left_justified
+		&& conversion->flag_pad_field_with_zero)
+		x.precision = ft_max_d(x.precision, mfw);
+	x.minimum_field_width = mfw;
+	x.prefix = x.length && conversion->flag_use_alternative_form;
+	return (print(context, &x));
 }

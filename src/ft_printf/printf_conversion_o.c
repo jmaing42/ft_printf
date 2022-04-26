@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:05:31 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 21:06:07 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:45:01 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "../libft/ft_math.h"
 
-static t_err	with_precision(
+static t_err	print(
 	t_ft_vprintf_stream_context *context,
 	t_o *o
 )
@@ -61,5 +61,5 @@ t_err	ft_vprintf_stream_o(
 		o.precision = ft_max_d(o.precision, minimum_field_width);
 	if (conversion->flag_use_alternative_form && o.precision == o.length)
 		o.precision++;
-	return (with_precision(context, &o));
+	return (print(context, &o));
 }

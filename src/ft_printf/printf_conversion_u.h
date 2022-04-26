@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   printf_conversion_u.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 21:59:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 21:34:28 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/24 14:04:54 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/26 21:39:03 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef PRINTF_CONVERSION_U_H
+# define PRINTF_CONVERSION_U_H
 
-# include <stdbool.h>
+# include "printf_conversion_common.h"
 
-# include "../../src/libftprintf.h"
-
-typedef int	(*t_printf)(const char *format, ...);
-
-const char	*o(bool condition, const char *str);
-void		test_d(t_printf f);
-void		test_i(t_printf f);
-void		test_o(t_printf f);
-void		test_u(t_printf f);
-void		test_x(t_printf f);
+typedef struct s_u {
+	uintmax_t	value;
+	int			length;
+	int			precision;
+	int			minimum_field_width;
+	bool		left;
+}	t_u;
 
 #endif
