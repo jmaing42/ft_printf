@@ -32,7 +32,7 @@ endif
 	$Qrm -rf tmp
 	$Qcp -r ./src ./tmp
 	$Q$(MAKE) -C tmp fclean
-	$Qprintf "# script-generated file list\nSRCS := %s\n\n" "$$(cd src && find . -name "*.c" | cut -c 3- | xargs)" | cat - src/Makefile > tmp/Makefile
+	$Qprintf "# script-generated file list\nSRCS := %s\n\n" "$$(cd src && find . -name "*.c" | xargs)" | cat - src/Makefile > tmp/Makefile
 	$Q(cd tmp && git init && git add . && git commit -m "Initial commit" && git push "$(GIT_REMOTE_URL)" HEAD:master) || (echo "Failed to publish" && false)
 	$Qrm -rf tmp
 	$Qgit push "$(GIT_REMOTE_URL)" HEAD:source | echo "Failed to push HEAD to source"
