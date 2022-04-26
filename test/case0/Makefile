@@ -1,6 +1,8 @@
 SRCS := $(wildcard *.c)
 OBJS := $(SRCS:.c=.o)
 
+SANITIZER ?= address
+
 all: test.exe
 clean:
 	rm -rf test.exe*
@@ -15,9 +17,9 @@ test: out_expected.txt
 %.o: %.c
 	clang -g3 -c $< -o $@
 test.exe: $(OBJS) ../../src/libftprintf.a
-	clang -g3 $^ -o $@ -fsanitize=address
+	clang -g3 $^ -o $@ -fsanitize=$(SANITIZER)
 out_expected.txt: test.exe
 	./test.exe printf > out_expected.txt
 ../../src/libftprintf.a:
-	make -C ../../src PROFILE=debug SANITIZER=address
+	make -C ../../src PROFILE=debug SANITIZER=$(SANITIZER)
 .PHONY: all clean fclean re test ../../src/libftprintf.a

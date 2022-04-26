@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 17:47:12 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 18:18:29 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_ft_printf	*printf_init(void *param)
 			new_writer_buffered(
 				new_writer_fd(STDOUT_FILENO, false),
 				1024,
-				false
+				true
 				)
 			);
 	if (!result->writer)

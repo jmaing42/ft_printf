@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 14:38:28 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 18:17:08 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 static void	writer_unsafe_delete(t_writer_count *self)
 {
+	self->writer->v->unsafe_delete(self->writer);
 	free(self);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:37:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 22:32:15 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 18:24:20 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void	printf_format_free(t_printf_format *self)
 	{
 		node = self->head;
 		self->head = node->next;
+		free(node->value.any);
 		free(node);
 	}
 	free(self);
