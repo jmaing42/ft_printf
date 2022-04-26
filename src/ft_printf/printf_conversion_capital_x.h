@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:04:54 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 14:23:02 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:54:29 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 typedef struct s_capital_x {
 	uintmax_t	value;
 	int			length;
+	int			precision;
+	int			minimum_field_width;
 	bool		left;
+	bool		prefix;
 }	t_capital_x;
 
 #endif

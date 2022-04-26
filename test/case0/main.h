@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 21:59:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 21:34:28 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:55:40 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void		test_i(t_printf f);
 void		test_o(t_printf f);
 void		test_u(t_printf f);
 void		test_x(t_printf f);
+void		test_capital_x(t_printf f);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 22:02:59 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 21:35:44 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:55:55 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,28 @@ void	test_x(t_printf f)
 			o(i & 1, "-"), o(i & 2, "0"), o(i & 4, "#"),
 			g_minimum_field_width[i >> 6], g_precision[(i >> 3) % 8]);
 		f("Test for %%x - case #%d: %s {\n\tzero: ", i, fmt);
+		f(fmt, 0);
+		f(",\n\tpositive: ");
+		f(fmt, 0x42424242);
+		f(",\n\tmax: ");
+		f(fmt, UINT_MAX);
+		f(",\n} end case #%d (%s)\n\n", i, fmt);
+		i++;
+	}
+}
+
+void	test_capital_x(t_printf f)
+{
+	char	fmt[16];
+	int		i;
+
+	i = 0;
+	while (i < (1 << 5) * 11)
+	{
+		sprintf(fmt, "\"%%%s%s%s%s%sX\"",
+			o(i & 1, "-"), o(i & 2, "0"), o(i & 4, "#"),
+			g_minimum_field_width[i >> 6], g_precision[(i >> 3) % 8]);
+		f("Test for %%X - case #%d: %s {\n\tzero: ", i, fmt);
 		f(fmt, 0);
 		f(",\n\tpositive: ");
 		f(fmt, 0x42424242);
