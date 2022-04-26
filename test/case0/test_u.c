@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 22:02:59 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 20:57:59 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:02:37 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <limits.h>
 #include <stddef.h>
 
-static const char	*minimum_field_width[] = {
+static const char	*g_minimum_field_width[] = {
 	"",
 	"0",
 	"1",
@@ -30,7 +30,7 @@ static const char	*minimum_field_width[] = {
 	"4095"
 };
 
-static const char	*precision[] = {
+static const char	*g_precision[] = {
 	"",
 	".7",
 	".8",
@@ -50,8 +50,8 @@ void	test_u(t_printf f)
 	while (i < (1 << 5) * 11)
 	{
 		sprintf(fmt, "\"%%%s%s%s%su\"",
-			i & 1 ? "-" : "", i & 2 ? "0" : "",
-			minimum_field_width[i >> 5], precision[(i >> 2) % 8]);
+			o(i & 1, "-"), o(i & 2, "0"),
+			g_minimum_field_width[i >> 5], g_precision[(i >> 2) % 8]);
 		f("Test for %%u - case #%d: %s {\n\tzero: ", i, fmt);
 		f(fmt, 0);
 		f(",\n\tpositive: ");

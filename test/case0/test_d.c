@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 22:02:59 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 20:53:00 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:02:56 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <limits.h>
 #include <stddef.h>
 
-static const char	*minimum_field_width[] = {
+static const char	*g_minimum_field_width[] = {
 	"",
 	"0",
 	"1",
@@ -30,7 +30,7 @@ static const char	*minimum_field_width[] = {
 	"4095"
 };
 
-static const char	*precision[] = {
+static const char	*g_precision[] = {
 	"",
 	".7",
 	".8",
@@ -50,9 +50,8 @@ void	test_d(t_printf f)
 	while (i < (1 << 7) * 11)
 	{
 		sprintf(fmt, "\"%%%s%s%s%s%s%sd\"",
-			i & 1 ? "-" : "", i & 2 ? "0" : "",
-			i & 4 ? "+" : "", i & 8 ? " " : "",
-			minimum_field_width[i >> 7], precision[(i >> 4) % 8]);
+			o(i & 1, "-"), o(i & 2, "0"), o(i & 4, "+"), o(i & 8, " "),
+			g_minimum_field_width[i >> 7], g_precision[(i >> 4) % 8]);
 		f("Test for %%d - case #%d: %s {\n\tzero: ", i, fmt);
 		f(fmt, 0);
 		f(",\n\tpositive: ");
@@ -77,9 +76,8 @@ void	test_i(t_printf f)
 	while (i < (1 << 7) * 11)
 	{
 		sprintf(fmt, "\"%%%s%s%s%s%s%si\"",
-			i & 1 ? "-" : "", i & 2 ? "0" : "",
-			i & 4 ? "+" : "", i & 8 ? " " : "",
-			minimum_field_width[i >> 7], precision[(i >> 4) % 8]);
+			o(i & 1, "-"), o(i & 2, "0"), o(i & 4, "+"), o(i & 8, " "),
+			g_minimum_field_width[i >> 7], g_precision[(i >> 4) % 8]);
 		f("Test for %%i - case #%d: %s {\n\tzero: ", i, fmt);
 		f(fmt, 0);
 		f(",\n\tpositive: ");
