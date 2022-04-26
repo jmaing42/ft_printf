@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:05:31 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 20:50:04 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:06:07 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ t_err	ft_vprintf_stream_o(
 
 	if (ft_vprintf_get_any_u(arguments, conversion->length_modifier, &o.value))
 		return (true);
+	if (conversion->flag_always_show_sign
+		|| conversion->flag_use_sign_placeholder)
+		ft_vprintf_stream_undefined_behavior_hooray();
 	o.length = ft_vprintf_stream_u_length(o.value, 8);
 	o.minimum_field_width = minimum_field_width;
 	if (precision == -1)
