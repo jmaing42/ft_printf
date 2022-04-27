@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 22:27:26 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/28 01:20:19 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "internal.h"
 
+#include "../libft/ft_default.h"
 #include "../libft/ft_cstring.h"
 
 t_err	ft_vprintf_stream_percent(
@@ -101,7 +102,7 @@ t_err	ft_vprintf_stream_s(
 	bool				left;
 	const int			mfw = ft_vprintf_get_mfw_actual(args, conv, &left);
 	const int			precision = ft_vprintf_get_precision(args, conv, -1);
-	const char *const	value = (const char *) ft_vprintf_get_p(args);
+	const char *const	value = ft_default_p(ft_vprintf_get_p(args), "(null)");
 	size_t				length;
 
 	if (precision == -1)

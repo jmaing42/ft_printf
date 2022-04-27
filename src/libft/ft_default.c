@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_conversion_p.h                              :+:      :+:    :+:   */
+/*   ft_default.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 14:04:54 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/28 01:29:55 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/28 01:18:13 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/28 01:18:14 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_CONVERSION_P_H
-# define PRINTF_CONVERSION_P_H
+#include "ft_default.h"
 
-# include "printf_conversion_common.h"
+void	*ft_default_p(void *value, void *fallback)
+{
+	if (!value)
+		return (fallback);
+	return (value);
+}
 
-typedef struct s_p {
-	uintmax_t	value;
-	int			length;
-	int			precision;
-	int			minimum_field_width;
-	bool		left;
-}	t_p;
-
-#endif
+const void	*ft_default_cp(const void *value, const void *fallback)
+{
+	if (!value)
+		return (fallback);
+	return (value);
+}
