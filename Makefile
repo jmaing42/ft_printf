@@ -36,5 +36,7 @@ endif
 	$Q(cd tmp && git init && git add . && git commit -m "Initial commit" && git push "$(GIT_REMOTE_URL)" HEAD:master) || (echo "Failed to publish" && false)
 	$Qrm -rf tmp
 	$Qgit push "$(GIT_REMOTE_URL)" HEAD:source || echo "Failed to push HEAD to source"
-publish: test publish_without_test
+publish:
+	$Q$(MAKE) test
+	$Q$(MAKE) publish_without_test
 .PHONY: all clean fclean re init deinit reinit refresh test publish publish_without_test
