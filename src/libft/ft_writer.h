@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:48:04 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:02:06 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:02:59 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct s_writer_vtable
 	t_writer_v_close			close;
 }	t_writer_vtable;
 
-struct s_writer {
+struct s_writer
+{
 	const t_writer_vtable	*v;
 };
 

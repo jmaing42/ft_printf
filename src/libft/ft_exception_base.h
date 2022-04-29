@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 05:14:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:03:19 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ typedef const struct s_exception_base_vtable
 	t_exception_base_v_add_stacktrace	add_stacktrace;
 }	t_exception_base_vtable;
 
-struct s_exception_base {
+struct s_exception_base
+{
 	t_exception_base_vtable	*v;
 };
 

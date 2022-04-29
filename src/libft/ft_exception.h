@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:47:09 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:02:50 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ typedef const struct s_exception_vtable
 	t_exception_base_vtable			super;
 }	t_exception_vtable;
 
-struct s_exception {
-	union {
+struct s_exception
+{
+	union
+	{
 		t_exception_base_vtable	*b;
 		t_exception_vtable		*v;
 	};
