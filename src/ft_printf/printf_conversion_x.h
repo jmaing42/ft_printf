@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:04:54 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 21:25:39 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "printf_conversion_common.h"
 
-typedef struct s_x {
+typedef struct s_x
+{
 	uintmax_t	value;
 	int			length;
 	int			precision;

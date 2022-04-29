@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:07:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 22:02:09 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "printf_conversion_common.h"
 
-typedef struct s_d {
+typedef struct s_d
+{
 	intmax_t	value;
 	int			minimum_field_width;
 	char		sign;

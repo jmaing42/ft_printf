@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 05:14:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:03:05 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef t_err				(*t_exception_base_v_add_stacktrace)(
 								int line,
 								const char *message);
 
-typedef const struct s_exception_base_vtable {
+typedef const struct s_exception_base_vtable
+{
 	t_exception_base_v_free				free;
 	t_exception_base_v_print			print;
 	t_exception_base_v_getfile			getfile;

@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 06:26:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 06:27:01 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef t_err										(*t_processor)(
 		va_list arguments,
 		t_conversion *value);
 
-typedef struct s_conversion_entry {
+typedef struct s_conversion_entry
+{
 	t_printf_format_conversion_specifier	type;
 	t_processor								process;
 }													t_conversion_entry;

@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:26:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 07:49:25 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ t_err	printf_format_internal_parse_node_conversion_specifier(
 			size_t *out_consumed
 			);
 
-typedef struct s_length_modifier_entry {
+typedef struct s_length_modifier_entry
+{
 	char							key;
 	t_printf_format_length_modifier	value;
 }	t_length_modifier_entry;
 
-typedef struct s_conversion_specifier_entry {
+typedef struct s_conversion_specifier_entry
+{
 	char									key;
 	t_printf_format_conversion_specifier	value;
 }	t_conversion_specifier_entry;

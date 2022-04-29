@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 00:41:07 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 08:34:59 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include "stream_context.h"
 # include "format.h"
 
-typedef struct s_ft_printf_stream {
+typedef struct s_ft_printf_stream
+{
 	const t_ft_printf_stream_class	*type;
 	void							*param;
 }	t_ft_printf_stream;

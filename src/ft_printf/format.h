@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 21:07:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/20 16:18:13 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <stddef.h>
 
-typedef enum e_printf_format_length_modifier {
+typedef enum e_printf_format_length_modifier
+{
 	printf_format_length_modifier_empty,
 	printf_format_length_modifier_hh,
 	printf_format_length_modifier_h,
@@ -27,7 +28,8 @@ typedef enum e_printf_format_length_modifier {
 	printf_format_length_modifier_capital_l,
 }	t_printf_format_length_modifier;
 
-typedef enum e_printf_format_conversion_specifier {
+typedef enum e_printf_format_conversion_specifier
+{
 	printf_format_conversion_specifier_d,
 	printf_format_conversion_specifier_i,
 	printf_format_conversion_specifier_o,
@@ -49,7 +51,8 @@ typedef enum e_printf_format_conversion_specifier {
 	printf_format_conversion_specifier_percent,
 }	t_printf_format_conversion_specifier;
 
-typedef struct s_printf_format_conversion_specification {
+typedef struct s_printf_format_conversion_specification
+{
 	unsigned int							flag_left_justified : 1;
 	unsigned int							flag_always_show_sign : 1;
 	unsigned int							flag_use_sign_placeholder : 1;
@@ -65,35 +68,41 @@ typedef struct s_printf_format_conversion_specification {
 	t_printf_format_conversion_specifier	conversion_specifier;
 }	t_printf_format_conversion_specification;
 
-typedef enum e_printf_format_node_type {
+typedef enum e_printf_format_node_type
+{
 	printf_format_node_type_string,
 	printf_format_node_type_conversion_specification,
 }	t_printf_format_node_type;
 
-typedef struct s_printf_format_node_union_string {
+typedef struct s_printf_format_node_union_string
+{
 	t_printf_format_node_type	type;
 	const char					*content;
 	size_t						length;
 }	t_printf_format_node_union_string;
 
-typedef struct s_printf_format_node_union_conversion_specification {
+typedef struct s_printf_format_node_union_conversion_specification
+{
 	t_printf_format_node_type					type;
 	t_printf_format_conversion_specification	value;
 }	t_printf_format_node_union_conversion_specification;
 
-typedef union u_printf_format_node_value {
+typedef union u_printf_format_node_value
+{
 	void												*any;
 	t_printf_format_node_type							*type;
 	t_printf_format_node_union_string					*string;
 	t_printf_format_node_union_conversion_specification	*conversion;
 }	t_printf_format_node_value;
 
-typedef struct s_printf_format_node {
+typedef struct s_printf_format_node
+{
 	struct s_printf_format_node	*next;
 	t_printf_format_node_value	value;
 }	t_printf_format_node;
 
-typedef struct s_printf_format {
+typedef struct s_printf_format
+{
 	t_printf_format_node	*head;
 	t_printf_format_node	*tail;
 }	t_printf_format;

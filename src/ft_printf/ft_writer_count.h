@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:39:06 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 14:33:32 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "../libft/ft_writer.h"
 
-typedef struct s_writer_count {
+typedef struct s_writer_count
+{
 	t_writer	base;
 	t_writer	*writer;
 	size_t		count;
