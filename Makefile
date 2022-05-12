@@ -37,6 +37,7 @@ endif
 	$Qrm -rf tmp
 	$Qgit push "$(GIT_REMOTE_URL)" HEAD:source || echo "Failed to push HEAD to source"
 publish:
+	$Q$Qnorminette
 	$Q$(MAKE) test
 	$Q$(MAKE) publish_without_test
 .PHONY: all clean fclean re init deinit reinit refresh test publish publish_without_test
