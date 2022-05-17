@@ -1,6 +1,6 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 CASES := $(sort $(wildcard case*))
-MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
+MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 RULES := all clean fclean re init deinit reinit refresh test
 
 .PHONY: $(RULES)

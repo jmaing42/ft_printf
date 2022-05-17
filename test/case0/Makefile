@@ -10,7 +10,7 @@ clean:
 re:
 	$(MAKE) fclean
 	$(MAKE) all
-	make -C ../../src re
+	$(MAKE) -C ../../src re
 test: out_expected.txt
 	./test.exe > out_result.txt
 	diff out_expected.txt out_result.txt -U 3
@@ -21,5 +21,5 @@ test.exe: $(OBJS) ../../src/libftprintf.a
 out_expected.txt: test.exe
 	./test.exe printf > out_expected.txt
 ../../src/libftprintf.a:
-	make -C ../../src PROFILE=debug SANITIZER=$(SANITIZER)
+	$(MAKE) -C ../../src PROFILE=debug SANITIZER=$(SANITIZER)
 .PHONY: all clean fclean re test ../../src/libftprintf.a
