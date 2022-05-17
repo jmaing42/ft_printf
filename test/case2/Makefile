@@ -10,7 +10,9 @@ init: | printf_tester
 deinit: fclean
 	$Qrm -rf tmp
 	$Qrm -rf printf_tester
-reinit: deinit init
+reinit:
+	$Q$(MAKE) deinit
+	$Q$(MAKE) init
 refresh:
 	$Qrm -rf ft_printf
 	$Qcp -r ../../src ft_printf
