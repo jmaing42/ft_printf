@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_conversion_simple.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/28 01:20:19 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:25:58 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,20 @@ t_err	ft_vprintf_stream_s(
 	t_printf_format_conversion_specification *conv
 )
 {
-	bool				left;
-	const int			mfw = ft_vprintf_get_mfw_actual(args, conv, &left);
-	const int			precision = ft_vprintf_get_precision(args, conv, -1);
-	const char *const	value = ft_default_p(ft_vprintf_get_p(args), "(null)");
-	size_t				length;
+	bool		left;
+	const int	mfw = ft_vprintf_get_mfw_actual(args, conv, &left);
+	const int	precision = ft_vprintf_get_precision(args, conv, -1);
+	const char	*value;
+	size_t		length;
 
+	value = (const char *)ft_vprintf_get_p(args);
 	if (precision == -1)
-		length = ft_strlen(value);
+		length = ft_strlen((const char *)ft_default_cp(value, "(null)"));
 	else
-		length = ft_strnlen(value, precision);
-	if (conv->flag_always_show_sign
+		length = ft_strnlen(
+				(const char *)ft_default_cp(value, "(null)"), precision);
+	if (!value
+		|| conv->flag_always_show_sign
 		|| conv->flag_pad_field_with_zero
 		|| conv->flag_use_alternative_form
 		|| conv->flag_use_sign_placeholder)
@@ -117,7 +120,8 @@ t_err	ft_vprintf_stream_s(
 	return (conv->length_modifier != printf_format_length_modifier_empty
 		|| ((size_t) mfw > length && !left && ft_vprintf_stream_util_print_n(
 				context, mfw - length, ' '))
-		|| context->stream_class->writer(context->stream, value, length)
+		|| context->stream_class->writer(context->stream,
+			(const char *)ft_default_cp(value, "(null)"), length)
 		|| ((size_t) mfw > length && left && ft_vprintf_stream_util_print_n(
 				context, mfw - length, ' ')));
 }
