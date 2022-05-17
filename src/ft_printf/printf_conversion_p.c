@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_conversion_p.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:26:48 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/28 01:36:40 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:29:44 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static t_err	print(
 
 t_err	ft_vprintf_stream_p(
 	t_ft_vprintf_stream_context *context,
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_conversion_specification *conversion
 )
 {

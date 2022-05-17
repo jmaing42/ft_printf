@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:02:10 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:32:51 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	ft_printf(const char *format, ...)
 
 	stream.type = &g_ft_printf;
 	va_start(arguments, format);
-	if (ft_vprintf_stream(stream, &len, format, arguments) || len > INT_MAX)
+	if (ft_vprintf_stream(stream, &len, format, &arguments) || len > INT_MAX)
 		result = -1;
 	else
 		result = (int) len;

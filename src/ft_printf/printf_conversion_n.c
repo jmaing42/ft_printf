@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_conversion_n.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 18:53:35 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 20:31:12 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:29:22 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 t_err	ft_vprintf_stream_n(
 	t_ft_vprintf_stream_context *context,
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_conversion_specification *conversion
 )
 {
@@ -32,7 +32,7 @@ t_err	ft_vprintf_stream_n(
 		return (true);
 	node->next = current;
 	node->type = conversion->length_modifier;
-	node->value = va_arg(arguments, void *);
+	node->value = va_arg(*arguments, void *);
 	context->list = node;
 	return (false);
 }

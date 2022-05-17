@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   printf_get_any.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:47:43 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 06:21:14 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:30:32 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal.h"
 
 t_err	ft_vprintf_get_any_d(
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_length_modifier length,
 	intmax_t *out_result
 )
@@ -38,7 +38,7 @@ t_err	ft_vprintf_get_any_d(
 }
 
 t_err	ft_vprintf_get_any_u(
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_length_modifier length,
 	uintmax_t *out_result
 )
@@ -61,7 +61,7 @@ t_err	ft_vprintf_get_any_u(
 }
 
 t_err	ft_vprintf_get_any_f(
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_length_modifier length,
 	long double *out_result
 )

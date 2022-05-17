@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vprintf_stream_internal.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/24 13:42:43 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:34:10 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static const t_conversion_entry	g_conversions[] = {
 
 static t_err	ft_vprintf_stream_node(
 	t_ft_vprintf_stream_context *context,
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_node *node
 )
 {
@@ -100,7 +100,7 @@ t_err	ft_vprintf_stream(
 	const t_ft_printf_stream stream,
 	size_t *out_bytes_wrote,
 	const char *format,
-	va_list arguments
+	va_list *arguments
 )
 {
 	t_printf_format *const		list = printf_format_parse(format);

@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/17 19:25:58 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/17 19:30:05 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 t_err	ft_vprintf_stream_percent(
 	t_ft_vprintf_stream_context *context,
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_conversion_specification *conversion
 )
 {
@@ -70,7 +70,7 @@ t_err	ft_vprintf_stream_util_print_n(
 
 t_err	ft_vprintf_stream_c(
 	t_ft_vprintf_stream_context *c,
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_conversion_specification *conversion
 )
 {
@@ -95,17 +95,17 @@ t_err	ft_vprintf_stream_c(
 
 t_err	ft_vprintf_stream_s(
 	t_ft_vprintf_stream_context *context,
-	va_list args,
+	va_list *arguments,
 	t_printf_format_conversion_specification *conv
 )
 {
 	bool		left;
-	const int	mfw = ft_vprintf_get_mfw_actual(args, conv, &left);
-	const int	precision = ft_vprintf_get_precision(args, conv, -1);
+	const int	mfw = ft_vprintf_get_mfw_actual(arguments, conv, &left);
+	const int	precision = ft_vprintf_get_precision(arguments, conv, -1);
 	const char	*value;
 	size_t		length;
 
-	value = (const char *)ft_vprintf_get_p(args);
+	value = (const char *)ft_vprintf_get_p(arguments);
 	if (precision == -1)
 		length = ft_strlen((const char *)ft_default_cp(value, "(null)"));
 	else

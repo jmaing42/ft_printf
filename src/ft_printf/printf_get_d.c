@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   printf_get_d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:47:43 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 16:08:26 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:31:16 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal.h"
 
-intmax_t	ft_vprintf_get_d(va_list arguments)
+intmax_t	ft_vprintf_get_d(va_list *arguments)
 {
-	return ((intmax_t) va_arg(arguments, int));
+	return ((intmax_t) va_arg(*arguments, int));
 }
 
 int	ft_vprintf_get_mfw_actual(
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_conversion_specification *conversion,
 	bool *out_flag_left_justified
 )
@@ -29,7 +29,7 @@ int	ft_vprintf_get_mfw_actual(
 		*out_flag_left_justified = conversion->flag_left_justified;
 	if (conversion->variable_minimum_field_width)
 	{
-		result = va_arg(arguments, int);
+		result = va_arg(*arguments, int);
 		if (result < 0)
 		{
 			result = -result;
@@ -44,7 +44,7 @@ int	ft_vprintf_get_mfw_actual(
 }
 
 int	ft_vprintf_get_precision(
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_conversion_specification *conversion,
 	int fallback
 )
@@ -53,7 +53,7 @@ int	ft_vprintf_get_precision(
 
 	if (conversion->variable_precision)
 	{
-		result = va_arg(arguments, int);
+		result = va_arg(*arguments, int);
 		if (result >= 0)
 			return (result);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vprintf_stream.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 00:41:07 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:28:22 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_ft_printf_stream
 }	t_ft_printf_stream;
 
 /**
- * @brief printf for stream accepts va_list
+ * @brief printf for stream accepts pointer to va_list
  *
  * @param stream destination
  * @param out_bytes_wrote bytes wrote
@@ -40,6 +40,6 @@ t_err	ft_vprintf_stream(
 			const t_ft_printf_stream stream,
 			size_t *out_bytes_wrote,
 			const char *format,
-			va_list arguments);
+			va_list *arguments);
 
 #endif

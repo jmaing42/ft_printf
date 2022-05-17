@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vprintf_stream_internal.h                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 06:26:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:27:25 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef t_printf_format_conversion_specification	t_conversion;
 
 typedef t_err										(*t_processor)(
 		t_ft_vprintf_stream_context *context,
-		va_list arguments,
+		va_list *arguments,
 		t_conversion *value);
 
 typedef struct s_conversion_entry

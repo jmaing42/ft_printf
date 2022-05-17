@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_conversion_capital_x.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:05:31 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:04:36 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/17 19:29:11 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_err	print(
 
 t_err	ft_vprintf_stream_capital_x(
 	t_ft_vprintf_stream_context *context,
-	va_list arguments,
+	va_list *arguments,
 	t_printf_format_conversion_specification *conversion
 )
 {
