@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:47:43 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/17 19:31:41 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/17 19:41:13 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 void	*ft_vprintf_get_p(va_list *arguments)
 {
+	uintptr_t	tmp;
+
+	if (sizeof (void *) < sizeof (unsigned int))
+	{
+		tmp = va_arg(*arguments, unsigned int);
+		return (*((void **)&tmp));
+	}
 	return (va_arg(*arguments, void *));
 }
 
