@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:47:43 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/17 19:38:04 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/18 21:17:48 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ uintmax_t	ft_vprintf_get_ju(va_list *arguments)
 
 uintmax_t	ft_vprintf_get_zu(va_list *arguments)
 {
-	if (sizeof (size_t) < sizeof (unsigned int))
+	if (sizeof(size_t) < sizeof(unsigned int))
 		return ((uintmax_t) va_arg(*arguments, unsigned int));
 	return ((uintmax_t) va_arg(*arguments, size_t));
 }
