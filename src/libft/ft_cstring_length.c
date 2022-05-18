@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cstring_length.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 21:00:11 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 12:59:46 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/18 17:25:25 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	bake(const char *set, bool include_null, char *out)
 	const unsigned char	*tmp;
 
 	i = 0;
-	while (i < 2 << CHAR_BIT)
+	while (i < (1 << CHAR_BIT))
 		out[i++] = 0;
 	if (include_null || !set)
 		out[0] = 1;
@@ -51,7 +51,7 @@ size_t	ft_strlen_until(
 )
 {
 	size_t	result;
-	char	baked[2 << CHAR_BIT];
+	char	baked[1 << CHAR_BIT];
 
 	bake(set, include_null, baked);
 	result = 0;
@@ -84,7 +84,7 @@ size_t	ft_strnlen_until(
 )
 {
 	size_t	result;
-	char	baked[2 << CHAR_BIT];
+	char	baked[1 << CHAR_BIT];
 
 	bake(set, include_null, baked);
 	result = 0;
