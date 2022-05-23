@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/25 14:15:47 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/23 18:16:39 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ t_err	ft_write(
 			if (out_exception)
 				*out_exception = (t_exception *) new_exception(
 						"write() failed", __FILE__, __LINE__);
-			return (1);
+			return (true);
 		}
 		remain -= (size_t) wrote;
 		str = str + wrote;
 	}
-	return (0);
+	return (false);
 }
 
 t_err	ft_puts(int fd, const char *str, t_exception **out_exception)
