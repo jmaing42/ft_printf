@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 19:44:45 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/20 20:31:33 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/25 00:23:14 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,8 @@ void	*ft_primitive_pointer_if(
 			bool condition,
 			void *value_if_true,
 			void *value_if_false);
+void	*ft_primitive_const_pointer_fallback(
+			void *value,
+			void *fallback);
 
 #endif
