@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/17 19:32:51 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/24 22:22:20 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,21 @@ static t_err	printf_writer(t_ft_printf *context, const void *buf, size_t len)
 static t_ft_printf	*printf_init(void *param)
 {
 	t_ft_printf *const	result = (t_ft_printf *) malloc(sizeof(t_ft_printf));
+	t_writer			*fd_writer;
+	t_writer			*buffered_writer;
 
 	(void) param;
 	if (!result)
 		return (NULL);
-	result->writer = new_writer_count(
-			new_writer_buffered(
-				new_writer_fd(STDOUT_FILENO, false),
-				1024,
-				true
-				)
-			);
+	fd_writer = new_writer_fd(STDOUT_FILENO, false);
+	buffered_writer = new_writer_buffered(fd_writer, 1024, true);
+	result->writer = new_writer_count(buffered_writer);
 	if (!result->writer)
 	{
+		if (buffered_writer)
+			buffered_writer->v->close(buffered_writer, NULL);
+		if (fd_writer)
+			fd_writer->v->close(fd_writer, NULL);
 		free(result);
 		return (NULL);
 	}

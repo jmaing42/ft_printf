@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:30:55 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/17 19:34:10 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/24 22:10:58 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,11 @@ t_err	ft_vprintf_stream(
 	t_err						err;
 
 	if (!list || init_context(stream, &context))
+	{
+		if (list)
+			printf_format_free(list);
 		return (true);
+	}
 	err = false;
 	node = list->head;
 	while (!err && node)
