@@ -17,4 +17,5 @@
     "c99",
     "c++98"
   ],
+  "sonarlint.pathToCompileCommands": "${workspaceFolder}/compile_commands.json",
 }

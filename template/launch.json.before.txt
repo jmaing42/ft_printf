@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug push_swap",
+      "program": "${workspaceFolder}/src/.cache/push_swap.production.debug.address.exe",
+      "args": ["1", "2", "3"],
+      "cwd": "${workspaceFolder}/src",
+      "preLaunchTask": "build push_swap (debug)",
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug checker",
+      "program": "${workspaceFolder}/src/.cache/checker.production.debug.address.exe",
+      "args": ["1", "2", "3"],
+      "cwd": "${workspaceFolder}/src",
+      "preLaunchTask": "build checker (debug)",
+    },

@@ -1,10 +1,10 @@
 # temporary files
-*.o
-*.d
-*.bc
-*.i
-*.s
-*.a
-*.exe
-.vscode/*.log
 tmp
+.cache
+*.exe
+*.dSYM
+*.log
+*.part.json
+compile_commands.json
+.vscode/launch.json
+.vscode/tasks.json

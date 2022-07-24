@@ -1,34 +1,32 @@
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
-
-# This variable will be used only if source files are not hardcoded
-SRCS ?= $(shell find . -name "*.c" | xargs)
-
-NAME := libftprintf.a
-OTHER_USEFUL_FILES := .editorconfig .gitignore
+Q := $(if $(filter 1 2 3,$(V) $(VERBOSE)),,@)
+MAKE := $(MAKE) $(if $(filter 3,$(V) $(VERBOSE)),,--no-print-directory) $(if $(filter 1,$(NO_ADDITIONAL_J)),,-j $(shell sh build/script/nproc.sh) NO_ADDITIONAL_J=1)
 
 CC := clang
 AR := ar
-CFLAGS := -Wall -Wextra -Werror
-TMPS := $(OTHER_USEFUL_FILES)
+ARFLAGS := cr$(if $(filter 1,$(V) $(VERBOSE)),v,)
+CPPFLAGS := $(shell find . -type d -mindepth 1 | grep -v /test/ | sed "s/^/-I /" | xargs)
+CFLAGS := -Wall -Wextra -Werror -std=c99 -pedantic $(CPPFLAGS)
 
-TMP_DIR := tmp
+SRC_DIR := .
+CACHE_DIR := .cache
 
-all: $(NAME) $(OTHER_USEFUL_FILES)
+SRCS := $(shell find . -name "*.c" | grep -v /test/ | xargs)
+
+NAME := libftprintf.a
+
+all: $(NAME)
 bonus: all
 clean:
-	$Qrm -rf $(OTHER_USEFUL_FILES) tmp
-fclean: clean
-	$Qrm -f $(NAME)
+	$Qrm -rf $(CACHE_DIR)
+fclean:
+	$Q$(MAKE) clean
+	$Qrm -f $(EXECUTABLE_TARGETS:=.exe)
 re:
-	$Q$(MAKE) fclean
-	$Q$(MAKE) all
-.PHONY: all bonus clean fclean re
-
-.editorconfig:
-	$Qprintf "root = true\n\n[*]\ncharset = utf-8\nend_of_line = lf\nindent_size = 4\nindent_style = tab\ninsert_final_newline = true\ntrim_trailing_whitespace = true\n" > .editorconfig
-.gitignore:
-	$Qprintf ".*\ntmp\n" > .gitignore
+	$Q$(MAKE) NO_ADDITIONAL_J=1 fclean
+	$Q$(MAKE) NO_ADDITIONAL_J=1 all
+test:
+	$Qfind . -type d -mindepth 1 -name "test" | xargs -L1 -I {} make -C {} test
+.PHONY: all bonus clean fclean re test
 
 PROFILE ?= release
 ifeq ($(PROFILE),release)
@@ -49,17 +47,20 @@ $(error Bad target)
 endif
 
 SUFFIX := .$(TARGET).$(PROFILE)$(if $(SANITIZER),.$(SANITIZER))
+CFLAGS += $(if $(SANITIZER),-fsanitize=$(SANITIZER),)
+LDFLAGS += $(if $(SANITIZER),-fsanitize=$(SANITIZER),)
 
-$(TMP_DIR)/%.a:
+$(CACHE_DIR)/%.a:
 	$Qmkdir -p $(@D)
-	$Q$(AR) rcs $@ $^
-$(TMP_DIR)/%$(SUFFIX).o: %.c
+	$Q$(AR) $(ARFLAGS) $@ $^
+$(CACHE_DIR)/%$(SUFFIX).o: %.c
 	$Qmkdir -p $(@D)
-	$Q$(CC) $(CFLAGS) -c $< -o $@ -MMD $(if $(SANITIZER),-fsanitize=$(SANITIZER),)
+	$Q$(CC) $(CFLAGS) -MJ $@.compile_commands.part.json -MMD -o $@ -c $<
 
-$(TMP_DIR)/ft_printf$(SUFFIX).a: $(patsubst ./%.c,$(TMP_DIR)/%$(SUFFIX).o,$(SRCS))
+$(CACHE_DIR)/libftprintf$(SUFFIX).a: $(patsubst ./%.c,$(CACHE_DIR)/%$(SUFFIX).o,$(SRCS))
 .PHONY: $(NAME)
-$(NAME): $(TMP_DIR)/ft_printf$(SUFFIX).a
+$(NAME): $(CACHE_DIR)/libftprintf$(SUFFIX).a
 	$Qcp $< $@
 
--include $(TMP_DIR)/$(SRCS:.c=$(SUFFIX).d)
+# dependencies
+-include $(patsubst ./%.c,$(CACHE_DIR)/%$(SUFFIX).d,$(SRCS))
