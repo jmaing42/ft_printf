@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exception_base.h                                :+:      :+:    :+:   */
+/*   fto_exception_base.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 05:14:27 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:03:19 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:29:55 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_EXCEPTION_BASE_H
-# define FT_EXCEPTION_BASE_H
+#ifndef FTO_EXCEPTION_BASE_H
+# define FTO_EXCEPTION_BASE_H
 
 # include "ft_types.h"
 

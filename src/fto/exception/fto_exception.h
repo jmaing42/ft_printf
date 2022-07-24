@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exception.h                                     :+:      :+:    :+:   */
+/*   fto_exception.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:47:09 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:02:50 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:30:59 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_EXCEPTION_H
-# define FT_EXCEPTION_H
+#ifndef FTO_EXCEPTION_H
+# define FTO_EXCEPTION_H
 
 # include <stddef.h>
 
-# include "ft_exception_base.h"
+# include "fto_exception_base.h"
 
 typedef struct s_exception_stacktrace_node
 {
@@ -24,8 +24,6 @@ typedef struct s_exception_stacktrace_node
 	int									line;
 	char								*message;
 }	t_exception_stacktrace_node;
-
-typedef struct s_exception	t_exception;
 
 typedef const struct s_exception_vtable
 {

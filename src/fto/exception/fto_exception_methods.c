@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exception_methods.c                             :+:      :+:    :+:   */
+/*   fto_exception_methods.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:53:48 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:28:41 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:28:45 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_exception_methods.h"
+#include "fto_exception_methods.h"
 
 #include <stdlib.h>
 

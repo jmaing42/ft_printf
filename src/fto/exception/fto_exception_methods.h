@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exception_methods.h                             :+:      :+:    :+:   */
+/*   fto_exception_methods.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:55:06 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:28:41 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:28:40 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_EXCEPTION_METHODS_H
-# define FT_EXCEPTION_METHODS_H
+#ifndef FTO_EXCEPTION_METHODS_H
+# define FTO_EXCEPTION_METHODS_H
 
-# include "ft_exception.h"
+# include "fto_exception.h"
 
 void		ft_exception_v_free(t_exception *self);
 t_err		ft_exception_v_print(t_exception *self, int fd);

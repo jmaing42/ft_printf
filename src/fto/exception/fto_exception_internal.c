@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exception_internal.c                            :+:      :+:    :+:   */
+/*   fto_exception_internal.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 17:05:45 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:28:41 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:29:46 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_exception_internal.h"
-#include "ft_exception_methods.h"
+#include "fto_exception_internal.h"
+#include "fto_exception_methods.h"
 
 #include <stdlib.h>
 

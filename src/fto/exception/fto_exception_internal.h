@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exception_internal.h                            :+:      :+:    :+:   */
+/*   fto_exception_internal.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 17:21:36 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:29:36 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_EXCEPTION_INTERNAL_H
-# define FT_EXCEPTION_INTERNAL_H
+#ifndef FTO_EXCEPTION_INTERNAL_H
+# define FTO_EXCEPTION_INTERNAL_H
 
-# include "ft_exception.h"
+# include "fto_exception.h"
 
 typedef struct s_exception_internal
 {
