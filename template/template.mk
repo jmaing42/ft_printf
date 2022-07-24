@@ -1,7 +1,5 @@
 NAME = libftprintf.a
 
-OBJS = $(OBJS)
-
 OTHER_USEFUL_FILES = .editorconfig .gitignore
 
 CFLAGS = -Wall -Wextra -Werror
