@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writer_buffered_internal.c                      :+:      :+:    :+:   */
+/*   fto_writer_buffered_internal.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:03:54 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:33:52 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_writer_buffered_internal.h"
+#include "fto_writer_buffered_internal.h"
 
 #include <stdlib.h>
 #include <unistd.h>
 
 #include "ft_memory.h"
-#include "ft_writer_internal.h"
+#include "fto_writer_internal.h"
 
 static void	writer_unsafe_close(t_writer_buffered *self)
 {

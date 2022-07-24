@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writer_buffered_internal.h                      :+:      :+:    :+:   */
+/*   fto_writer_buffered_internal.h                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:34:18 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_WRITER_BUFFERED_INTERNAL_H
-# define FT_WRITER_BUFFERED_INTERNAL_H
+#ifndef FTO_WRITER_BUFFERED_INTERNAL_H
+# define FTO_WRITER_BUFFERED_INTERNAL_H
 
-# include "ft_writer_buffered.h"
+# include "fto_writer_buffered.h"
 
 typedef struct s_writer_buffered
 {

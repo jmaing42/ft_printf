@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writer.h                                        :+:      :+:    :+:   */
+/*   fto_writer.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:48:04 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:02:59 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:35:35 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_WRITER_H
-# define FT_WRITER_H
+#ifndef FTO_WRITER_H
+# define FTO_WRITER_H
 
-# include "ft_exception.h"
+# include "fto_exception.h"
 
 typedef struct s_writer	t_writer;
 

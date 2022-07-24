@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writer_fd.h                                     :+:      :+:    :+:   */
+/*   fto_writer_fd.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:54:45 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 13:13:57 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:35:11 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_WRITER_FD_H
-# define FT_WRITER_FD_H
+#ifndef FTO_WRITER_FD_H
+# define FTO_WRITER_FD_H
 
-# include "ft_writer.h"
+# include "fto_writer.h"
 
 t_writer	*new_writer_fd(int fd, bool close_fd_on_delete);
 
