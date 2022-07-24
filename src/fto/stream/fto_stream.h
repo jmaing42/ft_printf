@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fto_exception_internal.h                           :+:      :+:    :+:   */
+/*   fto_stream.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 17:21:36 by jmaing            #+#    #+#             */
-/*   Updated: 2022/07/25 00:29:36 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/07/25 08:27:38 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/25 08:47:08 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTO_EXCEPTION_INTERNAL_H
-# define FTO_EXCEPTION_INTERNAL_H
+#ifndef FTO_STREAM_H
+# define FTO_STREAM_H
 
-# include "fto_exception.h"
+# include "ft_types.h"
 
-typedef struct s_exception_internal
-{
-	t_exception	expose;
-	char		extra[];
-}	t_exception_internal;
-
-typedef struct s_exception_stacktrace_node_internal
-{
-	t_exception_stacktrace_node	expose;
-	char						extra[];
-}	t_exception_stacktrace_node_internal;
+# include "fto_stream_in.h"
+# include "fto_stream_out.h"
 
 #endif

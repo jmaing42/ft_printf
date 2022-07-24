@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/07/25 00:33:11 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/25 08:45:35 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include "ft_io.h"
 
-#include "fto_exception.h"
 #include "ft_cstring.h"
 
 #define WRITE_SIZE_MAX 1048576
@@ -22,8 +21,7 @@
 t_err	ft_write(
 	int fd,
 	const void *buf,
-	size_t len,
-	t_exception **out_exception
+	size_t len
 )
 {
 	size_t		remain;
@@ -40,24 +38,19 @@ t_err	ft_write(
 			to_write = WRITE_SIZE_MAX;
 		wrote = write(fd, str, to_write);
 		if (wrote < 0)
-		{
-			if (out_exception)
-				*out_exception = (t_exception *) new_exception(
-						"write() failed", __FILE__, __LINE__);
 			return (true);
-		}
 		remain -= (size_t) wrote;
 		str = str + wrote;
 	}
 	return (false);
 }
 
-t_err	ft_puts(int fd, const char *str, t_exception **out_exception)
+t_err	ft_puts(int fd, const char *str)
 {
-	return (ft_write(fd, str, ft_strlen(str), out_exception));
+	return (ft_write(fd, str, ft_strlen(str)));
 }
 
-static t_err	ft_putn_internal(int fd, int i, t_exception **out_exception)
+static t_err	ft_putn_internal(int fd, int i)
 {
 	int	sgn;
 
@@ -66,22 +59,21 @@ static t_err	ft_putn_internal(int fd, int i, t_exception **out_exception)
 		sgn = -1;
 	if (!i)
 		return (0);
-	return (ft_putn_internal(fd, i / 10, out_exception)
-		|| ft_write(fd, &"0123456789"[(i % 10) * sgn], 1, out_exception));
+	return (ft_putn_internal(fd, i / 10)
+		|| ft_write(fd, &"0123456789"[(i % 10) * sgn], 1));
 }
 
-t_err	ft_putn(int fd, int i, t_exception **out_exception)
+t_err	ft_putn(int fd, int i)
 {
 	if (!i)
-		return (ft_puts(fd, "0", out_exception));
-	return (ft_putn_internal(fd, i, out_exception));
+		return (ft_puts(fd, "0"));
+	return (ft_putn_internal(fd, i));
 }
 
 t_err	ft_puts_prefix(
 	int fd,
 	const char *str,
-	const char *prefix,
-	t_exception **out_exception
+	const char *prefix
 )
 {
 	const size_t	prefix_length = ft_strlen(prefix);
@@ -90,14 +82,14 @@ t_err	ft_puts_prefix(
 	while (true)
 	{
 		length = ft_strlen_until_set(str, "\n", true);
-		if (ft_write(fd, str, length, out_exception))
+		if (ft_write(fd, str, length))
 			return (true);
 		str += length;
 		if (!*str)
 			return (false);
 		str++;
 		if (ft_write(fd, "\n", 1, out_exception)
-			|| ft_write(fd, prefix, prefix_length, out_exception))
+			|| ft_write(fd, prefix, prefix_length))
 			return (true);
 	}
 }

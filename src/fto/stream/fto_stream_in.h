@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fto_stream_in.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 08:46:35 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/25 08:46:57 by Juyeong Maing    ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FTO_STREAM_IN_H
+# define FTO_STREAM_IN_H
+
+# include "ft_types.h"
+
+typedef struct s_fto_stream_in
+{
+	struct s_fto_stream_in_vtable	*v;
+}	t_fto_stream_in;
+
+typedef t_err	(*t_fto_stream_in_v_read(
+					t_fto_stream_in *self,
+					const char *buffer,
+					size_t length,
+					size_t *read_bytes));
+typedef void	(*t_fto_stream_in_v_free(
+					t_fto_stream_in *self));
+
+typedef struct s_fto_stream_in_vtable
+{
+	t_fto_stream_in_v_read	read;
+	t_fto_stream_in_v_free	free;
+}	t_fto_stream_in_vtable;
+
+#endif

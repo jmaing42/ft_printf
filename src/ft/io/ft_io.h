@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/07/25 00:29:09 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/25 08:44:31 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 
 # include <stddef.h>
 
-# include "fto_exception.h"
-
 t_err	ft_write(
 			int fd,
 			const void *buf,
-			size_t len,
-			t_exception **out_exception);
+			size_t len);
 
-t_err	ft_puts(int fd, const char *str, t_exception **out_exception);
-t_err	ft_putn(int fd, int n, t_exception **out_exception);
+t_err	ft_puts(int fd, const char *str);
+t_err	ft_putn(int fd, int n);
 t_err	ft_puts_prefix(
 			int fd,
 			const char *str,
-			const char *prefix,
-			t_exception **out_exception);
+			const char *prefix);
 
 #endif
