@@ -27,13 +27,19 @@ typedef t_err	(*t_fto_stream_in_v_read)(
 					char *buffer,
 					size_t length,
 					size_t *read_bytes);
+typedef t_err	(*t_fto_stream_in_v_read_all)(
+					t_fto_stream_in *self,
+					char *buffer,
+					size_t length,
+					size_t *read_bytes);
 typedef void	(*t_fto_stream_in_v_free)(
 					t_fto_stream_in *self);
 
 typedef struct s_fto_stream_in_vtable
 {
-	t_fto_stream_in_v_read	read;
-	t_fto_stream_in_v_free	free;
+	t_fto_stream_in_v_read		read;
+	t_fto_stream_in_v_read_all	read_all;
+	t_fto_stream_in_v_free		free;
 }	t_fto_stream_in_vtable;
 
 #endif
