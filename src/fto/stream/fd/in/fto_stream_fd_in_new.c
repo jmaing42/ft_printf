@@ -16,6 +16,8 @@
 
 static const struct s_fto_stream_fd_in_vtable	g_v = {
 	&fto_stream_fd_in_v_read,
+	&fto_stream_fd_in_v_read_all,
+	&fto_stream_fd_in_v_end,
 	&fto_stream_fd_in_v_free,
 };
 
@@ -28,5 +30,6 @@ t_fto_stream_fd_in	*new_fto_stream_fd_in(int fd, bool fd_owned)
 	result->v->v = &g_v;
 	result->fd = fd;
 	result->fd_owned = fd_owned;
+	result->end = false;
 	return (result);
 }

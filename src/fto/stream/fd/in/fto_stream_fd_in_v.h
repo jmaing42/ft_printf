@@ -25,6 +25,8 @@ t_err	fto_stream_fd_in_v_read_all(
 			char *buffer,
 			size_t length,
 			size_t *read_bytes);
+bool	fto_stream_fd_in_v_end(
+			t_fto_stream_fd_in *self);
 void	fto_stream_fd_in_v_free(
 			t_fto_stream_fd_in *self);
 

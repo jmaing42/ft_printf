@@ -20,6 +20,7 @@ typedef struct s_fto_stream_fd_in
 	union u_fto_stream_fd_in_vtable	*v;
 	int								fd;
 	bool							fd_owned;
+	bool	 						end;
 }	t_fto_stream_fd_in;
 
 typedef t_err	(*t_fto_stream_fd_in_v_read)(
