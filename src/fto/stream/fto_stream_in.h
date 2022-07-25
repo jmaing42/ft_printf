@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:46:35 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/25 08:46:57 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/25 09:21:23 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,20 @@
 
 # include "ft_types.h"
 
+# include <stddef.h>
+
 typedef struct s_fto_stream_in
 {
-	struct s_fto_stream_in_vtable	*v;
+	const struct s_fto_stream_in_vtable	*v;
 }	t_fto_stream_in;
 
-typedef t_err	(*t_fto_stream_in_v_read(
+typedef t_err	(*t_fto_stream_in_v_read)(
 					t_fto_stream_in *self,
 					const char *buffer,
 					size_t length,
-					size_t *read_bytes));
-typedef void	(*t_fto_stream_in_v_free(
-					t_fto_stream_in *self));
+					size_t *read_bytes);
+typedef void	(*t_fto_stream_in_v_free)(
+					t_fto_stream_in *self);
 
 typedef struct s_fto_stream_in_vtable
 {
