@@ -56,12 +56,14 @@ void	t_ft_util_allocate_helper_clear(
  * @brief put allocation result into the allocate helper
  *
  * @param self address of allocate helper instance
+ * @param destination address to store result
  * @param memory result
  * @param free how to free the memory
  * @return t_err true on error, false on success
  */
 t_err	t_ft_util_allocate_helper_put(
 			t_ft_util_allocate_helper *self,
+			void **destination,
 			void *memory,
 			void (*free)(void *memory));
 
