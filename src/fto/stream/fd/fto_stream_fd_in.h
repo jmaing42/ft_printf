@@ -24,7 +24,7 @@ typedef struct s_fto_stream_fd_in
 
 typedef t_err	(*t_fto_stream_fd_in_v_read)(
 					t_fto_stream_fd_in *self,
-					const char *buffer,
+					char *buffer,
 					size_t length,
 					size_t *read_bytes);
 typedef void	(*t_fto_stream_fd_in_v_free)(

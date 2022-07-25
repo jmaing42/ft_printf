@@ -17,7 +17,7 @@
 
 t_err	fto_stream_fd_in_v_read(
 			t_fto_stream_fd_in *self,
-			const char *buffer,
+			char *buffer,
 			size_t length,
 			size_t *read_bytes);
 void	fto_stream_fd_in_v_free(
