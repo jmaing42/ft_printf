@@ -6,12 +6,14 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/07/25 08:44:31 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/25 23:35:23 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_IO_H
 # define FT_IO_H
+
+# include "ft_types.h"
 
 # include <stddef.h>
 

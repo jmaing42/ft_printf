@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:50:32 by jmaing            #+#    #+#             */
-/*   Updated: 2022/07/25 08:45:35 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/25 23:35:03 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_err	ft_puts_prefix(
 		if (!*str)
 			return (false);
 		str++;
-		if (ft_write(fd, "\n", 1, out_exception)
+		if (ft_write(fd, "\n", 1)
 			|| ft_write(fd, prefix, prefix_length))
 			return (true);
 	}

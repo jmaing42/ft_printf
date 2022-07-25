@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:52:10 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/25 09:22:11 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/25 23:36:10 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_fto_stream_fd_in
 	union u_fto_stream_fd_in_vtable	*v;
 	int								fd;
 	bool							fd_owned;
-	bool	 						end;
+	bool							end;
 }	t_fto_stream_fd_in;
 
 typedef t_err	(*t_fto_stream_fd_in_v_read)(
