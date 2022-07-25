@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 00:47:59 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/25 00:59:09 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/25 23:33:26 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@
 typedef struct s_ft_util_allocate_helper_node
 {
 	struct s_ft_util_allocate_helper_node	*next;
-	void									*memory;
-	void									(*free)(void *memory);
+	void									**memory;
+	void									(*free)(void **memory);
 }	t_ft_util_allocate_helper_node;
 
 typedef struct s_ft_util_allocate_helper
 {
 	t_ft_util_allocate_helper_node	*head;
-	t_ft_util_allocate_helper_node	*tail;
 }	t_ft_util_allocate_helper;
 
 /**
@@ -33,7 +32,7 @@ typedef struct s_ft_util_allocate_helper
  *
  * @param self address of allocate helper instance
  */
-void	t_ft_util_allocate_helper_init(
+void	ft_util_allocate_helper_init(
 			t_ft_util_allocate_helper *self);
 
 /**
@@ -41,7 +40,7 @@ void	t_ft_util_allocate_helper_init(
  *
  * @param self address of allocate helper instance
  */
-void	t_ft_util_allocate_helper_free(
+void	*ft_util_allocate_helper_free(
 			t_ft_util_allocate_helper *self);
 
 /**
@@ -49,8 +48,9 @@ void	t_ft_util_allocate_helper_free(
  *
  * @param self address of allocate helper instance
  */
-void	t_ft_util_allocate_helper_clear(
-			t_ft_util_allocate_helper *self);
+void	*ft_util_allocate_helper_clear(
+			t_ft_util_allocate_helper *self,
+			void *result);
 
 /**
  * @brief put allocation result into the allocate helper
@@ -61,10 +61,10 @@ void	t_ft_util_allocate_helper_clear(
  * @param free how to free the memory
  * @return t_err true on error, false on success
  */
-t_err	t_ft_util_allocate_helper_put(
+t_err	ft_util_allocate_helper_put(
 			t_ft_util_allocate_helper *self,
 			void **destination,
 			void *memory,
-			void (*free)(void *memory));
+			void (*free_memory)(void **memory));
 
 #endif
