@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fto_stream_fd_in_v_read.c                          :+:      :+:    :+:   */
+/*   fto_stream_fd_in_v_free.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 23:36:34 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/25 23:39:35 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/07/25 23:38:51 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/25 23:40:17 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fto_stream_fd_in_v.h"
 
+#include <stdlib.h>
 #include <unistd.h>
 
-t_err	fto_stream_fd_in_v_read(
-	t_fto_stream_fd_in *self,
-	char *buffer,
-	size_t length,
-	size_t *read_bytes
+void	fto_stream_fd_in_v_free(
+	t_fto_stream_fd_in *self
 )
 {
-	const ssize_t	result = read(self->fd, buffer, length);
-
-	if (result == -1)
-		return (true);
-	*read_bytes = (size_t)result;
-	if (result == 0)
-		self->end = true;
-	return (false);
+	if (self->fd_owned)
+		close(self->fd);
+	free(self);
 }
