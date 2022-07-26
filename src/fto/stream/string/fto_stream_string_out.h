@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:52:10 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 19:24:03 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/26 23:23:44 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,15 @@
 
 # include "ft_stringbuilder.h"
 
+typedef union u_fto_stream_string_out_vtable
+{
+	const struct s_fto_stream_string_out_vtable	*v;
+	const t_fto_stream_out_vtable				*s;
+}	t_fto_stream_string_out_vtable;
+
 typedef struct s_fto_stream_string_out
 {
-	union u_fto_stream_string_out_vtable	*v;
+	union u_fto_stream_string_out_vtable	v;
 	t_stringbuilder							*stringbuilder;
 }	t_fto_stream_string_out;
 
@@ -35,7 +41,8 @@ typedef t_err	(*t_fto_stream_string_out_v_try_free)(
 typedef void	(*t_fto_stream_string_out_v_unsafe_free)(
 					t_fto_stream_string_out *self);
 typedef char	*(*t_fto_stream_string_out_v_to_string)(
-					t_fto_stream_string_out *self);
+					t_fto_stream_string_out *self,
+					size_t *length);
 
 struct s_fto_stream_string_out_vtable
 {
@@ -45,12 +52,6 @@ struct s_fto_stream_string_out_vtable
 	t_fto_stream_string_out_v_unsafe_free	unsafe_free;
 	t_fto_stream_string_out_v_to_string		to_string;
 };
-
-typedef union u_fto_stream_string_out_vtable
-{
-	const struct s_fto_stream_string_out_vtable	*v;
-	const t_fto_stream_out_vtable				*s;
-}	t_fto_stream_string_out_vtable;
 
 t_fto_stream_string_out	*new_fto_stream_string_out(size_t buffer_size);
 

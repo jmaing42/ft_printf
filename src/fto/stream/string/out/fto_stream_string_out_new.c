@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 19:19:49 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 19:25:12 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/26 23:23:52 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_fto_stream_string_out	*new_fto_stream_string_out(size_t buffer_size)
 			stringbuilder_free(stringbuilder);
 		return (NULL);
 	}
-	result->v->v = &g_v;
+	result->v.v = &g_v;
 	result->stringbuilder = stringbuilder;
 	return (result);
 }

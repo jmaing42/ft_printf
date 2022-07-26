@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:52:10 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 09:16:48 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/26 23:23:26 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 
 # include "fto_stream_in.h"
 
+typedef union u_fto_stream_string_in_vtable
+{
+	const struct s_fto_stream_string_in_vtable	*v;
+	const t_fto_stream_in_vtable				*s;
+}	t_fto_stream_string_in_vtable;
+
 typedef struct s_fto_stream_string_in
 {
-	union u_fto_stream_string_in_vtable	*v;
+	union u_fto_stream_string_in_vtable	v;
 	const char							*string;
 	bool								string_owned;
 	size_t								offset;
@@ -50,12 +56,6 @@ struct s_fto_stream_string_in_vtable
 	t_fto_stream_string_in_v_free		free;
 	t_fto_stream_string_in_v_reset		reset;
 };
-
-typedef union u_fto_stream_string_in_vtable
-{
-	const struct s_fto_stream_string_in_vtable	*v;
-	const t_fto_stream_in_vtable				*s;
-}	t_fto_stream_string_in_vtable;
 
 t_fto_stream_string_in	*new_fto_stream_string_in(
 							const char *string,

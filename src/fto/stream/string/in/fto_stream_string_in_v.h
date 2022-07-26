@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fto_stream_string.h                                :+:      :+:    :+:   */
+/*   fto_stream_string_in_v.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 08:52:10 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 23:09:30 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/07/26 23:05:19 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/26 23:12:59 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTO_STREAM_STRING_H
-# define FTO_STREAM_STRING_H
+#ifndef FTO_STREAM_STRING_IN_V_H
+# define FTO_STREAM_STRING_IN_V_H
 
 # include "fto_stream_string_in.h"
-# include "fto_stream_string_out.h"
 
 t_err	fto_stream_string_in_v_read_all(
 			t_fto_stream_string_in *self,

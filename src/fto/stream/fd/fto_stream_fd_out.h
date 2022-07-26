@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:52:10 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/25 09:22:16 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/26 23:24:18 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 
 # include "fto_stream_out.h"
 
+typedef union u_fto_stream_fd_out_vtable
+{
+	const struct s_fto_stream_fd_out_vtable	*v;
+	const t_fto_stream_out_vtable			*s;
+}	t_fto_stream_fd_out_vtable;
+
 typedef struct s_fto_stream_fd_out
 {
-	union u_fto_stream_fd_out_vtable	*v;
+	union u_fto_stream_fd_out_vtable	v;
 	int									fd;
 	bool								fd_owned;
 }	t_fto_stream_fd_out;
@@ -41,12 +47,6 @@ struct s_fto_stream_fd_out_vtable
 	t_fto_stream_fd_out_v_try_free		try_free;
 	t_fto_stream_fd_out_v_unsafe_free	unsafe_free;
 };
-
-typedef union u_fto_stream_fd_out_vtable
-{
-	const struct s_fto_stream_fd_out_vtable	*v;
-	const t_fto_stream_out_vtable			*s;
-}	t_fto_stream_fd_out_vtable;
 
 t_fto_stream_fd_out	*new_fto_stream_fd_out(int fd, bool fd_owned);
 
