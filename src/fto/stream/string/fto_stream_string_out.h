@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:52:10 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 09:15:24 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/26 19:24:03 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ typedef union u_fto_stream_string_out_vtable
 	const t_fto_stream_out_vtable				*s;
 }	t_fto_stream_string_out_vtable;
 
-t_fto_stream_string_out	*new_fto_stream_string_out(void);
+t_fto_stream_string_out	*new_fto_stream_string_out(size_t buffer_size);
 
 #endif
