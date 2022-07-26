@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:52:10 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 23:23:44 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/26 23:40:34 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 # include "ft_stringbuilder.h"
 
-typedef union u_fto_stream_string_out_vtable
+union u_fto_stream_string_out_vtable
 {
 	const struct s_fto_stream_string_out_vtable	*v;
 	const t_fto_stream_out_vtable				*s;
-}	t_fto_stream_string_out_vtable;
+};
 
 typedef struct s_fto_stream_string_out
 {

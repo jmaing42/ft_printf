@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:52:10 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 23:24:07 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/26 23:40:14 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "fto_stream_in.h"
 
-typedef union u_fto_stream_fd_in_vtable
+union u_fto_stream_fd_in_vtable
 {
 	const struct s_fto_stream_fd_in_vtable	*v;
 	const t_fto_stream_in_vtable			*s;
-}	t_fto_stream_fd_in_vtable;
+};
 
 typedef struct s_fto_stream_fd_in
 {
