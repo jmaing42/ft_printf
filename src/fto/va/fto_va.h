@@ -6,13 +6,14 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 00:02:02 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/27 00:19:24 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/27 00:22:47 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FTO_VA_H
 # define FTO_VA_H
 
+# include <stddef.h>
 # include <stdint.h>
 # include <unistd.h>
 
