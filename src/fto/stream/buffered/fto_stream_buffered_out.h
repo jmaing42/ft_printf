@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 23:42:46 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 23:56:30 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/27 23:01:06 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_fto_stream_buffered_out
 	union u_fto_stream_buffered_out_vtable	v;
 	t_fto_stream_out						*stream;
 	bool									stream_owned;
+	size_t									buffer_capacity;
 	size_t									buffer_size;
-	size_t									buffer_offset;
 	char									buffer[];
 }	t_fto_stream_buffered_out;
 
@@ -54,6 +54,6 @@ struct s_fto_stream_buffered_out_vtable
 t_fto_stream_buffered_out	*new_fto_stream_buffered_out(
 								t_fto_stream_out *stream,
 								bool stream_owned,
-								size_t buffer_size);
+								size_t buffer_capacity);
 
 #endif

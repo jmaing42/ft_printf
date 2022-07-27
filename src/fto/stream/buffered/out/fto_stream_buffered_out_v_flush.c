@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 09:15:55 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/27 09:26:48 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/27 23:01:33 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_err	fto_stream_buffered_out_v_flush(
 			self->stream->v->write(
 				self->stream,
 				self->buffer,
-				self->buffer_offset,
+				self->buffer_size,
 				&wrote_bytes)
-			|| wrote_bytes != self->buffer_offset);
-	self->buffer_offset -= wrote_bytes;
+			|| wrote_bytes != self->buffer_size);
+	self->buffer_size -= wrote_bytes;
 	return (result || self->stream->v->flush(self->stream));
 }
