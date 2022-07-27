@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 23:51:16 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 23:56:42 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/27 09:27:57 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 #include <stdlib.h>
 
+#include "fto_stream_out_v.h"
+
 static const struct s_fto_stream_buffered_out_vtable	g_v = {
 	&fto_stream_buffered_out_v_write,
 	&fto_stream_buffered_out_v_flush,
-	&fto_stream_buffered_out_v_try_free,
+	(t_fto_stream_buffered_out_v_try_free)(&fto_stream_out_v_try_free),
 	&fto_stream_buffered_out_v_unsafe_free
 };
 

@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fto_writer_fd.h                                    :+:      :+:    :+:   */
+/*   fto_stream_buffered_out_v_unsafe_free.c            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 12:54:45 by jmaing            #+#    #+#             */
-/*   Updated: 2022/07/25 00:35:11 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/07/27 09:24:39 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/27 09:25:42 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTO_WRITER_FD_H
-# define FTO_WRITER_FD_H
+#include "fto_stream_buffered_out_v.h"
 
-# include "fto_writer.h"
+#include <stdlib.h>
 
-t_writer	*new_writer_fd(int fd, bool close_fd_on_delete);
-
-#endif
+void	fto_stream_buffered_out_v_unsafe_free(
+	t_fto_stream_buffered_out *self
+)
+{
+	if (self->stream_owned)
+		self->stream->v->unsafe_free(self->stream);
+	free(self);
+}
