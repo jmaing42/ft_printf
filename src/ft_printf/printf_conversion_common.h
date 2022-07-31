@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_conversion_common.h                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 22:31:17 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/22 06:21:14 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/20 22:31:17 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

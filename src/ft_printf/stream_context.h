@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stream_context.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 07:50:33 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/30 08:01:15 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/22 07:50:33 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

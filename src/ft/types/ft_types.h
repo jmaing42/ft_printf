@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_types.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 05:01:05 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/02 13:24:11 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/22 05:01:05 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

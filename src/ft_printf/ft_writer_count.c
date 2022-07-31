@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_writer_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 12:58:15 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/26 23:27:58 by jmaing           ###   ########.fr       */
+/*   Created: 2022/04/22 12:58:15 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
