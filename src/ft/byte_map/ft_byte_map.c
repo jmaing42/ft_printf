@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:54:01 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/01 00:11:22 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_byte_map(t_byte *out, bool include_null, const t_byte *set)
 
 	if (!out || !set)
 	{
-		ft_puts(STDERR_FILENO, "ft_byte_map(): wrong parameter given\n", NULL);
+		ft_puts(STDERR_FILENO, "ft_byte_map(): wrong parameter given\n");
 		ft_exit(EXIT_FAILURE);
 	}
 	i = 0;
@@ -55,8 +55,7 @@ void	ft_byte_map_v(t_byte *out, bool include_null, va_list arguments)
 
 	if (!out)
 	{
-		ft_puts(STDERR_FILENO,
-			"ft_byte_map_v(): wrong parameter given\n", NULL);
+		ft_puts(STDERR_FILENO, "ft_byte_map_v(): wrong parameter given\n");
 		ft_exit(EXIT_FAILURE);
 	}
 	i = 0;
