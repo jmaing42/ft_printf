@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:12:37 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/31 18:41:47 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 #include "internal.h"
 
-#include "../libft/ft_default.h"
-#include "../libft/ft_cstring.h"
+#include "ft_default.h"
+#include "ft_cstring.h"
 
 t_err	ft_vprintf_stream_percent(
 	t_ft_vprintf_stream_context *context,

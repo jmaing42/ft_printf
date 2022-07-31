@@ -6,13 +6,13 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 14:05:31 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/31 18:41:47 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_conversion_o.h"
 
-#include "../libft/ft_math.h"
+#include "ft_math.h"
 
 static t_err	print(
 	t_ft_vprintf_stream_context *context,

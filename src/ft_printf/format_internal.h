@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 22:26:11 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/31 18:41:47 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "format.h"
 
-# include "../libft/ft_types.h"
+# include "ft_types.h"
 
 t_err	printf_format_internal_parse_node_flags(
 			const char *format,

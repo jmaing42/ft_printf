@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:42:53 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/31 18:41:47 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 #include "ft_printf.h"
 
-#include "../libft/ft_writer_fd.h"
-#include "../libft/ft_writer_buffered.h"
+#include "ft_writer_fd.h"
+#include "ft_writer_buffered.h"
 
 static t_err	printf_writer(t_ft_printf *context, const void *buf, size_t len)
 {

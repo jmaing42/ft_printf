@@ -6,14 +6,14 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 07:50:33 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/31 15:33:19 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/07/31 18:41:47 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STREAM_CONTEXT_H
 # define STREAM_CONTEXT_H
 
-# include "../libft/ft_types.h"
+# include "ft_types.h"
 
 # include "format.h"
 
