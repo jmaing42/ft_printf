@@ -44,7 +44,7 @@ pre_dev:
 	$Qfind src -type d -name test | xargs -L1 -I {} make -C {} dev
 .PHONY: compile_commands.json
 compile_commands.json: pre_dev
-	$Q$(MAKE) -C src -k PROFILE=debug TARGET=development SANITIZER=address all ; (printf "[" && find src/.cache -name "*.json" | xargs cat && printf "]") > $@
+	$Q$(MAKE) -C src -k PROFILE=debug TARGET=development SANITIZER=address all ; (printf "[" && find src/.cache -name "*.development.debug.json" | xargs cat && printf "]") > $@
 .PHONY: .vscode/launch.json
 .vscode/launch.json: pre_dev
 	$Q(cat template/launch.json.before.txt && find src -name launch.part.json | xargs cat && cat template/launch.json.after.txt) > $@
