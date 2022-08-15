@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 00:02:02 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/27 00:24:39 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 17:03:05 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_fto_va
 	const struct s_fto_va_vtable	*v;
 }	t_fto_va;
 
+typedef void					(*t_fto_va_v_free)(
+									t_fto_va *self);
 typedef char					(*t_fto_va_v_get_char)(
 									t_fto_va *self);
 typedef signed char				(*t_fto_va_v_get_signed_char)(
@@ -65,6 +67,7 @@ typedef void					*(*t_fto_va_v_get_pointer)(
 
 typedef struct s_fto_va_vtable
 {
+	t_fto_va_v_free							free;
 	t_fto_va_v_get_char						get_char;
 	t_fto_va_v_get_signed_char				get_signed_char;
 	t_fto_va_v_get_signed_short_int			get_signed_short_int;
