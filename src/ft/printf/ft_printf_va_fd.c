@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_va_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 16:59:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 19:46:50 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/08/15 19:47:03 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/08/15 19:53:40 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-#include <limits.h>
-#include <stdarg.h>
-#include <unistd.h>
+#include <stdlib.h>
 
-#include "fto_va_va_list.h"
+#include "ft_io.h"
 
-int	ft_printf(const char *format, ...)
+t_err	ft_printf_va_fd(
+	int fd,
+	size_t *out_length,
+	const char *format,
+	t_fto_va *va
+)
 {
-	t_fto_va	*va;
-	va_list		args;
-	size_t		length;
-	int			result;
+	char	*string;
+	size_t	length;
+	t_err	result;
 
-	va_start(args, format);
-	va = (t_fto_va *)new_fto_va_va_list(&args, true);
-	va_end(args);
-	if (
-		!va
-		|| ft_printf_va_fd(STDOUT_FILENO, &length, format, va)
-		|| length > INT_MAX
-	)
-		result = -1;
-	else
-		result = length;
-	if (va)
-		va->v->free(va);
+	result = (
+			ft_printf_va_string(&string, &length, format, va)
+			|| !string
+			|| ft_write(fd, string, length));
+	if (out_length)
+		*out_length = length;
+	if (string)
+		free(string);
 	return (result);
 }
