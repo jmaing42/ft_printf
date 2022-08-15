@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:19:28 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 17:33:19 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 19:05:42 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef ptrdiff_t				(*t_fto_va_va_list_v_get_ptrdiff_t)(
 typedef void					*(*t_fto_va_va_list_v_get_pointer)(
 									t_fto_va_va_list *self);
 
-struct s_fto_va_va_list_vtable
+typedef struct s_fto_va_va_list_vtable
 {
 	t_fto_va_va_list_v_free							free;
 	t_fto_va_va_list_v_get_char						get_char;
@@ -95,7 +95,7 @@ struct s_fto_va_va_list_vtable
 	t_fto_va_va_list_v_get_size_t					get_size_t;
 	t_fto_va_va_list_v_get_ptrdiff_t				get_ptrdiff_t;
 	t_fto_va_va_list_v_get_pointer					get_pointer;
-};
+}	t_fto_va_va_list_vtable;
 
 t_fto_va_va_list	*new_fto_va_va_list(va_list *args);
 
