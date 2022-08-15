@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:19:28 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 19:17:43 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 19:23:09 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static const t_fto_va_va_list_vtable	g_v = {
 	fto_va_va_list_v_get_size_t,
 	fto_va_va_list_v_get_ptrdiff_t,
 	fto_va_va_list_v_get_pointer,
+	fto_va_va_list_v_clone,
 };
 
 static t_fto_va_va_list	*new_shared(va_list *args)

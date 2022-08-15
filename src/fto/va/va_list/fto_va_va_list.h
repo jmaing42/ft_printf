@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:19:28 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 19:10:30 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 19:21:56 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # include <stdbool.h>
 # include <stdarg.h>
+
+# include "ft_types.h"
 
 union u_fto_va_va_list_vtable
 {
@@ -73,6 +75,8 @@ typedef ptrdiff_t				(*t_fto_va_va_list_v_get_ptrdiff_t)(
 									t_fto_va_va_list *self);
 typedef void					*(*t_fto_va_va_list_v_get_pointer)(
 									t_fto_va_va_list *self);
+typedef t_fto_va_va_list		*(*t_fto_va_va_list_v_clone)(
+										t_fto_va_va_list *self);
 
 typedef struct s_fto_va_va_list_vtable
 {
@@ -97,6 +101,7 @@ typedef struct s_fto_va_va_list_vtable
 	t_fto_va_va_list_v_get_size_t					get_size_t;
 	t_fto_va_va_list_v_get_ptrdiff_t				get_ptrdiff_t;
 	t_fto_va_va_list_v_get_pointer					get_pointer;
+	t_fto_va_va_list_v_clone						clone;
 }	t_fto_va_va_list_vtable;
 
 t_fto_va_va_list	*new_fto_va_va_list(va_list *args, bool va_list_owned);

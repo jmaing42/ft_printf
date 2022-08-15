@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:19:28 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 19:14:47 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 19:21:17 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ size_t					fto_va_va_list_v_get_size_t(
 ptrdiff_t				fto_va_va_list_v_get_ptrdiff_t(
 							t_fto_va_va_list *self);
 void					*fto_va_va_list_v_get_pointer(
+							t_fto_va_va_list *self);
+t_fto_va_va_list		*fto_va_va_list_v_clone(
 							t_fto_va_va_list *self);
 
 #endif
