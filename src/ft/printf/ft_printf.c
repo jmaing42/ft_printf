@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:59:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 17:16:18 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 17:17:54 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include <limits.h>
 #include <stdarg.h>
 #include <unistd.h>
-
-#include "fto_va.h"
 
 #include "fto_va_va_list.h"
 
