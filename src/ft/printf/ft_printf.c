@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:59:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 19:46:50 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 20:58:57 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,28 @@
 
 int	ft_printf(const char *format, ...)
 {
-	t_fto_va	*va;
-	va_list		args;
-	size_t		length;
-	int			result;
+	t_ft_printf_input	input;
+	va_list				args;
+	size_t				length;
+	int					result;
 
+	input.format = format;
 	va_start(args, format);
-	va = (t_fto_va *)new_fto_va_va_list(&args, true);
+	input.va = (t_fto_va *)new_fto_va_va_list(&args, true);
 	va_end(args);
 	if (
-		!va
-		|| ft_printf_va_fd(STDOUT_FILENO, &length, format, va)
+		!input.va
+		|| ft_printf_va_fd(
+			STDOUT_FILENO,
+			&length,
+			input,
+			ft_printf_get_default_options())
 		|| length > INT_MAX
 	)
-		result = -1;
+		result = -42;
 	else
 		result = length;
-	if (va)
-		va->v->free(va);
+	if (input.va)
+		input.va->v->free(input.va);
 	return (result);
 }
