@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:19:28 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 19:07:49 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 19:14:47 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,19 @@
 
 # include "fto_va_va_list.h"
 
-t_fto_va_va_list		*new_fto_va_va_list(va_list *args);
+typedef struct s_fto_va_va_list_owned
+{
+	t_fto_va_va_list	list;
+	va_list				args;
+}	t_fto_va_va_list_owned;
+
+typedef union u_fto_va_va_list_in
+{
+	t_fto_va_va_list		shared;
+	t_fto_va_va_list_owned	owned;
+}	t_fto_va_va_list_in;
+
+t_fto_va_va_list		*new_fto_va_va_list(va_list *args, bool va_list_owned);
 
 void					fto_va_va_list_v_free(
 							t_fto_va_va_list *self);

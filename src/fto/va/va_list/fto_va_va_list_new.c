@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:19:28 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 19:07:22 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 19:17:43 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static const t_fto_va_va_list_vtable	g_v = {
 	fto_va_va_list_v_get_pointer,
 };
 
-t_fto_va_va_list	*new_fto_va_va_list(va_list *args)
+static t_fto_va_va_list	*new_shared(va_list *args)
 {
 	t_fto_va_va_list *const	result = malloc(sizeof(t_fto_va_va_list));
 
@@ -48,5 +48,28 @@ t_fto_va_va_list	*new_fto_va_va_list(va_list *args)
 		return (NULL);
 	result->v.v = &g_v;
 	result->args = args;
+	result->va_list_owned = false;
 	return (result);
+}
+
+static t_fto_va_va_list	*new_owned(va_list *args)
+{
+	t_fto_va_va_list_in *const	result
+		= malloc(sizeof(t_fto_va_va_list_in));
+
+	if (!result)
+		return (NULL);
+	va_copy(result->owned.args, *args);
+	result->owned.list.v.v = &g_v;
+	result->owned.list.args = &result->owned.args;
+	result->owned.list.va_list_owned = true;
+	return (&result->owned.list);
+}
+
+t_fto_va_va_list	*new_fto_va_va_list(va_list *args, bool va_list_owned)
+{
+	if (va_list_owned)
+		return (new_shared(args));
+	else
+		return (new_owned(args));
 }

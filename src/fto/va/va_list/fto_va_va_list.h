@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:19:28 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 19:05:42 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 19:10:30 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "fto_va.h"
 
+# include <stdbool.h>
 # include <stdarg.h>
 
 union u_fto_va_va_list_vtable
@@ -27,6 +28,7 @@ typedef struct s_fto_va_va_list
 {
 	union u_fto_va_va_list_vtable	v;
 	va_list							*args;
+	bool							va_list_owned;
 }	t_fto_va_va_list;
 
 typedef void					(*t_fto_va_va_list_v_free)(
@@ -97,6 +99,6 @@ typedef struct s_fto_va_va_list_vtable
 	t_fto_va_va_list_v_get_pointer					get_pointer;
 }	t_fto_va_va_list_vtable;
 
-t_fto_va_va_list	*new_fto_va_va_list(va_list *args);
+t_fto_va_va_list	*new_fto_va_va_list(va_list *args, bool va_list_owned);
 
 #endif
