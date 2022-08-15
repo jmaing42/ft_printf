@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:59:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 20:58:57 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/15 21:06:09 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_printf(const char *format, ...)
 			STDOUT_FILENO,
 			&length,
 			input,
-			ft_printf_get_default_options())
+			ft_printf_default())
 		|| length > INT_MAX
 	)
 		result = -42;
