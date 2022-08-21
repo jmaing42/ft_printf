@@ -9,12 +9,13 @@
   "files.associations": {
     "*.h": "c",
   },
+  "C_Cpp.autocomplete": "Disabled",
+  "C_Cpp.default.cStandard": "c99",
   "C_Cpp.default.includePath": [
     "${workspaceFolder}/src/**"
   ],
-  "C_Cpp.default.cStandard": "c99",
   "c-cpp-flylint.clang.extraArgs": [
     "--enable-config"
   ],
-  "sonarlint.pathToCompileCommands": "${workspaceFolder}/compile_commands.json"
+  "sonarlint.pathToCompileCommands": "${workspaceFolder}/compile_commands.json",
 }
