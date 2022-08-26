@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_va_fd.c                                  :+:      :+:    :+:   */
+/*   ft_printf_va_string.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 19:47:03 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/27 00:52:46 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/08/27 00:48:03 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/08/27 00:54:11 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 #include <stdlib.h>
 
-#include "ft_io.h"
+#include "fto_stream_string_out.h"
 
-t_err	ft_printf_va_fd(
-	int fd,
+#define BUFFER_SIZE 1024
+
+t_err	ft_printf_va_string(
+	char **out,
 	size_t *out_length,
 	t_ft_printf_input input,
 	t_ft_printf_options *options
 )
 {
-	char	*string;
-	size_t	length;
-	t_err	result;
+	t_fto_stream_string_out	*stream;
+	t_err					result;
+	size_t					length;
 
 	result = (
-			ft_printf_va_string(&string, &length, input, options)
-			|| ft_write(fd, string, length));
+			(stream = new_fto_stream_string_out(BUFFER_SIZE)) == NULL
+			|| ft_printf_va_stream((t_fto_stream_out *)stream, input, options)
+			|| (*out = stream->v.v->to_string(stream, &length)) == NULL);
 	if (out_length)
 		*out_length = length;
-	if (string)
-		free(string);
+	if (stream)
+		stream->v.v->unsafe_free(stream);
 	return (result);
 }
