@@ -1,6 +1,7 @@
 # temporary files
 tmp
 .cache
+*.a
 *.exe
 *.dSYM
 *.log
