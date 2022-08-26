@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 23:51:16 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/27 23:23:38 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/27 00:59:04 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static const struct s_fto_stream_buffered_out_vtable	g_v = {
 	&fto_stream_buffered_out_v_write,
 	&fto_stream_buffered_out_v_flush,
 	(t_fto_stream_buffered_out_v_try_free)(&fto_stream_out_v_try_free),
-	&fto_stream_buffered_out_v_unsafe_free
+	&fto_stream_buffered_out_v_free_without_flush
 };
 
 t_fto_stream_buffered_out	*new_fto_stream_buffered_out(
@@ -35,7 +35,7 @@ t_fto_stream_buffered_out	*new_fto_stream_buffered_out(
 	if (!result)
 	{
 		if (stream_owned)
-			stream->v->unsafe_free(stream);
+			stream->v->free_without_flush(stream);
 		return (NULL);
 	}
 	result->v.v = &g_v;

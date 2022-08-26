@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:37:03 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/26 23:20:00 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/27 00:59:04 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_err	fto_stream_string_out_v_write(
 			const char *buffer,
 			size_t length,
 			size_t *wrote_bytes);
-void	fto_stream_string_out_v_unsafe_free(
+void	fto_stream_string_out_v_free_without_flush(
 			t_fto_stream_string_out *self);
 char	*fto_stream_string_out_v_to_string(
 			t_fto_stream_string_out *self,

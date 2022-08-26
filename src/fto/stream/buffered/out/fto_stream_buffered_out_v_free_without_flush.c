@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fto_stream_buffered_out_v_unsafe_free.c            :+:      :+:    :+:   */
+/*   fto_stream_buffered_out_v_free_without_flush.c     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 09:24:39 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/27 09:25:42 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/27 00:59:30 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 #include <stdlib.h>
 
-void	fto_stream_buffered_out_v_unsafe_free(
+void	fto_stream_buffered_out_v_free_without_flush(
 	t_fto_stream_buffered_out *self
 )
 {
 	if (self->stream_owned)
-		self->stream->v->unsafe_free(self->stream);
+		self->stream->v->free_without_flush(self->stream);
 	free(self);
 }

@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 08:46:35 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/07/25 09:21:26 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/27 01:00:46 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ typedef t_err	(*t_fto_stream_out_v_flush)(
 					t_fto_stream_out *self);
 typedef t_err	(*t_fto_stream_out_v_try_free)(
 					t_fto_stream_out *self);
-typedef void	(*t_fto_stream_out_v_unsafe_free)(
+typedef void	(*t_fto_stream_out_v_free_without_flush)(
 					t_fto_stream_out *self);
 
 typedef struct s_fto_stream_out_vtable
 {
-	t_fto_stream_out_v_write		write;
-	t_fto_stream_out_v_flush		flush;
-	t_fto_stream_out_v_try_free		try_free;
-	t_fto_stream_out_v_unsafe_free	unsafe_free;
+	t_fto_stream_out_v_write				write;
+	t_fto_stream_out_v_flush				flush;
+	t_fto_stream_out_v_try_free				try_free;
+	t_fto_stream_out_v_free_without_flush	free_without_flush;
 }	t_fto_stream_out_vtable;
 
 #endif

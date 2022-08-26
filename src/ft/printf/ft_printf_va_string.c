@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 00:48:03 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/27 00:54:11 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/27 00:59:04 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ t_err	ft_printf_va_string(
 	if (out_length)
 		*out_length = length;
 	if (stream)
-		stream->v.v->unsafe_free(stream);
+		stream->v.v->free_without_flush(stream);
 	return (result);
 }
