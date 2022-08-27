@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 00:48:03 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/27 01:09:17 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/28 00:02:53 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,19 @@ t_err	ft_printf_va_string(
 	t_ft_printf_options *options
 )
 {
-	t_fto_stream_string_out	*stream;
-	t_err					result;
-	size_t					length;
+	t_fto_stream_string_out *const	stream
+		= new_fto_stream_string_out(BUFFER_SIZE);
+	t_err							result;
+	size_t							length;
 
 	result = (
-			(stream = new_fto_stream_string_out(BUFFER_SIZE)) == NULL
-			|| ft_printf_va_stream((t_fto_stream_out *)stream, input, options)
-			|| (*out = stream->v.v->to_string(stream, &length)) == NULL);
+			!stream
+			|| ft_printf_va_stream((t_fto_stream_out *)stream, input, options));
+	if (!result)
+	{
+		*out = stream->v.v->to_string(stream, &length);
+		result = *out == NULL;
+	}
 	if (out_length)
 		*out_length = length;
 	if (stream)
