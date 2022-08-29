@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:59:06 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/27 01:15:51 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/30 00:54:19 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 
 int	ft_printf(const char *format, ...)
 {
-	t_ft_printf_input			input;
-	va_list						args;
-	size_t						length;
-	int							result;
-	t_ft_printf_options *const	options = ft_printf_default();
+	t_ft_printf_input	input;
+	va_list				args;
+	size_t				length;
+	int					result;
+	t_ft_printf_options	options;
 
-	if (!options)
+	if (!ft_printf_default(&options))
 		return (FT_PRINTF_ERROR);
 	input.format = format;
 	va_start(args, format);
@@ -36,7 +36,7 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	if (
 		!input.va
-		|| ft_printf_va_fd(STDOUT_FILENO, &length, input, options)
+		|| ft_printf_va_fd(STDOUT_FILENO, &length, input, &options)
 		|| length > INT_MAX
 	)
 		result = FT_PRINTF_ERROR;
@@ -44,5 +44,6 @@ int	ft_printf(const char *format, ...)
 		result = length;
 	if (input.va)
 		input.va->v->free(input.va);
+	options.context->dispose(options.context);
 	return (result);
 }

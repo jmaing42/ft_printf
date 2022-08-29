@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 00:07:24 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/30 00:43:16 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/30 00:52:28 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ typedef struct s_ft_printf_conversion_specification
 
 typedef struct s_ft_printf_options
 {
-	void											(*dispose)(
-			struct s_ft_printf_options *self);
 	t_ft_printf_options_parse_conversion_specifier	parse_conversion_specifier;
 	t_ft_printf_options_parse_length_modifier		parse_length_modifier;
 	t_ft_printf_options_parse_flags					parse_flags;
@@ -110,6 +108,7 @@ int					ft_printf(
 						const char *format,
 						...);
 
-t_ft_printf_options	*ft_printf_default(void);
+t_err				ft_printf_default(
+						t_ft_printf_options *out);
 
 #endif
