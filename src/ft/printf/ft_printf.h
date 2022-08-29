@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 00:07:24 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/15 21:07:36 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/30 00:43:16 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ typedef t_err	(*t_ft_printf_options_process_conversion_specifier)(
 
 typedef t_err	(*t_ft_printf_options_parse_conversion_specifier)(
 		const char *format_part,
-		size_t *consumed_length,
+		size_t *out_consumed_length,
 		t_ft_printf_options_process_conversion_specifier *out,
 		t_ft_printf_options_disposable *context);
 
 typedef t_err	(*t_ft_printf_options_parse_length_modifier)(
 		const char *format_part,
-		size_t *consumed_length,
+		size_t *out_consumed_length,
 		void **out_length_modifier,
 		t_ft_printf_options_disposable *context);
 
 typedef t_err	(*t_ft_printf_options_parse_flags)(
 		const char *format_part,
-		size_t *consumed_length,
+		size_t *out_consumed_length,
 		t_ft_printf_options_process_conversion_specification_flags *out_flags,
 		t_ft_printf_options_disposable *context);
 
