@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:05:50 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/31 10:06:15 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/31 10:20:02 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ union u_fto_unwinder_list_vtable
 
 typedef struct s_fto_unwinder_list
 {
-	union u_fto_unwinder_list_vtable	*v;
+	union u_fto_unwinder_list_vtable	v;
 }	t_fto_unwinder_list;
 
 typedef t_err	(*t_fto_unwinder_list_v_end_ok)(
