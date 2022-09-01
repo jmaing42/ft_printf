@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 02:20:42 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/31 02:28:29 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/02 00:23:57 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ typedef t_err	(*t_fto_unwinder_v_end_ok)(
 					t_fto_unwinder *self);
 typedef t_err	(*t_fto_unwinder_v_end_error)(
 					t_fto_unwinder *self);
-typedef void	*(*t_fto_unwinder_v_add)(
+typedef t_err	(*t_fto_unwinder_v_add)(
 					t_fto_unwinder *self,
+					void **destination,
 					void *value,
 					void (*how_to_remove_value)(void *value));
-typedef void	*(*t_fto_unwinder_v_add_always)(
+typedef t_err	(*t_fto_unwinder_v_add_always)(
 					t_fto_unwinder *self,
+					void **destination,
 					void *value,
 					void (*how_to_remove_value)(void *value));
 
