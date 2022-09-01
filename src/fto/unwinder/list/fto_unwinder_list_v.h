@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:05:50 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/01 23:57:03 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/02 00:22:39 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ t_err				fto_unwinder_list_v_end_ok_failed_to_alloc(
 t_err				fto_unwinder_list_v_end_error_failed_to_alloc(
 						t_fto_unwinder_list *self);
 void				*fto_unwinder_list_v_add_failed_to_alloc(
-						t_fto_unwinder_list *self,
-						void *value,
-						void (*how_to_remove_value)(void *value));
-void				*fto_unwinder_list_v_add_always_failed_to_alloc(
 						t_fto_unwinder_list *self,
 						void *value,
 						void (*how_to_remove_value)(void *value));
