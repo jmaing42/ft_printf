@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:05:50 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/09/02 00:24:16 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/02 00:29:56 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_fto_unwinder_list_node
 	struct s_fto_unwinder_list_node	*next;
 	void							*value;
 	void							(*how_to_remove_value)(void *value);
+	void							**destination;
 	bool							remove_always;
 }	t_fto_unwinder_list_node;
 
