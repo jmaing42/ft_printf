@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:05:50 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/31 10:20:02 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/09/02 00:07:32 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,26 @@
 
 # include "fto_unwinder.h"
 
+# include <stdbool.h>
+
 union u_fto_unwinder_list_vtable
 {
 	const struct s_fto_unwinder_list_vtable	*v;
 	const t_fto_unwinder_vtable				*s;
 };
 
+typedef struct s_fto_unwinder_list_node
+{
+	struct s_fto_unwinder_list_node	*next;
+	void							*value;
+	void							(*how_to_remove_value)(void *value);
+	bool							remove_always;
+}	t_fto_unwinder_list_node;
+
 typedef struct s_fto_unwinder_list
 {
 	union u_fto_unwinder_list_vtable	v;
+	t_fto_unwinder_list_node			*head;
 }	t_fto_unwinder_list;
 
 typedef t_err	(*t_fto_unwinder_list_v_end_ok)(
